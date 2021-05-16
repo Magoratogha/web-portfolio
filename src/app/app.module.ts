@@ -7,19 +7,26 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { GreetingComponent } from './components/greeting/greeting.component';
 import { AboutMeComponent } from './components/about-me/about-me.component';
 import { HeaderComponent } from './components/header/header.component';
+import { ContactComponent } from './components/contact/contact.component';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     GreetingComponent,
     AboutMeComponent,
-    HeaderComponent
+    HeaderComponent,
+    ContactComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    MatFormFieldModule,
+    MatInputModule
   ],
   providers: [],
   bootstrap: [AppComponent]
