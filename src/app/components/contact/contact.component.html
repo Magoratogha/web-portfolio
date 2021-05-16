@@ -1,9 +1,26 @@
-<div class="viewport-container bg-dark-blue py-5" fxLayout="column" fxLayoutAlign="center center">
-  <div class="container" fxLayout="row" fxLayoutAlign="center center">
-    <mat-form-field appearance="outline">
-      <mat-label>Outline form field</mat-label>
-      <input matInput placeholder="Placeholder">
-      <mat-hint>Hint</mat-hint>
+<div class="viewport-container bg-dark-blue py-5" fxLayout="row" fxLayoutAlign="center center">
+  <form [formGroup]="contactForm" (ngSubmit)="onFormSubmit()" class="container" fxFlex="50%" fxLayout="column" fxLayoutAlign="center center">
+    <div class="w-100" fxLayout="row" fxLayoutGap="20px">
+      <mat-form-field fxFlex="50%" appearance="outline">
+        <mat-label>Your name</mat-label>
+        <input formControlName="name" matInput placeholder="John Doe" autocomplete="nope">
+        <mat-error *ngIf="contactForm.get('name')?.hasError('required')">Your name is required</mat-error>
+      </mat-form-field>
+      <mat-form-field fxFlex="50%" appearance="outline">
+        <mat-label>Your email address</mat-label>
+        <input formControlName="email" type="email" matInput placeholder="pat@example.com" autocomplete="nope">
+        <mat-error *ngIf="contactForm.get('email')?.hasError('email')">Please enter a valid email address</mat-error>
+        <mat-error *ngIf="contactForm.get('email')?.hasError('required')">Your email is required</mat-error>
+      </mat-form-field>
+    </div>
+    <mat-form-field fxFlex="100%" appearance="outline">
+      <mat-label>Your message</mat-label>
+      <textarea formControlName="message" matInput rows="3" placeholder="Write whatever you want to say to me"
+        autocomplete="nope"></textarea>
+      <mat-error *ngIf="contactForm.get('message')?.hasError('required')">Your message is required</mat-error>
     </mat-form-field>
-  </div>
+    <div class="d-grid pt-1 w-25">
+      <button [disabled]="contactForm.invalid" type="submit" class="btn btn-outline-light">Submit</button>
+    </div>
+  </form>
 </div>
