@@ -20,7 +20,15 @@
       <mat-error *ngIf="contactForm.get('message')?.hasError('required')">Your message is required</mat-error>
     </mat-form-field>
     <div class="d-grid pt-1 w-25">
-      <button [disabled]="contactForm.invalid" type="submit" class="btn btn-outline-light">Submit</button>
+      <button [disabled]="contactForm.invalid || (isMessageSending && !isMessageSent)" type="submit"
+        class="btn btn-outline-light">Submit</button>
+    </div>
+    <div class="loader-wrapper">
+      <div *ngIf="isMessageSending" class="pt-3" fxLayout="row" fxLayoutGap="5px" fxFlexAlign="center center">
+        <mat-spinner *ngIf="!isMessageSent" class="me-2" diameter="25"></mat-spinner>
+        <h4 *ngIf="isMessageSent"><i class="bi bi-check2"></i></h4>
+        <p class="fw-light fst-italic">{{ isMessageSent ? 'Done!' : 'Your message is being sent, please wait a moment.' }}</p>
+      </div>
     </div>
   </form>
 </div>
