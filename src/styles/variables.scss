@@ -1,0 +1,22 @@
+@import '~@angular/material/theming';
+
+//### Background colors: ###
+$red-bg-color-1: #d9534f;
+$red-bg-color-2: #f8e6e0;
+$red-bg-color-3: #f5bca9;
+$white-bg-color: #ffffff;
+$dark-blue-bg-color: #343a40;
+
+//### Font colors: ###
+$red-font-color: #ff625d;
+$white-font-color: #ffffff;
+$dark-blue-font-color: #343a40;
+
+//### Material theme colors and definition: ###
+$webPortfolio-primary: mat-palette($mat-indigo);
+$webPortfolio-accent: mat-palette($mat-pink, A200, A100, A400);
+$webPortfolio-warn: mat-palette($mat-red);
+$webPortfolio-theme: mat-light-theme((
+  color:(primary: $webPortfolio-primary,
+    accent: $webPortfolio-accent,
+    warn: $webPortfolio-warn)));

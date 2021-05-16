@@ -1,1 +1,50 @@
-/* You can add global styles to this file, and also import other style files */
+@import "src/styles/variables";
+@include mat-core();
+@include angular-material-theme($webPortfolio-theme);
+
+html, body {
+  height: 100%;
+  scroll-behavior: smooth;
+}
+
+.viewport-container {
+  width: 100%;
+  min-height: 100%;
+}
+
+.sticky {
+  position: -webkit-sticky;
+  position: sticky;
+}
+
+.bg-dark-blue {
+  background-color: $dark-blue-bg-color;
+  color: $white-font-color;
+  .text-danger {
+    color: $red-font-color !important;
+  }
+}
+
+.bg-red {
+  background-color: $red-bg-color-1;
+  color: $white-font-color;
+}
+
+.bg-red-1 {
+  background: $red-bg-color-2;
+  color: $dark-blue-font-color;
+}
+
+.bg-red-2 {
+  background: $red-bg-color-3;
+  color: $dark-blue-font-color;
+}
+
+.bg-white {
+  background-color: $white-bg-color;
+  color: $dark-blue-font-color;
+}
+
+.clickable {
+  cursor: pointer;
+}
