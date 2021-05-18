@@ -8,17 +8,17 @@ import { Contact } from '../../models/contact.model';
 export class EmailService {
 
   private headers: HttpHeaders = new HttpHeaders();
-  private readonly emailServiceEndpoint = 'https://gray-charger.glitch.me/formulario';
+  private readonly emailServiceEndpoint = 'https://scarlet-luxuriant-pea.glitch.me/sendEmail';
 
   constructor(private http: HttpClient) {
     this.headers = this.headers.append('Content-Type', 'application/json');
   }
 
   public sendEmail(formValue: Contact): Promise<any> {
-    const requestParams = { nombre: formValue.name,
-      asunto: 'Contact from Web Portfolio',
+    const requestParams = { name: formValue.name,
+      subject: 'Contact from Web Portfolio',
       email: formValue.email,
-      mensaje: formValue.message
+      message: formValue.message
     };
     return this.http.post(this.emailServiceEndpoint, requestParams, { headers:
       this.headers }).toPromise();
