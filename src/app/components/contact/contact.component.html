@@ -26,8 +26,10 @@
     <div class="loader-wrapper">
       <div *ngIf="isMessageSending" class="pt-3" fxLayout="row" fxLayoutGap="5px" fxFlexAlign="center center">
         <mat-spinner *ngIf="!isMessageSent" class="me-2" diameter="25"></mat-spinner>
-        <h4 *ngIf="isMessageSent"><i class="bi bi-check2"></i></h4>
-        <p class="fw-light fst-italic">{{ isMessageSent ? 'Done!' : 'Your message is being sent, please wait a moment.' }}</p>
+        <h4 *ngIf="isMessageSent"><i class="bi" [ngClass]="{'bi-check2': wasSuccessfullySent,
+          'bi-x-circle text-danger': !wasSuccessfullySent }"></i></h4>
+        <p class="fw-light fst-italic">{{ isMessageSent ? wasSuccessfullySent ? 'Done!' :
+          'Something went wrong, please try again.' : 'Your message is being sent, please wait a moment.' }}</p>
       </div>
     </div>
   </form>

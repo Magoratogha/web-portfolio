@@ -11,6 +11,7 @@ export class ContactComponent implements OnInit {
 
   public isMessageSending = false;
   public isMessageSent = false;
+  public wasSuccessfullySent = false;
   public contactForm = this.formBuilder.group({
     name: ['', [Validators.required]],
     email: ['', [Validators.required, Validators.email]],
@@ -24,16 +25,21 @@ export class ContactComponent implements OnInit {
 
   public onFormSubmit(): void {
     this.isMessageSending = true;
+    this.isMessageSent = false;
     this.contactForm.disable();
     this.emailService.sendEmail(this.contactForm.value).then(() => {
+      this.wasSuccessfullySent = true;
       this.isMessageSent = true;
       this.contactForm.enable();
       window.setTimeout(() => {
         this.isMessageSending = false;
         this.isMessageSent = false;
       }, 1000);
+    }).catch(() => {
+      this.wasSuccessfullySent = false;
+      this.isMessageSent = true;
+      this.contactForm.enable();
     });
-    console.log(this.contactForm.value);
   }
 
 }
