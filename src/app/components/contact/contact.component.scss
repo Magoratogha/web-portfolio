@@ -5,3 +5,67 @@
 .loader-wrapper {
   height: 60px;
 }
+
+h3::before, h3::after {
+  display: inline-block;
+  content: "";
+  border-top: .15rem solid white;
+  width: 4rem;
+  margin: 0 1rem;
+  transform: translateY(-0.5rem);
+}
+
+.btn-group {
+  .btn:nth-child(1) {
+    color: #212529;
+    background-color: #f8f9fa;
+    border-color: #f8f9fa;
+  }
+  .btn:nth-child(1):hover {
+    color: #fff;
+    background-color: #2dba4e;
+    border-color: #2dba4e;
+  }
+  .btn:nth-child(1):focus {
+    box-shadow: 0 0 0 0.2rem rgba(28, 119, 49, 0.5);
+  }
+  .btn:nth-child(2) {
+    color: white;
+    background-color: #0a66c2;
+    border-color: #0a66c2;
+  }
+  .btn:nth-child(2):hover {
+    color: #0a66c2;
+    background-color: white;
+    border-color: white;
+  }
+  .btn:nth-child(2):focus {
+    box-shadow: 0 0 0 0.2rem rgba(255, 255, 255, 0.5);
+  }
+  .btn:nth-child(3) {
+    color: white;
+    background-color: #c1558b;
+    border-color: #c1558b;
+  }
+  .btn:nth-child(3):hover {
+    color: #8a49a1;
+    background-color: #ffdf9e;
+    border-color: #ffdf9e;
+  }
+  .btn:nth-child(3):focus {
+    box-shadow: 0 0 0 0.2rem rgba(199, 163, 91, 0.5);
+  }
+  .btn:nth-child(4) {
+    color: white;
+    background-color: #3b5998;
+    border-color: #3b5998;
+  }
+  .btn:nth-child(4):hover {
+    color: #3b5998;
+    background-color: white;
+    border-color: white;
+  }
+  .btn:nth-child(4):focus {
+    box-shadow: 0 0 0 0.2rem rgba(255, 255, 255, 0.5);
+  }
+}
