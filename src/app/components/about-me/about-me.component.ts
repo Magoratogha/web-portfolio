@@ -26,7 +26,7 @@ export class AboutMeComponent implements OnInit, AfterViewInit {
 
   public downloadPDF(pdfFile: string, pdfName: string): void {
     const xhr = new XMLHttpRequest();
-    xhr.open('GET', '/assets/pdfs/' + pdfFile);
+    xhr.open('GET', './assets/pdfs/' + pdfFile);
     xhr.responseType = 'blob';
     xhr.onload = () => {
       const file = new File([xhr.response], pdfName, { type: 'data:application/pdf' });
