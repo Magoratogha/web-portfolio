@@ -23,4 +23,18 @@ export class AboutMeComponent implements OnInit, AfterViewInit {
     this.renderer.setStyle(this.aboutContainer?.nativeElement, 'bottom',
       'calc(100% - ' + this.aboutContainer?.nativeElement.offsetHeight + 'px)');
   }
+
+  public downloadPDF(pdfFile: string, pdfName: string): void {
+    const xhr = new XMLHttpRequest();
+    xhr.open('GET', '/assets/pdfs/' + pdfFile);
+    xhr.responseType = 'blob';
+    xhr.onload = () => {
+      const file = new File([xhr.response], pdfName, { type: 'data:application/pdf' });
+      const downloadLink = document.createElement('a');
+      downloadLink.href = URL.createObjectURL(file);
+      downloadLink.download = pdfName;
+      downloadLink.click();
+    };
+    xhr.send();
+  }
 }
