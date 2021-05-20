@@ -10,6 +10,10 @@ html, body {
 .viewport-container {
   width: 100%;
   min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  place-content: center;
+  align-items: center;
 }
 
 .sticky {
@@ -17,9 +21,20 @@ html, body {
   position: sticky;
 }
 
+.bg-white, .bg-dark-blue, .bg-red, .bg-red-1, .bg-red-2 {
+  width: 100%;
+}
+
+.bg-white, .bg-red-1, .bg-red-2 {
+  color: $dark-blue-font-color;
+}
+
+.bg-red, .bg-dark-blue {
+  color: $white-font-color;
+}
+
 .bg-dark-blue {
   background-color: $dark-blue-bg-color;
-  color: $white-font-color;
   .text-danger {
     color: $red-font-color !important;
   }
@@ -27,22 +42,18 @@ html, body {
 
 .bg-red {
   background-color: $red-bg-color-1;
-  color: $white-font-color;
 }
 
 .bg-red-1 {
   background: $red-bg-color-2;
-  color: $dark-blue-font-color;
 }
 
 .bg-red-2 {
   background: $red-bg-color-3;
-  color: $dark-blue-font-color;
 }
 
 .bg-white {
   background-color: $white-bg-color;
-  color: $dark-blue-font-color;
 }
 
 .clickable {
