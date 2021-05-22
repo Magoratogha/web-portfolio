@@ -4,6 +4,13 @@
 
 .loader-wrapper {
   height: 60px;
+  .mat-spinner {
+    display: inline;
+    margin-right: 35px;
+  }
+  i {
+    font-size: 22px;
+  }
 }
 
 h3::before, h3::after {
@@ -15,7 +22,7 @@ h3::before, h3::after {
   transform: translateY(-0.5rem);
 }
 
-.btn-group {
+.btn-group, .btn-group-vertical {
   .btn:nth-child(1) {
     color: #212529;
     background-color: #f8f9fa;

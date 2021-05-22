@@ -1,50 +1,68 @@
-<div class="viewport-container bg-dark-blue py-5" fxLayout="row" fxLayoutAlign="center center">
-  <form [formGroup]="contactForm" (ngSubmit)="onFormSubmit()" class="container" fxFlex="50%" fxLayout="column" fxLayoutAlign="center center">
-    <h1 class="display-6">Do you want to talk to me? Go ahead!</h1>
-    <h4 class="fw-light fst-italic py-2">Here you can find me:</h4>
-    <div class="btn-group pb-5" role="group" aria-label="contact-buttons">
-      <a href="https://github.com/Magoratogha" target="_blank" rel="noreferrer" class="btn btn-primary">
-        <i class="bi bi-github pe-2"></i>Github</a>
-      <a href="https://www.linkedin.com/in/magoratogha" target="_blank" rel="noreferrer" class="btn btn-primary">
-        <i class="bi bi-linkedin pe-2"></i>Linkedin</a>
-      <a href="https://www.instagram.com/magoratogha" target="_blank" rel="noreferrer" class="btn btn-primary">
-        <i class="bi bi-instagram pe-2"></i>Instagram</a>
-      <a href="https://www.facebook.com/Magoratoga" target="_blank" rel="noreferrer" class="btn btn-primary">
-        <i class="bi bi-facebook pe-2"></i>Facebook</a>
-    </div>
-    <h3 class="fw-light fst-italic pt-3 pb-5">Or</h3>
-    <h2 class="fw-light fst-italic pb-5">You can always write... <i class="bi bi-chat-left-text"></i></h2>
-    <div class="w-100" fxLayout="row" fxLayoutGap="20px">
-      <mat-form-field fxFlex="50%" appearance="outline">
-        <mat-label>Your name</mat-label>
-        <input formControlName="name" matInput placeholder="John Doe" autocomplete="nope">
-        <mat-error>Your name is required</mat-error>
-      </mat-form-field>
-      <mat-form-field fxFlex="50%" appearance="outline">
-        <mat-label>Your email address</mat-label>
-        <input formControlName="email" type="email" matInput placeholder="pat@example.com" autocomplete="nope">
-        <mat-error>{{ contactForm.get('email')?.hasError('required') ? '' +
-          'Your email is required' : 'Please enter a valid email address' }}</mat-error>
-      </mat-form-field>
-    </div>
-    <mat-form-field fxFlex="100%" appearance="outline">
-      <mat-label>Your message</mat-label>
-      <textarea formControlName="message" matInput rows="3" placeholder="Write whatever you want to say to me"
-        autocomplete="nope"></textarea>
-      <mat-error>Your message is required</mat-error>
-    </mat-form-field>
-    <div class="d-grid pt-1 w-25">
-      <button [disabled]="contactForm.invalid || (isMessageSending && !isMessageSent)" type="submit"
-        class="btn btn-outline-light">Submit</button>
-    </div>
-    <div class="loader-wrapper">
-      <div *ngIf="isMessageSending" class="pt-3" fxLayout="row" fxLayoutGap="5px" fxFlexAlign="center center">
-        <mat-spinner *ngIf="!isMessageSent" class="me-2" diameter="25"></mat-spinner>
-        <h4 *ngIf="isMessageSent"><i class="bi" [ngClass]="{'bi-check2': wasSuccessfullySent,
-          'bi-x-circle text-danger': !wasSuccessfullySent }"></i></h4>
-        <p class="fw-light fst-italic">{{ isMessageSent ? wasSuccessfullySent ? 'Done!' :
-          'Something went wrong, please try again.' : 'Your message is being sent, please wait a moment...' }}</p>
+<div class="viewport-container bg-dark-blue py-5">
+  <div class="container text-center">
+    <div class="row">
+      <div class="col-12">
+        <h1 class="display-6">Do you want to talk to me? Go ahead!</h1>
+        <h4 class="fw-light fst-italic py-2">Here you can find me:</h4>
+        <div class="pb-5" [ngClass]="{ 'btn-group' : isDesktopDevice.matches,
+          'btn-group-vertical col-12 pt-3' : !isDesktopDevice.matches}" role="group" aria-label="contact-buttons">
+          <a href="https://github.com/Magoratogha" target="_blank" rel="noreferrer" class="btn btn-primary">
+            <i class="bi bi-github pe-2"></i>Github</a>
+          <a href="https://www.linkedin.com/in/magoratogha" target="_blank" rel="noreferrer" class="btn btn-primary">
+            <i class="bi bi-linkedin pe-2"></i>Linkedin</a>
+          <a href="https://www.instagram.com/magoratogha" target="_blank" rel="noreferrer" class="btn btn-primary">
+            <i class="bi bi-instagram pe-2"></i>Instagram</a>
+          <a href="https://www.facebook.com/Magoratoga" target="_blank" rel="noreferrer" class="btn btn-primary">
+            <i class="bi bi-facebook pe-2"></i>Facebook</a>
+        </div>
+        <h3 class="fw-light fst-italic pt-3 pb-5">Or</h3>
+        <h2 class="fw-light fst-italic pb-5">You can always write... <i class="bi bi-chat-left-text"></i></h2>
       </div>
     </div>
-  </form>
+    <form [formGroup]="contactForm" (ngSubmit)="onFormSubmit()">
+      <div class="row justify-content-center">
+        <div class="col-12 col-md-6 col-lg-5 col-xl-4">
+          <mat-form-field appearance="outline">
+            <mat-label>Your name</mat-label>
+            <input formControlName="name" matInput placeholder="John Doe" autocomplete="nope">
+            <mat-error>Your name is required</mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col-12 col-md-6 col-lg-5 col-xl-4">
+          <mat-form-field appearance="outline">
+            <mat-label>Your email address</mat-label>
+            <input formControlName="email" type="email" matInput placeholder="pat@example.com" autocomplete="nope">
+            <mat-error>{{ contactForm.get('email')?.hasError('required') ? '' +
+              'Your email is required' : 'Please enter a valid email address' }}</mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col-12 col-lg-10 col-xl-8">
+          <mat-form-field appearance="outline">
+            <mat-label>Your message</mat-label>
+            <textarea formControlName="message" matInput rows="3" placeholder="Write whatever you want to say to me"
+              autocomplete="nope"></textarea>
+            <mat-error>Your message is required</mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row justify-content-center">
+        <div class="col-12 col-md-5 col-lg-4 col-xl-3">
+          <div class="d-grid pt-1">
+            <button [disabled]="contactForm.invalid || (isMessageSending && !isMessageSent)" type="submit"
+              class="btn btn-outline-light">Submit</button>
+          </div>
+        </div>
+        <div class="col-12 loader-wrapper">
+          <div *ngIf="isMessageSending" class="pt-3 d-flex justify-content-center">
+            <p *ngIf="!isMessageSent" class="fw-light fst-italic mb-0">
+              <mat-spinner diameter="25"></mat-spinner>Your message is being sent, please wait a moment...</p>
+            <p *ngIf="isMessageSent"  class="fw-light fst-italic mb-0 d-flex align-items-center">
+              <i class="bi pe-2" [ngClass]="{'bi-check2 text-success': wasSuccessfullySent,
+                'bi-x-circle text-danger': !wasSuccessfullySent }"></i>
+              {{ wasSuccessfullySent ? 'Done!' : 'Something went wrong, please try again.' }}</p>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
 </div>

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { EmailService } from '../../services/email/email.service';
 
@@ -12,6 +12,7 @@ export class ContactComponent implements OnInit {
   public isMessageSending = false;
   public isMessageSent = false;
   public wasSuccessfullySent = false;
+  public isDesktopDevice: MediaQueryList = matchMedia('(min-width: 768px)');
   public contactForm = this.formBuilder.group({
     name: ['', [Validators.required]],
     email: ['', [Validators.required, Validators.email]],
@@ -34,7 +35,7 @@ export class ContactComponent implements OnInit {
       window.setTimeout(() => {
         this.isMessageSending = false;
         this.isMessageSent = false;
-      }, 1000);
+      }, 3000);
     }).catch(() => {
       this.wasSuccessfullySent = false;
       this.isMessageSent = true;
