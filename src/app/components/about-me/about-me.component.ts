@@ -22,7 +22,7 @@ export class AboutMeComponent implements OnInit, AfterViewInit {
   @HostListener('window:resize')
   private onWindowResize(): void {
     this.renderer.setStyle(this.aboutContainer?.nativeElement, 'bottom',
-      'calc(100% - ' + this.aboutContainer?.nativeElement.getBoundingClientRect().height + 'px)');
+      'calc(100vh - ' + this.aboutContainer?.nativeElement.getBoundingClientRect().height + 'px)');
     this.componentResized.emit(window.innerHeight);
   }
 
