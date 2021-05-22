@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, ElementRef, HostListener, OnInit, Renderer2, ViewChild} from '@angular/core';
+import {AfterViewInit, Component, ElementRef, HostListener, OnInit, Output, Renderer2, ViewChild, EventEmitter} from '@angular/core';
 
 @Component({
   selector: 'app-about-me',
@@ -8,6 +8,7 @@ import {AfterViewInit, Component, ElementRef, HostListener, OnInit, Renderer2, V
 export class AboutMeComponent implements OnInit, AfterViewInit {
 
   @ViewChild('aboutContainer') aboutContainer: ElementRef | undefined;
+  @Output() componentResized = new EventEmitter<number>();
 
   constructor(private renderer: Renderer2) { }
 
@@ -15,13 +16,14 @@ export class AboutMeComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-    this.renderer.setStyle(this.aboutContainer?.nativeElement, 'bottom',
-      'calc(100% - ' + this.aboutContainer?.nativeElement.offsetHeight + 'px)');
+    this.onWindowResize();
   }
 
-  @HostListener('window:resize') onWindowResize(): void {
+  @HostListener('window:resize')
+  private onWindowResize(): void {
     this.renderer.setStyle(this.aboutContainer?.nativeElement, 'bottom',
-      'calc(100% - ' + this.aboutContainer?.nativeElement.offsetHeight + 'px)');
+      'calc(100% - ' + this.aboutContainer?.nativeElement.getBoundingClientRect().height + 'px)');
+    this.componentResized.emit(window.innerHeight);
   }
 
   public downloadPDF(pdfFile: string, pdfName: string): void {

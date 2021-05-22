@@ -10,6 +10,7 @@ export class AppComponent implements AfterViewInit{
   public viewportHeight = 0;
   public currentScrollPosition = 0;
   public currentSection = 0;
+  public componentsPositions: number[] = [];
 
   constructor(private changeDetectorRef: ChangeDetectorRef) {
   }
@@ -19,8 +20,17 @@ export class AppComponent implements AfterViewInit{
     this.changeDetectorRef.detectChanges();
   }
 
-  @HostListener('window:scroll') onScroll(): void {
+  @HostListener('window:scroll')
+  private onScroll(): void {
     this.currentScrollPosition = window.pageYOffset;
-    this.currentSection = Math.floor(this.currentScrollPosition / this.viewportHeight);
+    this.currentSection = this.componentsPositions.findIndex(((value, index) => {
+      return this.componentsPositions[index + 1] ? (this.currentScrollPosition >= value &&
+        this.currentScrollPosition < this.componentsPositions[index + 1]) :
+          this.currentScrollPosition >= value;
+    }));
+  }
+
+  public onComponentResize(componentPosition: number, componentIndex: number): void {
+    this.componentsPositions[componentIndex] = componentPosition;
   }
 }

@@ -21,7 +21,7 @@ import {animate, style, transition, trigger} from '@angular/animations';
 export class HeaderComponent implements OnInit {
 
   @Input() public currentSection = 0;
-  @Input() public viewportHeight = 0;
+  @Input() public componentsPositions: number[] = [];
   // @ts-ignore
   @ViewChild('headerToggler') headerTogglerRef: ElementRef;
 
@@ -32,7 +32,7 @@ export class HeaderComponent implements OnInit {
 
   public scrollToSection(section: number): void {
     this.collapseHeader();
-    window.scrollTo({ top: section * this.viewportHeight, behavior: 'smooth' });
+    window.scrollTo({ top: this.componentsPositions[section], behavior: 'smooth' });
   }
 
   private collapseHeader(): void {

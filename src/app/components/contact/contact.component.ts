@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {AfterViewInit, Component, ElementRef, EventEmitter, HostListener, Output, ViewChild} from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { EmailService } from '../../services/email/email.service';
 
@@ -7,8 +7,10 @@ import { EmailService } from '../../services/email/email.service';
   templateUrl: './contact.component.html',
   styleUrls: ['./contact.component.scss']
 })
-export class ContactComponent implements OnInit {
+export class ContactComponent implements AfterViewInit {
 
+  @ViewChild('componentContainer') componentContainer: ElementRef | undefined;
+  @Output() componentResized = new EventEmitter<number>();
   public isMessageSending = false;
   public isMessageSent = false;
   public wasSuccessfullySent = false;
@@ -21,7 +23,13 @@ export class ContactComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder, private emailService: EmailService) { }
 
-  ngOnInit(): void {
+  ngAfterViewInit(): void {
+    this.onWindowResize();
+  }
+
+  @HostListener('window:resize')
+  private onWindowResize(): void {
+    this.componentResized.emit(this.componentContainer?.nativeElement.getBoundingClientRect().top + window.scrollY);
   }
 
   public onFormSubmit(): void {
