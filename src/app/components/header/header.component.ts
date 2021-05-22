@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, ElementRef, Input, OnInit, ViewChild} from '@angular/core';
 import {animate, style, transition, trigger} from '@angular/animations';
 
 @Component({
@@ -22,6 +22,8 @@ export class HeaderComponent implements OnInit {
 
   @Input() public currentSection = 0;
   @Input() public viewportHeight = 0;
+  // @ts-ignore
+  @ViewChild('headerToggler') headerTogglerRef: ElementRef;
 
   constructor() { }
 
@@ -29,6 +31,14 @@ export class HeaderComponent implements OnInit {
   }
 
   public scrollToSection(section: number): void {
+    this.collapseHeader();
     window.scrollTo({ top: section * this.viewportHeight, behavior: 'smooth' });
   }
+
+  private collapseHeader(): void {
+    if (this.headerTogglerRef.nativeElement.offsetParent !== null) {
+      this.headerTogglerRef.nativeElement.click();
+    }
+  }
+
 }
