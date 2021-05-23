@@ -6,17 +6,17 @@ import {animate, state, style, transition, trigger} from '@angular/animations';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
   animations: [
-  trigger('InOutAnimation', [
-    state('hidden', style({ opacity: '0' })),
-    state('shown', style({ opacity: '1' })),
-    transition('hidden => shown', [
-      animate('0.2s ease-in')
-    ]),
-    transition('shown => hidden', [
-      animate('0.2s ease-out')
+    trigger('inOutAnimation', [
+      state('false', style({ opacity: '0' })),
+      state('true', style({ opacity: '1' })),
+      transition('false => true', [
+        animate('0.2s ease-in')
+      ]),
+      transition('true => false', [
+        animate('0.2s ease-out')
+      ])
     ])
-  ])
-]
+  ]
 })
 export class HeaderComponent implements OnInit {
 
