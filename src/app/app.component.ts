@@ -1,23 +1,17 @@
-import {AfterViewInit, ChangeDetectorRef, Component, HostListener} from '@angular/core';
+import {Component, HostListener} from '@angular/core';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements AfterViewInit{
+export class AppComponent {
 
-  public viewportHeight = 0;
   public currentScrollPosition = 0;
   public currentSection = 0;
   public componentsPositions: number[] = [];
 
-  constructor(private changeDetectorRef: ChangeDetectorRef) {
-  }
-
-  ngAfterViewInit(): void {
-    this.viewportHeight = window.innerHeight;
-    this.changeDetectorRef.detectChanges();
+  constructor() {
   }
 
   @HostListener('window:scroll')
