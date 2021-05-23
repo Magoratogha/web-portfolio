@@ -1,22 +1,22 @@
 import {Component, ElementRef, Input, OnInit, ViewChild} from '@angular/core';
-import {animate, style, transition, trigger} from '@angular/animations';
+import {animate, state, style, transition, trigger} from '@angular/animations';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
   animations: [
-    trigger('InOutAnimation', [
-      transition(':enter', [
-        style({ opacity: 0 }),
-        animate('200ms', style({ opacity: 1 }))
-      ]),
-      transition(':leave', [
-        style({ opacity: 1 }),
-        animate('200ms', style({ opacity: 0 }))
-      ])
+  trigger('InOutAnimation', [
+    state('hidden', style({ opacity: '0' })),
+    state('shown', style({ opacity: '1' })),
+    transition('hidden => shown', [
+      animate('0.2s ease-in')
+    ]),
+    transition('shown => hidden', [
+      animate('0.2s ease-out')
     ])
-  ]
+  ])
+]
 })
 export class HeaderComponent implements OnInit {
 
