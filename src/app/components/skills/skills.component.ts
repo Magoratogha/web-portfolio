@@ -25,8 +25,8 @@ export class SkillsComponent implements OnInit, AfterViewInit, OnDestroy {
 
   @HostListener('window:resize')
   private onWindowResize(): void {
-    this.componentResized.emit(this.componentContainer?.nativeElement.getBoundingClientRect().top +
-      window.scrollY - document.documentElement.offsetHeight);
+    this.componentResized.emit(Math.floor(this.componentContainer?.nativeElement.getBoundingClientRect().top +
+      window.scrollY - document.documentElement.offsetHeight));
   }
 
   public onImageLoad(): void {

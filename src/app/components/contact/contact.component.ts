@@ -36,7 +36,7 @@ export class ContactComponent implements OnInit, AfterViewInit, OnDestroy {
 
   @HostListener('window:resize')
   private onWindowResize(): void {
-    this.componentResized.emit(this.componentContainer?.nativeElement.getBoundingClientRect().top + window.scrollY);
+    this.componentResized.emit(Math.floor(this.componentContainer?.nativeElement.getBoundingClientRect().top + window.scrollY));
   }
 
   public onFormSubmit(): void {

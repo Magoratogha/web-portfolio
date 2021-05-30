@@ -39,7 +39,7 @@ export class AboutMeComponent implements OnInit, AfterViewInit, OnDestroy {
   private onWindowResize(): void {
     this.renderer.setStyle(this.aboutContainer?.nativeElement, 'bottom',
       'calc(100vh - ' + this.aboutContainer?.nativeElement.getBoundingClientRect().height + 'px)');
-    this.componentResized.emit(document.documentElement.offsetHeight);
+    this.componentResized.emit(Math.floor(document.documentElement.offsetHeight));
   }
 
   public downloadPDF(pdfFile: string, pdfName: string): void {
