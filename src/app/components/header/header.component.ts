@@ -7,13 +7,13 @@ import {animate, state, style, transition, trigger} from '@angular/animations';
   styleUrls: ['./header.component.scss'],
   animations: [
     trigger('inOutAnimation', [
-      state('false', style({ opacity: '0' })),
-      state('true', style({ opacity: '1' })),
-      transition('false => true', [
-        animate('0.2s ease-in')
+      transition(':enter', [
+        style({ opacity: 0 }),
+        animate('200ms', style({ opacity: 1 }))
       ]),
-      transition('true => false', [
-        animate('0.2s ease-out')
+      transition(':leave', [
+        style({ opacity: 1 }),
+        animate('200ms', style({ opacity: 0 }))
       ])
     ])
   ]

@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, ElementRef, EventEmitter, HostListener, Output, ViewChild} from '@angular/core';
+import {AfterViewInit, Component, EventEmitter, HostListener, Output} from '@angular/core';
 
 @Component({
   selector: 'app-greeting',
@@ -18,6 +18,10 @@ export class GreetingComponent implements AfterViewInit {
   @HostListener('window:resize')
   private onWindowResize(): void {
     this.componentResized.emit(0);
+  }
+
+  public scrollToAboutPage(): void {
+    window.scrollTo({ top: document.documentElement.offsetHeight, behavior: 'smooth' });
   }
 
 }

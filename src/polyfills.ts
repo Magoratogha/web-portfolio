@@ -28,7 +28,7 @@
  * Only required if AnimationBuilder is used within the application and using IE/Edge or Safari.
  * Standard animation support in Angular DOES NOT require any polyfills (as of Angular 6.0).
  */
-import 'web-animations-js';  // Run `npm install --save web-animations-js`.
+import 'web-animations-js/web-animations.min';  // Run `npm install --save web-animations-js`.
 // @ts-ignore
 import * as smoothScroll from 'smoothscroll-polyfill';
 smoothScroll.polyfill();
