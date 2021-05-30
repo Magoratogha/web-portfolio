@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, ElementRef, EventEmitter, HostListener, Output, ViewChild} from '@angular/core';
+import {AfterViewInit, Component, ElementRef, EventEmitter, HostListener, Input, OnDestroy, OnInit, Output, ViewChild} from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { EmailService } from '../../services/email/email.service';
 
@@ -7,10 +7,11 @@ import { EmailService } from '../../services/email/email.service';
   templateUrl: './contact.component.html',
   styleUrls: ['./contact.component.scss']
 })
-export class ContactComponent implements AfterViewInit {
+export class ContactComponent implements OnInit, AfterViewInit, OnDestroy {
 
   @ViewChild('componentContainer') componentContainer: ElementRef | undefined;
   @Output() componentResized = new EventEmitter<number>();
+  @Input() public componentsHeightChanged: EventEmitter<void> | undefined;
   public isMessageSending = false;
   public isMessageSent = false;
   public wasSuccessfullySent = false;
@@ -22,6 +23,12 @@ export class ContactComponent implements AfterViewInit {
   });
 
   constructor(private formBuilder: FormBuilder, private emailService: EmailService) { }
+
+  ngOnInit(): void {
+    this.componentsHeightChanged?.subscribe(() => {
+      this.onWindowResize();
+    });
+  }
 
   ngAfterViewInit(): void {
     this.onWindowResize();
@@ -49,6 +56,10 @@ export class ContactComponent implements AfterViewInit {
       this.isMessageSent = true;
       this.contactForm.enable();
     });
+  }
+
+  ngOnDestroy(): void {
+    this.componentsHeightChanged?.unsubscribe();
   }
 
 }

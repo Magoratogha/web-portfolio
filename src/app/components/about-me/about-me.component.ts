@@ -1,18 +1,34 @@
-import {AfterViewInit, Component, ElementRef, HostListener, OnInit, Output, Renderer2, ViewChild, EventEmitter} from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  ElementRef,
+  HostListener,
+  OnInit,
+  Output,
+  Renderer2,
+  ViewChild,
+  EventEmitter,
+  Input,
+  OnDestroy
+} from '@angular/core';
 
 @Component({
   selector: 'app-about-me',
   templateUrl: './about-me.component.html',
   styleUrls: ['./about-me.component.scss']
 })
-export class AboutMeComponent implements OnInit, AfterViewInit {
+export class AboutMeComponent implements OnInit, AfterViewInit, OnDestroy {
 
   @ViewChild('aboutContainer') aboutContainer: ElementRef | undefined;
   @Output() componentResized = new EventEmitter<number>();
+  @Input() public componentsHeightChanged: EventEmitter<void> | undefined;
 
   constructor(private renderer: Renderer2) { }
 
   ngOnInit(): void {
+    this.componentsHeightChanged?.subscribe(() => {
+      this.onWindowResize();
+    });
   }
 
   ngAfterViewInit(): void {
@@ -39,4 +55,13 @@ export class AboutMeComponent implements OnInit, AfterViewInit {
     };
     xhr.send();
   }
+
+  public onImageLoad(): void {
+    this.componentsHeightChanged?.emit();
+  }
+
+  ngOnDestroy(): void {
+    this.componentsHeightChanged?.unsubscribe();
+  }
+
 }

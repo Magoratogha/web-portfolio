@@ -1,4 +1,4 @@
-import {Component, HostListener} from '@angular/core';
+import {Component, EventEmitter, HostListener} from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -10,6 +10,7 @@ export class AppComponent {
   public currentScrollPosition = 0;
   public currentSection = 0;
   public componentsPositions: number[] = [];
+  public componentsHeightChanged: EventEmitter<void> = new EventEmitter<void>();
 
   constructor() {
   }
