@@ -22,8 +22,14 @@ export class AboutMeComponent implements OnInit, AfterViewInit, OnDestroy {
   @ViewChild('aboutContainer') aboutContainer: ElementRef | undefined;
   @Output() componentResized = new EventEmitter<number>();
   @Input() public componentsHeightChanged: EventEmitter<void> | undefined;
+  public currentAge = 0;
 
-  constructor(private renderer: Renderer2) { }
+  constructor(private renderer: Renderer2) {
+    const currentDate = new Date();
+    const birthdayDate = new Date('1997-7-8');
+    const differenceDays = Math.ceil((Number(currentDate) - Number(birthdayDate)) / (1000 * 60 * 60 * 24));
+    this.currentAge = Math.floor(differenceDays / 365);
+  }
 
   ngOnInit(): void {
     this.componentsHeightChanged?.subscribe(() => {

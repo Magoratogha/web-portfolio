@@ -10,8 +10,14 @@ export class SkillsComponent implements OnInit, AfterViewInit, OnDestroy {
   @ViewChild('componentContainer') componentContainer: ElementRef | undefined;
   @Output() componentResized = new EventEmitter<number>();
   @Input() public componentsHeightChanged: EventEmitter<void> | undefined;
+  public workingExperienceAges = 0;
 
-  constructor() { }
+  constructor() {
+    const currentDate = new Date();
+    const startWorkingDate = new Date('2018-2-1');
+    const differenceDays = Math.ceil((Number(currentDate) - Number(startWorkingDate)) / (1000 * 60 * 60 * 24));
+    this.workingExperienceAges = Math.floor(differenceDays / 365);
+  }
 
   ngOnInit(): void {
     this.componentsHeightChanged?.subscribe(() => {
