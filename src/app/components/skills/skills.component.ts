@@ -1,4 +1,5 @@
 import {AfterViewInit, Component, ElementRef, EventEmitter, HostListener, Input, OnDestroy, OnInit, Output, ViewChild} from '@angular/core';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-skills',
@@ -13,10 +14,9 @@ export class SkillsComponent implements OnInit, AfterViewInit, OnDestroy {
   public workingExperienceAges = 0;
 
   constructor() {
-    const currentDate = new Date();
-    const startWorkingDate = new Date('2018-2-1');
-    const differenceDays = Math.ceil((Number(currentDate) - Number(startWorkingDate)) / (1000 * 60 * 60 * 24));
-    this.workingExperienceAges = Math.floor(differenceDays / 365);
+    const currentDate = moment();
+    const startWorkingDate = moment('2018-02');
+    this.workingExperienceAges = currentDate.diff(startWorkingDate, 'years');
   }
 
   ngOnInit(): void {

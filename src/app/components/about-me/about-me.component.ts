@@ -11,6 +11,7 @@ import {
   Input,
   OnDestroy
 } from '@angular/core';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-about-me',
@@ -25,10 +26,9 @@ export class AboutMeComponent implements OnInit, AfterViewInit, OnDestroy {
   public currentAge = 0;
 
   constructor(private renderer: Renderer2) {
-    const currentDate = new Date();
-    const birthdayDate = new Date('1997-7-8');
-    const differenceDays = Math.ceil((Number(currentDate) - Number(birthdayDate)) / (1000 * 60 * 60 * 24));
-    this.currentAge = Math.floor(differenceDays / 365);
+    const currentDate = moment();
+    const birthdayDate = moment('1997-07-08');
+    this.currentAge = currentDate.diff(birthdayDate, 'years');
   }
 
   ngOnInit(): void {
