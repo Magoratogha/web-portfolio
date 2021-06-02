@@ -24,6 +24,7 @@ export class AboutMeComponent implements OnInit, AfterViewInit, OnDestroy {
   @Output() componentResized = new EventEmitter<number>();
   @Input() public componentsHeightChanged: EventEmitter<void> | undefined;
   public currentAge = 0;
+  public isPDFDownloading = false;
 
   constructor(private renderer: Renderer2) {
     const currentDate = moment();
@@ -49,6 +50,7 @@ export class AboutMeComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   public downloadPDF(pdfFile: string, pdfName: string): void {
+    this.isPDFDownloading = true;
     const xhr = new XMLHttpRequest();
     xhr.open('GET', './assets/pdfs/' + pdfFile);
     xhr.responseType = 'blob';
@@ -58,6 +60,7 @@ export class AboutMeComponent implements OnInit, AfterViewInit, OnDestroy {
       downloadLink.href = URL.createObjectURL(file);
       downloadLink.download = pdfName;
       downloadLink.click();
+      this.isPDFDownloading = false;
     };
     xhr.send();
   }

@@ -14,12 +14,15 @@
           <div class="col-12">
             <small class="fst-italic">If you want to know more about me, you can see my Curriculum Vitae:</small>
           </div>
-          <div class="col-12">
-            <div class="btn-group pt-3" role="group" aria-label="CVButtonGroup">
+          <div class="col-12 pt-3 d-flex justify-content-center align-items-center">
+            <div class="btn-group ms-5" role="group" aria-label="CVButtonGroup">
               <button type="button" class="btn btn-outline-light"
                 (click)="downloadPDF('spanish-cv.pdf', 'CV Santiago Gómez Grajales (Español).pdf')">Spanish CV</button>
               <button type="button" class="btn btn-outline-light"
                 (click)="downloadPDF('english-cv.pdf', 'CV Santiago Gómez Grajales (English).pdf')">English CV</button>
+            </div>
+            <div class="d-flex justify-content-center loader-wrapper">
+              <mat-spinner *ngIf="isPDFDownloading" diameter="25"></mat-spinner>
             </div>
           </div>
         </div>
