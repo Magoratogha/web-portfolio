@@ -1,6 +1,7 @@
+@use '~@angular/material' as mat;
 @import "src/styles/variables";
-@include mat-core();
-@include angular-material-theme($webPortfolio-theme);
+@include mat.core();
+@include mat.all-component-themes($webPortfolio-theme);
 
 html, body {
   height: 100vh;
