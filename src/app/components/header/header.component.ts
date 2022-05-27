@@ -41,4 +41,16 @@ export class HeaderComponent implements OnInit {
     }
   }
 
+  public getSectionIconClass(): string {
+    switch (this.currentSection) {
+      case 1:
+        return 'bi-person';
+      case 2:
+        return 'bi-briefcase';
+      case 3:
+        return 'bi-send';
+      default:
+        return '';
+    }
+  }   
 }

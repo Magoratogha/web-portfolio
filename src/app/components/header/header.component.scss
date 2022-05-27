@@ -1,1 +1,18 @@
+.navbar {
+    box-shadow: 0 0.5rem 1rem rgb(0 0 0 / 15%), inset 0 -1px 0 rgb(0 0 0 / 15%);
+}
 
+@supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {
+    .navbar {
+        -webkit-backdrop-filter: blur(8px);
+        backdrop-filter: blur(8px);
+        background-color: rgba(52, 58, 64, 0.9);
+    }
+}
+
+.navbar-contact-icons a {
+    font-size: 16px;
+    margin: 0.5rem;
+    padding-inline: 0;
+    color: inherit;
+}
