@@ -36,6 +36,7 @@ export class SkillsComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   public onImageLoad(): void {
+    window.dispatchEvent(new Event('resize'));
     this.componentsHeightChanged?.emit();
   }
 

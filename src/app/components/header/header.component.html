@@ -24,7 +24,7 @@
              (click)="scrollToSection(3)">Contact</a>
         </li>
       </ul>
-      <div class="navbar-contact-icons d-flex justify-content-center" *ngIf="this.currentSection != 3">
+      <div [@inOutAnimation] class="navbar-contact-icons d-flex justify-content-center" *ngIf="this.currentSection != 3">
         <a class="clickable" href="https://github.com/Magoratogha" target="_blank" rel="noreferrer">
             <i class="bi bi-github"></i>
         </a>

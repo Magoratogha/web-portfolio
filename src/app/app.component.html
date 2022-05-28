@@ -1,8 +1,19 @@
-<app-header [currentSection]="currentSection" [componentsPositions]="componentsPositions"></app-header>
-<app-greeting (componentResized)="onComponentResize($event, 0)"></app-greeting>
-<app-about-me (componentResized)="onComponentResize($event, 1)"
-  [componentsHeightChanged]="componentsHeightChanged"></app-about-me>
-<app-skills (componentResized)="onComponentResize($event, 2)"
-  [componentsHeightChanged]="componentsHeightChanged"></app-skills>
-<app-contact (componentResized)="onComponentResize($event, 3)"
-  [componentsHeightChanged]="componentsHeightChanged"></app-contact>
+<app-header 
+    [currentSection]="currentSection"
+    [componentsPositions]="componentsPositions">
+</app-header>
+<app-greeting
+    (componentResized)="onComponentResize($event, 0)">
+</app-greeting>
+<app-about-me 
+    (componentResized)="onComponentResize($event, 1)"
+    [componentsHeightChanged]="componentsHeightChanged">
+</app-about-me>
+<app-skills 
+    (componentResized)="onComponentResize($event, 2)"
+    [componentsHeightChanged]="componentsHeightChanged">
+</app-skills>
+<app-contact
+    (componentResized)="onComponentResize($event, 3)"
+    [componentsHeightChanged]="componentsHeightChanged">
+</app-contact>

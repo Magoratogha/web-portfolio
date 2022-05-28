@@ -13,6 +13,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { HttpClientModule } from '@angular/common/http';
 import { SkillsComponent } from './components/skills/skills.component';
+import { ScrollAnimationDirective } from './directives/scroll-animation/scroll-animation.directive';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { SkillsComponent } from './components/skills/skills.component';
     AboutMeComponent,
     HeaderComponent,
     ContactComponent,
-    SkillsComponent
+    SkillsComponent,
+    ScrollAnimationDirective
   ],
   imports: [
     BrowserModule,
