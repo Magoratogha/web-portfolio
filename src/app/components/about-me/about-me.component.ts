@@ -2,7 +2,6 @@ import {
   AfterViewInit,
   Component,
   ElementRef,
-  HostListener,
   OnInit,
   Output,
   Renderer2,
@@ -25,6 +24,7 @@ export class AboutMeComponent implements OnInit, AfterViewInit, OnDestroy {
   @Input() public componentsHeightChanged: EventEmitter<void> | undefined;
   public currentAge = 0;
   public isPDFDownloading = false;
+  private resizeUnlistenerFn: Function = () => {};
 
   constructor(private renderer: Renderer2) {
     const currentDate = moment();
@@ -40,9 +40,9 @@ export class AboutMeComponent implements OnInit, AfterViewInit, OnDestroy {
 
   ngAfterViewInit(): void {
     this.onWindowResize();
+    this.resizeUnlistenerFn = this.renderer.listen(window, 'resize', this.onWindowResize.bind(this));
   }
 
-  @HostListener('window:resize')
   private onWindowResize(): void {
     this.renderer.setStyle(this.aboutContainer?.nativeElement, 'bottom',
       'calc(100vh - ' + this.aboutContainer?.nativeElement.getBoundingClientRect().height + 'px)');
@@ -71,6 +71,7 @@ export class AboutMeComponent implements OnInit, AfterViewInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.componentsHeightChanged?.unsubscribe();
+    this.resizeUnlistenerFn();
   }
 
 }

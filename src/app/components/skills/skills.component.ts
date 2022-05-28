@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, ElementRef, EventEmitter, HostListener, Input, OnDestroy, OnInit, Output, ViewChild} from '@angular/core';
+import {AfterViewInit, Component, ElementRef, EventEmitter, Input, OnDestroy, OnInit, Output, Renderer2, ViewChild} from '@angular/core';
 import * as moment from 'moment';
 
 @Component({
@@ -12,8 +12,9 @@ export class SkillsComponent implements OnInit, AfterViewInit, OnDestroy {
   @Output() componentResized = new EventEmitter<number>();
   @Input() public componentsHeightChanged: EventEmitter<void> | undefined;
   public workingExperienceAges = 0;
+  private resizeUnlistenerFn: Function = () => {};
 
-  constructor() {
+  constructor(private renderer: Renderer2) {
     const currentDate = moment();
     const startWorkingDate = moment('2018-02');
     this.workingExperienceAges = currentDate.diff(startWorkingDate, 'years');
@@ -27,9 +28,9 @@ export class SkillsComponent implements OnInit, AfterViewInit, OnDestroy {
 
   ngAfterViewInit(): void {
     this.onWindowResize();
+    this.resizeUnlistenerFn = this.renderer.listen(window, 'resize', this.onWindowResize.bind(this));
   }
 
-  @HostListener('window:resize')
   private onWindowResize(): void {
     this.componentResized.emit(Math.floor(this.componentContainer?.nativeElement.getBoundingClientRect().top +
       window.scrollY - document.documentElement.offsetHeight));
@@ -42,6 +43,7 @@ export class SkillsComponent implements OnInit, AfterViewInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.componentsHeightChanged?.unsubscribe();
+    this.resizeUnlistenerFn();
   }
 
 }

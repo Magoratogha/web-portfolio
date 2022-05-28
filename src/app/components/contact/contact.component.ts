@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, ElementRef, EventEmitter, HostListener, Input, OnDestroy, OnInit, Output, ViewChild} from '@angular/core';
+import {AfterViewInit, Component, ElementRef, EventEmitter, Input, OnDestroy, OnInit, Output, Renderer2, ViewChild} from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { EmailService } from '../../services/email/email.service';
 
@@ -15,6 +15,7 @@ export class ContactComponent implements OnInit, AfterViewInit, OnDestroy {
   public isMessageSending = false;
   public isMessageSent = false;
   public wasSuccessfullySent = false;
+  private resizeUnlistenerFn: Function = () => {};
   public isDesktopDevice: MediaQueryList = matchMedia('(min-width: 768px)');
   public contactForm = this.formBuilder.group({
     name: ['', [Validators.required]],
@@ -22,7 +23,7 @@ export class ContactComponent implements OnInit, AfterViewInit, OnDestroy {
     message: ['', [Validators.required]]
   });
 
-  constructor(private formBuilder: FormBuilder, private emailService: EmailService) { }
+  constructor(private formBuilder: FormBuilder, private emailService: EmailService, private renderer: Renderer2) { }
 
   ngOnInit(): void {
     this.componentsHeightChanged?.subscribe(() => {
@@ -32,9 +33,9 @@ export class ContactComponent implements OnInit, AfterViewInit, OnDestroy {
 
   ngAfterViewInit(): void {
     this.onWindowResize();
+    this.resizeUnlistenerFn = this.renderer.listen(window, 'resize', this.onWindowResize.bind(this));
   }
 
-  @HostListener('window:resize')
   private onWindowResize(): void {
     this.componentResized.emit(Math.floor(this.componentContainer?.nativeElement.getBoundingClientRect().top + window.scrollY));
   }
@@ -60,6 +61,7 @@ export class ContactComponent implements OnInit, AfterViewInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.componentsHeightChanged?.unsubscribe();
+    this.resizeUnlistenerFn();
   }
 
 }
