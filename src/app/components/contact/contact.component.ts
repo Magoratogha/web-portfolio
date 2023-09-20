@@ -1,5 +1,5 @@
 import {AfterViewInit, Component, ElementRef, EventEmitter, Input, OnDestroy, OnInit, Output, Renderer2, ViewChild} from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { UntypedFormBuilder, Validators } from '@angular/forms';
 import { EmailService } from '../../services/email/email.service';
 
 @Component({
@@ -23,7 +23,7 @@ export class ContactComponent implements OnInit, AfterViewInit, OnDestroy {
     message: ['', [Validators.required]]
   });
 
-  constructor(private formBuilder: FormBuilder, private emailService: EmailService, private renderer: Renderer2) { }
+  constructor(private formBuilder: UntypedFormBuilder, private emailService: EmailService, private renderer: Renderer2) { }
 
   ngOnInit(): void {
     this.componentsHeightChanged?.subscribe(() => {
