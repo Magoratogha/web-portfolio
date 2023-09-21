@@ -1,16 +1,22 @@
 @use "@angular/material" as mat;
 @import "src/styles/variables";
-// TODO(v15): As of v15 mat.legacy-core no longer includes default typography styles.
-//  The following line adds:
-//    1. Default typography styles for all components
-//    2. Styles for typography hierarchy classes (e.g. .mat-headline-1)
-//  If you specify typography styles for the components you use elsewhere, you should delete this line.
-//  If you don't need the default component typographies but still want the hierarchy styles,
-//  you can delete this line and instead use:
-//    `@include mat.legacy-typography-hierarchy(mat.define-legacy-typography-config());`
-@include mat.all-legacy-component-typographies();
-@include mat.legacy-core();
-@include mat.all-legacy-component-themes($webPortfolio-theme);
+@include mat.core();
+
+$primary: mat.define-palette($main-palette, 200, 50, 200);
+$accent: mat.define-palette($main-palette, 600, 500, 800);
+$warn: mat.define-palette($warning-palette, 700, 700, 700);
+
+$theme: mat.define-dark-theme(
+  (
+    color: (
+      primary: $primary,
+      accent: $accent,
+      warn: $warn,
+    ),
+  )
+);
+
+@include mat.all-component-themes($theme);
 
 html,
 body {
@@ -80,4 +86,28 @@ body {
 
 .clickable {
   cursor: pointer;
+}
+
+mat-form-field {
+  width: 100%;
+}
+
+mat-hint,
+mat-error {
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  font-family: var(
+    --mdc-typography-caption-font-family,
+    var(--mdc-typography-font-family, Roboto, sans-serif)
+  );
+  font-size: var(--mdc-typography-caption-font-size, 12px);
+  line-height: var(--mdc-typography-caption-line-height, 20px);
+  font-weight: var(--mdc-typography-caption-font-weight, 400);
+  letter-spacing: var(--mdc-typography-caption-letter-spacing, 0.0333333333em);
+  -webkit-text-decoration: var(
+    --mdc-typography-caption-text-decoration,
+    inherit
+  );
+  text-decoration: var(--mdc-typography-caption-text-decoration, inherit);
+  text-transform: var(--mdc-typography-caption-text-transform, none);
 }

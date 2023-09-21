@@ -1,5 +1,3 @@
-@use "@angular/material" as mat;
-
 //### Background colors: ###
 $red-bg-color-1: #d9534f;
 $red-bg-color-2: #f8e6e0;
@@ -12,53 +10,52 @@ $red-font-color: #ff625d;
 $white-font-color: #ffffff;
 $dark-blue-font-color: #343a40;
 
-$mat-theme-colors-scheme: (
+$main-palette: (
   50: #ffffff,
+  100: #ffffff,
+  200: #ffffff,
+  300: #ffffff,
+  400: #ffffff,
   500: #bdbdbd,
+  600: #bdbdbd,
+  700: #bdbdbd,
+  800: #bdbdbd,
   900: #424242,
   contrast: (
     50: rgba(black, 0.87),
+    100: rgba(black, 0.87),
+    200: rgba(black, 0.87),
+    300: rgba(black, 0.87),
+    400: rgba(black, 0.87),
     500: rgba(black, 0.87),
+    600: rgba(black, 0.87),
+    700: rgba(black, 0.87),
+    800: rgba(black, 0.87),
     900: white,
   ),
 );
 
-$mat-theme-error-colors-scheme: (
-  50: $red-font-color,
-  500: $red-font-color,
-  900: $red-font-color,
+$warning-palette: (
+  50: #ffecf1,
+  100: #ffd0d9,
+  200: #f19ea6,
+  300: #e97984,
+  400: #f75965,
+  500: #ff625d,
+  600: #ff625d,
+  700: #ff625d,
+  800: #ff625d,
+  900: #ff625d,
   contrast: (
     50: rgba(black, 0.87),
-    500: rgba(black, 0.87),
+    100: rgba(black, 0.87),
+    200: rgba(black, 0.87),
+    300: rgba(black, 0.87),
+    400: rgba(black, 0.87),
+    500: white,
+    600: white,
+    700: white,
+    800: white,
     900: white,
   ),
-);
-
-//### Material theme colors and definition: ###
-$webPortfolio-primary: mat.define-palette(
-  $mat-theme-colors-scheme,
-  50,
-  500,
-  900
-);
-$webPortfolio-accent: mat.define-palette(
-  $mat-theme-colors-scheme,
-  50,
-  500,
-  900
-);
-$webPortfolio-warn: mat.define-palette(
-  $mat-theme-error-colors-scheme,
-  50,
-  500,
-  900
-);
-$webPortfolio-theme: mat.define-dark-theme(
-  (
-    color: (
-      primary: $webPortfolio-primary,
-      accent: $webPortfolio-accent,
-      warn: $webPortfolio-warn,
-    ),
-  )
 );
