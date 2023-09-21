@@ -1,4 +1,4 @@
-@use '@angular/material' as mat;
+@use "@angular/material" as mat;
 @import "src/styles/variables";
 // TODO(v15): As of v15 mat.legacy-core no longer includes default typography styles.
 //  The following line adds:
@@ -12,7 +12,8 @@
 @include mat.legacy-core();
 @include mat.all-legacy-component-themes($webPortfolio-theme);
 
-html, body {
+html,
+body {
   height: 100vh;
   scroll-behavior: smooth;
 }
@@ -31,15 +32,22 @@ html, body {
   position: sticky;
 }
 
-.bg-white, .bg-dark-blue, .bg-red, .bg-red-1, .bg-red-2 {
+.bg-white,
+.bg-dark-blue,
+.bg-red,
+.bg-red-1,
+.bg-red-2 {
   width: 100%;
 }
 
-.bg-white, .bg-red-1, .bg-red-2 {
+.bg-white,
+.bg-red-1,
+.bg-red-2 {
   color: $dark-blue-font-color;
 }
 
-.bg-red, .bg-dark-blue {
+.bg-red,
+.bg-dark-blue {
   color: $white-font-color;
 }
 

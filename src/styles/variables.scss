@@ -1,4 +1,4 @@
-@use '@angular/material' as mat;
+@use "@angular/material" as mat;
 
 //### Background colors: ###
 $red-bg-color-1: #d9534f;
@@ -20,7 +20,7 @@ $mat-theme-colors-scheme: (
     50: rgba(black, 0.87),
     500: rgba(black, 0.87),
     900: white,
-  )
+  ),
 );
 
 $mat-theme-error-colors-scheme: (
@@ -31,14 +31,34 @@ $mat-theme-error-colors-scheme: (
     50: rgba(black, 0.87),
     500: rgba(black, 0.87),
     900: white,
-  )
+  ),
 );
 
 //### Material theme colors and definition: ###
-$webPortfolio-primary: mat.define-palette($mat-theme-colors-scheme, 50, 500, 900);
-$webPortfolio-accent: mat.define-palette($mat-theme-colors-scheme, 50, 500, 900);
-$webPortfolio-warn: mat.define-palette($mat-theme-error-colors-scheme, 50, 500, 900);
-$webPortfolio-theme: mat.define-dark-theme((
-  color:(primary: $webPortfolio-primary,
-    accent: $webPortfolio-accent,
-    warn: $webPortfolio-warn)));
+$webPortfolio-primary: mat.define-palette(
+  $mat-theme-colors-scheme,
+  50,
+  500,
+  900
+);
+$webPortfolio-accent: mat.define-palette(
+  $mat-theme-colors-scheme,
+  50,
+  500,
+  900
+);
+$webPortfolio-warn: mat.define-palette(
+  $mat-theme-error-colors-scheme,
+  50,
+  500,
+  900
+);
+$webPortfolio-theme: mat.define-dark-theme(
+  (
+    color: (
+      primary: $webPortfolio-primary,
+      accent: $webPortfolio-accent,
+      warn: $webPortfolio-warn,
+    ),
+  )
+);

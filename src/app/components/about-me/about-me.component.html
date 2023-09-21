@@ -2,24 +2,62 @@
   <div class="container pt-5 pb-4 pb-lg-0">
     <div class="row justify-content-center">
       <div class="col-7 col-sm-5 col-md-4 col-lg-3 px-xl-5 px-lg-4">
-        <img src="assets/images/profile.jpg" (load)="onImageLoad()" class="img-fluid" alt="profile picture">
+        <img
+          src="assets/images/profile.jpg"
+          (load)="onImageLoad()"
+          class="img-fluid"
+          alt="profile picture"
+        />
       </div>
-      <div class="col-12 col-lg-9 ps-xl-0 pt-4 pt-lg-0 text-center text-lg-start">
+      <div
+        class="col-12 col-lg-9 ps-xl-0 pt-4 pt-lg-0 text-center text-lg-start"
+      >
         <h1 class="display-4 text-danger pb-3">Who I am?</h1>
-        <p>My name is Santiago, I am {{ currentAge }} years old and I am living in Medellín, Colombia. I have always been a technology
-          enthusiast, and thanks to that, I have become a software developer.</p>
-        <p>I have excellent skills in programming, computer science and mathematics. I perform very good in teamwork;
-          I am a responsible person, and I am always open to new learnings.</p>
+        <p>
+          My name is Santiago, I am {{ currentAge }} years old and I am living
+          in Medellín, Colombia. I have always been a technology enthusiast, and
+          thanks to that, I have become a software developer.
+        </p>
+        <p>
+          I have excellent skills in programming, computer science and
+          mathematics. I perform very good in teamwork; I am a responsible
+          person, and I am always open to new learnings.
+        </p>
         <div class="row text-center pt-3">
           <div class="col-12">
-            <small class="fst-italic">If you want to know more about me, you can see my Curriculum Vitae:</small>
+            <small class="fst-italic"
+              >If you want to know more about me, you can see my Curriculum
+              Vitae:</small
+            >
           </div>
-          <div class="col-12 pt-3 d-flex justify-content-center align-items-center">
+          <div
+            class="col-12 pt-3 d-flex justify-content-center align-items-center"
+          >
             <div class="btn-group ms-5" role="group" aria-label="CVButtonGroup">
-              <button type="button" class="btn btn-outline-light"
-                (click)="downloadPDF('spanish-cv.pdf', 'CV Santiago Gómez Grajales (Español).pdf')">Spanish CV</button>
-              <button type="button" class="btn btn-outline-light"
-                (click)="downloadPDF('english-cv.pdf', 'CV Santiago Gómez Grajales (English).pdf')">English CV</button>
+              <button
+                type="button"
+                class="btn btn-outline-light"
+                (click)="
+                  downloadPDF(
+                    'spanish-cv.pdf',
+                    'CV Santiago Gómez Grajales (Español).pdf'
+                  )
+                "
+              >
+                Spanish CV
+              </button>
+              <button
+                type="button"
+                class="btn btn-outline-light"
+                (click)="
+                  downloadPDF(
+                    'english-cv.pdf',
+                    'CV Santiago Gómez Grajales (English).pdf'
+                  )
+                "
+              >
+                English CV
+              </button>
             </div>
             <div class="d-flex justify-content-center loader-wrapper">
               <mat-spinner *ngIf="isPDFDownloading" diameter="25"></mat-spinner>
@@ -30,14 +68,19 @@
     </div>
   </div>
   <div class="container pt-5 pb-3">
-    <h1 class="display-6 text-danger text-center text-lg-start">What can you expect from me?</h1>
+    <h1 class="display-6 text-danger text-center text-lg-start">
+      What can you expect from me?
+    </h1>
     <div class="row justify-content-center pt-5">
       <div class="col-12 col-md-4 col-xl-3 pe-4 text-center text-md-end">
         <h1 class="display-6 mb-3 mb-md-0">Responsibility</h1>
       </div>
       <div class="col-12 col-md-8 text-center text-md-start pe-lg-5">
-        <p class="mb-0">I am characterized for being a person capable of working with responsibilities.
-          I know how to manage my time and my work to fulfill my obligations in the best way.</p>
+        <p class="mb-0">
+          I am characterized for being a person capable of working with
+          responsibilities. I know how to manage my time and my work to fulfill
+          my obligations in the best way.
+        </p>
       </div>
     </div>
     <div class="row justify-content-center py-5">
@@ -45,8 +88,11 @@
         <h1 class="display-6 mb-3 mb-md-0">Adaptability</h1>
       </div>
       <div class="col-12 col-md-8 text-center text-md-start pe-lg-5">
-        <p class="mb-0">As I said before, I am a person who is open to new learnings. I have no problem
-          adapting to new technologies or new work groups, I work perfectly in teamwork and working alone.</p>
+        <p class="mb-0">
+          As I said before, I am a person who is open to new learnings. I have
+          no problem adapting to new technologies or new work groups, I work
+          perfectly in teamwork and working alone.
+        </p>
       </div>
     </div>
     <div class="row justify-content-center">
@@ -54,34 +100,51 @@
         <h1 class="display-6 mb-3 mb-md-0">Commitment</h1>
       </div>
       <div class="col-12 col-md-8 text-center text-md-start pe-lg-5">
-        <p class="mb-0">I strive so that the things I do are well done. I do not like to do things simply to
-          fulfill, when I must do something I commit myself to give my best to obtain amazing results.</p>
+        <p class="mb-0">
+          I strive so that the things I do are well done. I do not like to do
+          things simply to fulfill, when I must do something I commit myself to
+          give my best to obtain amazing results.
+        </p>
       </div>
     </div>
   </div>
 </div>
 <div class="bg-white sticky-1">
   <div class="container py-3">
-    <h1 class="display-5 text-danger text-center py-5">Looking for my education? Here you have</h1>
+    <h1 class="display-5 text-danger text-center py-5">
+      Looking for my education? Here you have
+    </h1>
     <h1 class="display-6 pt-5">Primary education</h1>
-    <p class="fst-italic"><i class="bi bi-clock"></i> Finished in 2007 in I.E. Policarpa Salavarrieta in Dosquebradas, Risaralda, Colombia.</p>
+    <p class="fst-italic">
+      <i class="bi bi-clock"></i> Finished in 2007 in I.E. Policarpa
+      Salavarrieta in Dosquebradas, Risaralda, Colombia.
+    </p>
   </div>
 </div>
 <div class="bg-red-1 sticky-2">
   <div class="container py-3">
     <h1 class="display-6">Secondary education</h1>
-    <p class="fst-italic"><i class="bi bi-clock"></i> Finished in 2013 in I.E. INEM “Felipe Pérez” in Pereira, Risaralda, Colombia.</p>
+    <p class="fst-italic">
+      <i class="bi bi-clock"></i> Finished in 2013 in I.E. INEM “Felipe Pérez”
+      in Pereira, Risaralda, Colombia.
+    </p>
   </div>
 </div>
 <div class="bg-red-2 sticky-3">
   <div class="container py-3">
     <h1 class="display-6">Computing Technician</h1>
-    <p class="fst-italic"><i class="bi bi-clock"></i> Finished in 2013 in National Learning Service SENA in Pereira, Risaralda, Colombia.</p>
+    <p class="fst-italic">
+      <i class="bi bi-clock"></i> Finished in 2013 in National Learning Service
+      SENA in Pereira, Risaralda, Colombia.
+    </p>
   </div>
 </div>
 <div class="bg-red sticky-4">
   <div class="container py-3">
     <h1 class="display-6">Computing Engineer</h1>
-    <p class="fst-italic"><i class="bi bi-clock"></i> Finished in 2019 in Technological University of Pereira, Risaralda, Colombia.</p>
+    <p class="fst-italic">
+      <i class="bi bi-clock"></i> Finished in 2019 in Technological University
+      of Pereira, Risaralda, Colombia.
+    </p>
   </div>
 </div>

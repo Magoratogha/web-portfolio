@@ -23,7 +23,7 @@ import { ScrollAnimationDirective } from './directives/scroll-animation/scroll-a
     HeaderComponent,
     ContactComponent,
     SkillsComponent,
-    ScrollAnimationDirective
+    ScrollAnimationDirective,
   ],
   imports: [
     BrowserModule,
@@ -33,9 +33,9 @@ import { ScrollAnimationDirective } from './directives/scroll-animation/scroll-a
     MatButtonModule,
     ReactiveFormsModule,
     MatProgressSpinnerModule,
-    HttpClientModule
+    HttpClientModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

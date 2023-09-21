@@ -1,14 +1,25 @@
-import {AfterViewInit, Component, ElementRef, EventEmitter, Input, OnDestroy, OnInit, Output, Renderer2, ViewChild} from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  ElementRef,
+  EventEmitter,
+  Input,
+  OnDestroy,
+  OnInit,
+  Output,
+  Renderer2,
+  ViewChild,
+} from '@angular/core';
 import { UntypedFormBuilder, Validators } from '@angular/forms';
 import { EmailService } from '../../services/email/email.service';
+import { lastValueFrom } from 'rxjs';
 
 @Component({
   selector: 'app-contact',
   templateUrl: './contact.component.html',
-  styleUrls: ['./contact.component.scss']
+  styleUrls: ['./contact.component.scss'],
 })
 export class ContactComponent implements OnInit, AfterViewInit, OnDestroy {
-
   @ViewChild('componentContainer') componentContainer: ElementRef | undefined;
   @Output() componentResized = new EventEmitter<number>();
   @Input() public componentsHeightChanged: EventEmitter<void> | undefined;
@@ -20,10 +31,14 @@ export class ContactComponent implements OnInit, AfterViewInit, OnDestroy {
   public contactForm = this.formBuilder.group({
     name: ['', [Validators.required]],
     email: ['', [Validators.required, Validators.email]],
-    message: ['', [Validators.required]]
+    message: ['', [Validators.required]],
   });
 
-  constructor(private formBuilder: UntypedFormBuilder, private emailService: EmailService, private renderer: Renderer2) { }
+  constructor(
+    private formBuilder: UntypedFormBuilder,
+    private emailService: EmailService,
+    private renderer: Renderer2
+  ) {}
 
   ngOnInit(): void {
     this.componentsHeightChanged?.subscribe(() => {
@@ -33,18 +48,28 @@ export class ContactComponent implements OnInit, AfterViewInit, OnDestroy {
 
   ngAfterViewInit(): void {
     this.onWindowResize();
-    this.resizeUnlistenerFn = this.renderer.listen(window, 'resize', this.onWindowResize.bind(this));
+    this.resizeUnlistenerFn = this.renderer.listen(
+      window,
+      'resize',
+      this.onWindowResize.bind(this)
+    );
   }
 
   private onWindowResize(): void {
-    this.componentResized.emit(Math.floor(this.componentContainer?.nativeElement.getBoundingClientRect().top + window.scrollY));
+    this.componentResized.emit(
+      Math.floor(
+        this.componentContainer?.nativeElement.getBoundingClientRect().top +
+          window.scrollY
+      )
+    );
   }
 
-  public onFormSubmit(): void {
+  public async onFormSubmit(): Promise<void> {
     this.isMessageSending = true;
     this.isMessageSent = false;
     this.contactForm.disable();
-    this.emailService.sendEmail(this.contactForm.value).then(() => {
+    try {
+      await lastValueFrom(this.emailService.sendEmail(this.contactForm.value));
       this.wasSuccessfullySent = true;
       this.isMessageSent = true;
       this.contactForm.enable();
@@ -52,16 +77,15 @@ export class ContactComponent implements OnInit, AfterViewInit, OnDestroy {
         this.isMessageSending = false;
         this.isMessageSent = false;
       }, 3000);
-    }).catch(() => {
+    } catch (error) {
       this.wasSuccessfullySent = false;
       this.isMessageSent = true;
       this.contactForm.enable();
-    });
+    }
   }
 
   ngOnDestroy(): void {
     this.componentsHeightChanged?.unsubscribe();
     this.resizeUnlistenerFn();
   }
-
 }
