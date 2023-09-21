@@ -111,3 +111,15 @@ mat-error {
   text-decoration: var(--mdc-typography-caption-text-decoration, inherit);
   text-transform: var(--mdc-typography-caption-text-transform, none);
 }
+
+mat-icon {
+  svg {
+    vertical-align: top;
+  }
+}
+
+a[mat-mini-fab] {
+  mat-icon {
+    padding: 2px;
+  }
+}

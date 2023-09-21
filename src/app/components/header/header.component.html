@@ -1,90 +1,53 @@
-<nav
-  *ngIf="currentSection >= 1"
-  class="navbar fixed-top navbar-expand-md navbar-dark bg-dark-blue"
-  [@inOutAnimation]
->
-  <div class="container-fluid">
-    <i class="navbar-brand ms-3 bi {{ getSectionIconClass() }}"></i>
+<div class="floating-button-wrapper">
+  <div
+    *ngIf="isExpanded"
+    class="vertical-container"
+    [@verticalStagger]="isExpanded"
+  >
     <button
-      #headerToggler
-      class="navbar-toggler"
-      type="button"
-      data-bs-toggle="collapse"
-      data-bs-target="#navbarNav"
-      aria-controls="navbarNav"
-      aria-expanded="false"
-      aria-label="Toggle navigation"
+      *ngFor="let section of sections"
+      mat-fab
+      extended
+      (click)="scrollToSection(section.sectionNumber)"
     >
-      <span class="navbar-toggler-icon"></span>
+      <mat-icon
+        [svgIcon]="
+          section.iconName +
+          (currentSection === section.sectionNumber ? '-bold' : '')
+        "
+      ></mat-icon>
+      <span [@boldAnimation]="currentSection === section.sectionNumber">{{
+        section.label
+      }}</span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav me-auto">
-        <li class="nav-item">
-          <a class="nav-link clickable" (click)="scrollToSection(0)">Home</a>
-        </li>
-        <li class="nav-item">
-          <a
-            class="nav-link clickable"
-            [ngClass]="{ active: this.currentSection === 1 }"
-            (click)="scrollToSection(1)"
-            >About me</a
-          >
-        </li>
-        <li class="nav-item">
-          <a
-            class="nav-link clickable"
-            [ngClass]="{ active: this.currentSection === 2 }"
-            (click)="scrollToSection(2)"
-            >My skills</a
-          >
-        </li>
-        <li class="nav-item">
-          <a
-            class="nav-link clickable"
-            [ngClass]="{ active: this.currentSection === 3 }"
-            (click)="scrollToSection(3)"
-            >Contact</a
-          >
-        </li>
-      </ul>
-      <div
-        [@inOutAnimation]
-        class="navbar-contact-icons d-flex justify-content-center"
-        *ngIf="this.currentSection !== 3"
+  </div>
+  <div class="horizontal-container">
+    <button mat-fab (click)="isExpanded = !isExpanded">
+      <mat-icon
+        [@iconChange]="getSectionIconClass()"
+        [svgIcon]="getSectionIconClass(true)"
+      ></mat-icon>
+    </button>
+    <div
+      class="horizontal-container"
+      [@horizontalStagger]="isExpanded"
+      *ngIf="isExpanded"
+    >
+      <a
+        *ngFor="let link of links"
+        mat-mini-fab
+        [href]="link.url"
+        target="_blank"
+        rel="noreferrer"
       >
-        <a
-          class="clickable"
-          href="https://github.com/Magoratogha"
-          target="_blank"
-          rel="noreferrer"
-        >
-          <i class="bi bi-github"></i>
-        </a>
-        <a
-          class="clickable"
-          href="https://www.linkedin.com/in/magoratogha"
-          target="_blank"
-          rel="noreferrer"
-        >
-          <i class="bi bi-linkedin"></i>
-        </a>
-        <a
-          class="clickable"
-          href="https://www.instagram.com/magoratogha"
-          target="_blank"
-          rel="noreferrer"
-        >
-          <i class="bi bi-instagram"></i>
-        </a>
-        <a
-          class="clickable"
-          href="https://www.facebook.com/Magoratoga"
-          target="_blank"
-          rel="noreferrer"
-        >
-          <i class="bi bi-facebook"></i>
-        </a>
-      </div>
+        <mat-icon [svgIcon]="link.iconName"></mat-icon>
+      </a>
     </div>
   </div>
-</nav>
+</div>
+
+<div
+  id="fab-dismiss"
+  *ngIf="isExpanded"
+  (click)="isExpanded = !isExpanded"
+></div>
