@@ -17,6 +17,7 @@ export class AppComponent implements AfterViewInit, OnDestroy {
   public componentsPositions: number[] = [];
   public componentsHeightChanged: EventEmitter<void> = new EventEmitter<void>();
   private scrollUnlistenerFn: Function = () => {};
+  private isScrolling: boolean = false;
 
   constructor(private renderer: Renderer2) {}
 
@@ -29,13 +30,39 @@ export class AppComponent implements AfterViewInit, OnDestroy {
   }
 
   private onScroll(): void {
-    this.currentScrollPosition = window.pageYOffset;
+    this.currentScrollPosition = window.scrollY;
     this.currentSection = this.componentsPositions.findIndex((value, index) => {
       return this.componentsPositions[index + 1]
         ? this.currentScrollPosition >= value &&
             this.currentScrollPosition < this.componentsPositions[index + 1]
         : this.currentScrollPosition >= value;
     });
+
+    if (
+      this.currentScrollPosition >=
+        document.documentElement.offsetHeight * 0.05 &&
+      this.currentScrollPosition < document.documentElement.offsetHeight * 0.5
+    ) {
+      if (!this.isScrolling) {
+        this.isScrolling = true;
+        window.scrollTo({
+          top: document.documentElement.offsetHeight,
+        });
+      }
+    } else if (
+      this.currentScrollPosition >=
+        document.documentElement.offsetHeight * 0.5 &&
+      this.currentScrollPosition <= document.documentElement.offsetHeight * 0.95
+    ) {
+      if (!this.isScrolling) {
+        this.isScrolling = true;
+        window.scrollTo({
+          top: 0,
+        });
+      }
+    } else {
+      this.isScrolling = false;
+    }
   }
 
   public onComponentResize(

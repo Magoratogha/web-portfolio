@@ -1,8 +1,8 @@
 import { animate, style, transition, trigger } from '@angular/animations';
 
-export const In1500ms = trigger('in1500ms', [
+export const In2500ms = trigger('in2500ms', [
   transition(':enter', [
     style({ opacity: 0 }),
-    animate('500ms 1500ms', style({ opacity: 1 })),
+    animate('500ms 2500ms', style({ opacity: 1 })),
   ]),
 ]);

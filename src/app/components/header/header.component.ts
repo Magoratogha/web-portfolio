@@ -41,7 +41,6 @@ export class HeaderComponent {
   public scrollToSection(section: number): void {
     window.scrollTo({
       top: this.componentsPositions[section],
-      behavior: 'smooth',
     });
   }
 
