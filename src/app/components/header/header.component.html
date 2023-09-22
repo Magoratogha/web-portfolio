@@ -1,4 +1,4 @@
-<div class="floating-button-wrapper">
+<div [@inEaseIn] class="floating-button-wrapper">
   <div
     *ngIf="isExpanded"
     class="vertical-container"
@@ -16,7 +16,7 @@
           (currentSection === section.sectionNumber ? '-bold' : '')
         "
       ></mat-icon>
-      <span [@boldAnimation]="currentSection === section.sectionNumber">{{
+      <span [@smallToBold]="currentSection === section.sectionNumber">{{
         section.label
       }}</span>
     </button>

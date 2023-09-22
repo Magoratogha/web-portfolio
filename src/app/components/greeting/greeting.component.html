@@ -1,12 +1,20 @@
 <div class="viewport-container">
   <div class="container text-center">
-    <h1 class="display-4 text-danger">Welcome to my web portfolio</h1>
-    <h1 class="display-5 pb-5">
-      My name is Santiago Gómez and I'm a Frontend developer.
+    <h1 [@inEaseIn] class="display-4 fw-lighter text-danger">
+      Welcome to my web portfolio
     </h1>
-    <h2 class="fw-light pt-3">Scroll down to see more</h2>
-    <h2 class="fw-light">
-      <i class="bi bi-chevron-down clickable" (click)="scrollToAboutPage()"></i>
-    </h2>
+    <h1 class="display-5 fw-lighter pb-5">
+      <span [@in1500ms]>My name is <b>Santiago</b></span>
+      <span [@in3000ms]> and I'm a <b>Frontend developer</b></span>
+    </h1>
+    <div [@in4500ms]>
+      <h2 class="fw-lighter pt-3">Scroll down to see more</h2>
+      <h2 class="fw-light">
+        <i
+          class="bi bi-chevron-down clickable"
+          (click)="scrollToAboutPage()"
+        ></i>
+      </h2>
+    </div>
   </div>
 </div>
