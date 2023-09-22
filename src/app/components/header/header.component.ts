@@ -86,7 +86,7 @@ import { Component, Input } from '@angular/core';
             animate(
               '200ms cubic-bezier(0.4, 0.0, 0.2, 1)',
               keyframes([
-                style({ opacity: 0, transform: 'translateX(-10px)' }),
+                style({ opacity: 0, transform: 'translateX(10px)' }),
                 style({ opacity: 1, transform: 'translateX(0)' }),
               ])
             ),
@@ -101,7 +101,7 @@ import { Component, Input } from '@angular/core';
               '200ms cubic-bezier(0.4, 0.0, 0.2, 1)',
               keyframes([
                 style({ opacity: 1, transform: 'translateX(0)' }),
-                style({ opacity: 0, transform: 'translateX(-10px)' }),
+                style({ opacity: 0, transform: 'translateX(10px)' }),
               ])
             ),
           ]),
@@ -117,15 +117,15 @@ export class HeaderComponent {
   public isExpanded: boolean = false;
   public sections: any[] = [
     { label: 'Contact', iconName: 'send', sectionNumber: 3 },
-    { label: 'My skills', iconName: 'face', sectionNumber: 2 },
-    { label: 'About me', iconName: 'work', sectionNumber: 1 },
+    { label: 'My skills', iconName: 'work', sectionNumber: 2 },
+    { label: 'About me', iconName: 'face', sectionNumber: 1 },
     { label: 'Home', iconName: 'home', sectionNumber: 0 },
   ];
   public links: any[] = [
-    { url: 'https://github.com/Magoratogha', iconName: 'github' },
-    { url: 'https://www.linkedin.com/in/magoratogha', iconName: 'linkedin' },
-    { url: 'https://www.instagram.com/magoratogha', iconName: 'instagram' },
     { url: 'https://www.facebook.com/Magoratoga', iconName: 'facebook' },
+    { url: 'https://www.instagram.com/magoratogha', iconName: 'instagram' },
+    { url: 'https://www.linkedin.com/in/magoratogha', iconName: 'linkedin' },
+    { url: 'https://github.com/Magoratogha', iconName: 'github' },
   ];
 
   constructor() {}
