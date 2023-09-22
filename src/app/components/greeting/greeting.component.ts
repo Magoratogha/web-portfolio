@@ -6,13 +6,13 @@ import {
   Output,
   Renderer2,
 } from '@angular/core';
-import { In1300ms, In2500ms, In3000ms, InEaseIn } from 'src/app/animations';
+import { In1300ms, In1800ms, In3000ms, InEaseIn } from 'src/app/animations';
 
 @Component({
   selector: 'app-greeting',
   templateUrl: './greeting.component.html',
   styleUrls: ['./greeting.component.scss'],
-  animations: [InEaseIn, In1300ms, In2500ms, In3000ms],
+  animations: [InEaseIn, In1300ms, In1800ms, In3000ms],
 })
 export class GreetingComponent implements AfterViewInit, OnDestroy {
   private resizeUnlistenerFn: Function = () => {};
