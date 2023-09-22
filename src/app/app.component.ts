@@ -39,8 +39,7 @@ export class AppComponent implements AfterViewInit, OnDestroy {
     });
 
     if (
-      this.currentScrollPosition >=
-        document.documentElement.offsetHeight * 0.05 &&
+      this.currentScrollPosition > 0 &&
       this.currentScrollPosition < document.documentElement.offsetHeight * 0.5
     ) {
       if (!this.isScrolling) {
@@ -52,7 +51,7 @@ export class AppComponent implements AfterViewInit, OnDestroy {
     } else if (
       this.currentScrollPosition >=
         document.documentElement.offsetHeight * 0.5 &&
-      this.currentScrollPosition <= document.documentElement.offsetHeight * 0.95
+      this.currentScrollPosition <= document.documentElement.offsetHeight * 0.9
     ) {
       if (!this.isScrolling) {
         this.isScrolling = true;
