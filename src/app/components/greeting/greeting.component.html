@@ -1,20 +1,20 @@
 <div class="viewport-container">
   <div class="container text-center">
-    <h1 [@inEaseIn] class="display-4 fw-lighter text-danger">
+    <h1 [@inEaseIn] class="display-3 p-3 fw-lighter text-danger">
       Welcome to my web portfolio
     </h1>
     <h1 class="display-5 fw-lighter pb-5">
-      <span [@in1300ms]>My name is <b>Santiago</b></span>
+      <span [@in1300ms]>My name is <b>Santiago</b></span
+      ><br />
       <span [@in2500ms]> and I'm a <b>Frontend developer</b></span>
     </h1>
     <div [@in3000ms]>
       <h2 class="fw-lighter pt-3">Scroll down to see more</h2>
-      <h2 class="fw-light">
-        <i
-          class="bi bi-chevron-down clickable"
-          (click)="scrollToAboutPage()"
-        ></i>
-      </h2>
+      <mat-icon
+        svgIcon="chevron-down"
+        class="clickable"
+        (click)="scrollToAboutPage()"
+      ></mat-icon>
     </div>
   </div>
 </div>

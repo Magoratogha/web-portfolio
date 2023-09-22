@@ -28,6 +28,7 @@ import linkedinIcon from '!!raw-loader!../assets/images/linkedin.svg';
 import facebookIcon from '!!raw-loader!../assets/images/facebook.svg';
 import githubIcon from '!!raw-loader!../assets/images/github.svg';
 import instagramIcon from '!!raw-loader!../assets/images/instagram.svg';
+import chevronDownIcon from '!!raw-loader!../assets/images/chevron-down.svg';
 
 @NgModule({
   declarations: [
@@ -106,6 +107,10 @@ export class AppModule {
     iconRegistry.addSvgIconLiteral(
       'linkedin',
       sanitizer.bypassSecurityTrustHtml(linkedinIcon)
+    );
+    iconRegistry.addSvgIconLiteral(
+      'chevron-down',
+      sanitizer.bypassSecurityTrustHtml(chevronDownIcon)
     );
   }
 }
