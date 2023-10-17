@@ -41,6 +41,10 @@ export class BackgroundService implements OnDestroy {
   private pointer: Vector3 = new Vector3();
   public animationTime: number = 1.5;
   private animationEase: string = 'power3.inOut';
+  private isTouchDevice: boolean = !!(
+    window.navigator.maxTouchPoints || 'ontouchstart' in document
+  );
+  private isMobileDevice: boolean = window.innerWidth <= 768;
 
   private pointerRadius: number = 0.0;
   private pointerHalo: number = 0.06;
@@ -92,7 +96,11 @@ export class BackgroundService implements OnDestroy {
       0.001,
       100
     );
-    this.camera.position.set(-0.7, -0.4, 1);
+    if (this.isTouchDevice) {
+      this.camera.position.set(-0.7, -0.4, 2);
+    } else {
+      this.camera.position.set(-0.7, -0.4, 1);
+    }
     this.PARTICLES_CONFIG.map((config) => this.addParticles(config));
     this.setEventListeners();
     this.scene.rotateX(0.8);
@@ -121,21 +129,26 @@ export class BackgroundService implements OnDestroy {
       this.onResize.bind(this)
     );
 
-    this.mesh = new Mesh(
-      new PlaneGeometry(6, 10, 10, 10).rotateX(-Math.PI / 2),
-      new MeshBasicMaterial({
-        color: 0xff0000,
-        wireframe: true,
-      })
-    );
-    this.mesh.visible = false;
-    this.scene?.add(this.mesh);
+    if (this.isTouchDevice) {
+      this.pointerHalo = 0;
+      this.pointerGravity = 30;
+    } else {
+      this.mesh = new Mesh(
+        new PlaneGeometry(6, 10, 10, 10).rotateX(-Math.PI / 2),
+        new MeshBasicMaterial({
+          color: 0xff0000,
+          wireframe: true,
+        })
+      );
+      this.mesh.visible = false;
+      this.scene?.add(this.mesh);
 
-    this.onPointerMoveUnlistenFn = this.ngRenderer.listen(
-      window,
-      'pointermove',
-      this.onPointerMove.bind(this)
-    );
+      this.onPointerMoveUnlistenFn = this.ngRenderer.listen(
+        window,
+        'pointermove',
+        this.onPointerMove.bind(this)
+      );
+    }
   }
 
   private onResize(): void {
@@ -207,8 +220,10 @@ export class BackgroundService implements OnDestroy {
   }
 
   public setPanoramicView(): void {
-    this.pointerHalo = 0.12;
-    this.pointerGravity = 5;
+    if (!this.isTouchDevice) {
+      this.pointerHalo = 0.12;
+      this.pointerGravity = 5;
+    }
     gsap.to((this.camera as PerspectiveCamera)?.position, {
       duration: this.animationTime,
       ease: this.animationEase,
@@ -226,12 +241,14 @@ export class BackgroundService implements OnDestroy {
   }
 
   public setMiddleView(): void {
-    this.pointerHalo = 0.09;
-    this.pointerGravity = 10;
+    if (!this.isTouchDevice) {
+      this.pointerHalo = 0.09;
+      this.pointerGravity = 10;
+    }
     gsap.to((this.camera as PerspectiveCamera)?.position, {
       duration: this.animationTime,
       ease: this.animationEase,
-      x: -0.7,
+      x: this.isMobileDevice ? -0.25 : -0.7,
       y: -0.4,
       z: 1,
     });
@@ -245,12 +262,14 @@ export class BackgroundService implements OnDestroy {
   }
 
   public setMiddleView2(): void {
-    this.pointerHalo = 0.09;
-    this.pointerGravity = 12;
+    if (!this.isTouchDevice) {
+      this.pointerHalo = 0.09;
+      this.pointerGravity = 12;
+    }
     gsap.to((this.camera as PerspectiveCamera)?.position, {
       duration: this.animationTime,
       ease: this.animationEase,
-      x: 0.5,
+      x: this.isMobileDevice ? 0.2 : 0.5,
       y: 0.2,
       z: 1,
     });
@@ -264,12 +283,14 @@ export class BackgroundService implements OnDestroy {
   }
 
   public setInmerseView(): void {
-    this.pointerHalo = 0.06;
-    this.pointerGravity = 12;
+    if (!this.isTouchDevice) {
+      this.pointerHalo = 0.06;
+      this.pointerGravity = 12;
+    }
     gsap.to((this.camera as PerspectiveCamera)?.position, {
       duration: this.animationTime,
       ease: this.animationEase,
-      x: -0.7,
+      x: this.isMobileDevice ? -0.25 : -0.7,
       y: -0.4,
       z: 1,
     });
