@@ -133,10 +133,10 @@ vec3 fbmVec3(vec3 p, float frequency, float offset)
 }
 
 vec3 getOffset(vec3 p) {
-    float twist_scale = cnoise(pos) * 0.3 + 0.3;
-    vec3 temp_pos = rotation3dY(time * (0.001 + 0.1 * twist_scale) + length(pos.xz)) * p;
+    float twist_scale = cnoise(pos) * 0.03 + 0.031;
+    vec3 temp_pos = rotation3dY(time * twist_scale + length(pos.xz)) * p;
     vec3 offset = fbmVec3(temp_pos, 0.5, 0.); 
-    return offset * 0.2 * uApm;
+    return offset * uApm;
 }
 
 vec3 getPointOnMouse(vec3 pos, float t)

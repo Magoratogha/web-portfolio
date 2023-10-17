@@ -61,7 +61,7 @@ export class BackgroundService implements OnDestroy {
       maxRadius: this.isMobileDevice ? 1.2 : 1.5,
       color: '#88b3c3',
       size: this.isMobileDevice ? 1.2 : 1,
-      apm: 1,
+      apm: 0.2,
       changeColor: true,
     },
     {
@@ -69,7 +69,7 @@ export class BackgroundService implements OnDestroy {
       maxRadius: this.isMobileDevice ? 1.2 : 1.5,
       color: '#f7b373',
       size: this.isMobileDevice ? 1 : 0.7,
-      apm: 3,
+      apm: 0.6,
       changeColor: false,
     },
   ];
@@ -185,7 +185,6 @@ export class BackgroundService implements OnDestroy {
     const width = window.innerWidth;
     let count =
       width <= 500 ? 2000 : width <= 768 ? 3000 : width <= 1024 ? 5000 : 7000;
-    debugger;
     const minRadius = config.minRadius;
     const maxRadius = config.maxRadius;
     const particlesGeo = new PlaneGeometry(1, 1);
