@@ -1,0 +1,35 @@
+<header>
+  <ul>
+    <li>
+      <a
+        [routerLink]="['/' + HOME_ROUTE]"
+        routerLinkActive="active"
+        (click)="currentPage = Pages.Home"
+        >Home</a
+      >
+    </li>
+    <li>
+      <a
+        [routerLink]="['/' + ABOUT_ROUTE]"
+        routerLinkActive="active"
+        (click)="currentPage = Pages.About"
+        >About me</a
+      >
+    </li>
+    <li>
+      <a
+        [routerLink]="['/' + SKILLS_ROUTE]"
+        routerLinkActive="active"
+        (click)="currentPage = Pages.Skills"
+        >My Skills</a
+      >
+    </li>
+  </ul>
+  <a
+    [routerLink]="['/' + CONTACT_ROUTE]"
+    routerLinkActive="active"
+    (click)="currentPage = Pages.Contact"
+    >Contact</a
+  >
+</header>
+<div class="header-shadow"></div>

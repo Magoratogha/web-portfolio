@@ -1,1 +1,40 @@
-/* You can add global styles to this file, and also import other style files */
+html,
+body {
+  overflow-x: hidden;
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+  background: hsl(0, 0%, 5%);
+  color: white;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+a,
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+  font-weight: 400;
+}
+
+img,
+video,
+canvas,
+svg {
+  max-width: 100%;
+}
+
+.fw-light {
+  font-weight: 200 !important;
+}

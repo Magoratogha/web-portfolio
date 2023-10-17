@@ -1,0 +1,17 @@
+.container {
+  margin-top: 4rem;
+  margin-bottom: 1.5rem;
+  overflow: scroll;
+  height: calc(100vh - 5.5rem);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  @media (max-width: 768px) {
+    align-items: center;
+  }
+}
+
+canvas {
+  position: fixed;
+  z-index: -1;
+}
