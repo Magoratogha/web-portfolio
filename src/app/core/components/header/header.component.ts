@@ -1,22 +1,24 @@
-import { Component, HostListener } from '@angular/core';
-import { BackgroundService } from '../../services';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Pages } from '../../enums';
+import Hammer from 'hammerjs';
 import {
   ABOUT_ROUTE,
   CONTACT_ROUTE,
   HOME_ROUTE,
   SKILLS_ROUTE,
 } from '../../constants';
+import { Pages } from '../../enums';
+import { BackgroundService } from '../../services';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
 })
-export class HeaderComponent {
+export class HeaderComponent implements OnInit {
   public currentPage: Pages = Pages.Home;
   private isNavigating: boolean = false;
+  hammer: HammerManager = new Hammer(document.body);
   Pages = Pages;
   HOME_ROUTE = HOME_ROUTE;
   ABOUT_ROUTE = ABOUT_ROUTE;
@@ -43,15 +45,18 @@ export class HeaderComponent {
     }
   }
 
+  ngOnInit(): void {
+    this.hammer.on('panup pandown', (ev) => {
+      if (!this.isNavigating) {
+        this.navigate(ev.type === 'panup');
+      }
+    });
+  }
+
   @HostListener('window:wheel', ['$event'])
   onScroll(event: WheelEvent) {
     if (!this.isNavigating) {
-      const delta = event.deltaY;
-      if (delta > 0) {
-        this.navigate(true);
-      } else {
-        this.navigate(false);
-      }
+      this.navigate(event.deltaY > 0);
     }
   }
 
