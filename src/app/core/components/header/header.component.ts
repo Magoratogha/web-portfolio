@@ -1,6 +1,5 @@
-import { Component, HostListener, OnInit } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import { Router } from '@angular/router';
-import Hammer from 'hammerjs';
 import {
   ABOUT_ROUTE,
   CONTACT_ROUTE,
@@ -15,10 +14,9 @@ import { BackgroundService } from '../../services';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent {
   public currentPage: Pages = Pages.Home;
   private isNavigating: boolean = false;
-  hammer: HammerManager = new Hammer(document.body);
   Pages = Pages;
   HOME_ROUTE = HOME_ROUTE;
   ABOUT_ROUTE = ABOUT_ROUTE;
@@ -43,14 +41,6 @@ export class HeaderComponent implements OnInit {
         this.currentPage = Pages.Home;
         break;
     }
-  }
-
-  ngOnInit(): void {
-    this.hammer.on('panup pandown', (ev) => {
-      if (!this.isNavigating) {
-        this.navigate(ev.type === 'panup');
-      }
-    });
   }
 
   @HostListener('window:wheel', ['$event'])

@@ -58,17 +58,17 @@ export class BackgroundService implements OnDestroy {
   private PARTICLES_CONFIG: any[] = [
     {
       minRadius: 0.2,
-      maxRadius: 1.5,
+      maxRadius: this.isMobileDevice ? 1.2 : 1.5,
       color: '#88b3c3',
-      size: 1,
+      size: this.isMobileDevice ? 1.2 : 1,
       apm: 1,
       changeColor: true,
     },
     {
       minRadius: 0.2,
-      maxRadius: 1.5,
+      maxRadius: this.isMobileDevice ? 1.2 : 1.5,
       color: '#f7b373',
-      size: 0.7,
+      size: this.isMobileDevice ? 1 : 0.7,
       apm: 3,
       changeColor: false,
     },
@@ -93,7 +93,7 @@ export class BackgroundService implements OnDestroy {
     this.camera = new PerspectiveCamera(
       70,
       window.innerWidth / window.innerHeight,
-      0.001,
+      0.1,
       100
     );
     if (this.isTouchDevice) {
@@ -127,6 +127,16 @@ export class BackgroundService implements OnDestroy {
       window,
       'resize',
       this.onResize.bind(this)
+    );
+
+    this.ngRenderer.listen(this.canvas, 'webglcontextlost', (event) => {
+      event.preventDefault();
+    });
+
+    this.ngRenderer.listen(
+      this.canvas,
+      'webglcontextrestored',
+      this.initBackground.bind(this)
     );
 
     if (this.isTouchDevice) {
@@ -172,7 +182,10 @@ export class BackgroundService implements OnDestroy {
   }
 
   private addParticles(config: any): void {
-    let count = 10000;
+    const width = window.innerWidth;
+    let count =
+      width <= 500 ? 2000 : width <= 768 ? 3000 : width <= 1024 ? 5000 : 7000;
+    debugger;
     const minRadius = config.minRadius;
     const maxRadius = config.maxRadius;
     const particlesGeo = new PlaneGeometry(1, 1);
