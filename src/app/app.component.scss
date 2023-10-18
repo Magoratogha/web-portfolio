@@ -1,16 +1,9 @@
 .container {
   margin-top: 4rem;
   margin-bottom: 1rem;
-  overflow: scroll;
-  height: calc(100vh - 5rem);
-  display: grid;
 }
 
 canvas {
   position: fixed;
   z-index: -1;
-}
-
-router-outlet {
-  display: none;
 }

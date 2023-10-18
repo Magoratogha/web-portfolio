@@ -1,7 +1,11 @@
 :host {
-  align-self: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+  height: -webkit-fill-available;
   @media (max-width: 768px) {
-    justify-self: center;
+    align-items: center;
   }
 }
 

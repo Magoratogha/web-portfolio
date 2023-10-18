@@ -44,7 +44,7 @@ export class BackgroundService implements OnDestroy {
   private isTouchDevice: boolean = !!(
     window.navigator.maxTouchPoints || 'ontouchstart' in document
   );
-  private isMobileDevice: boolean = window.innerWidth <= 768;
+  private isMobileDevice: boolean = window.outerWidth <= 768;
 
   private pointerRadius: number = 0.0;
   private pointerHalo: number = 0.06;
@@ -87,12 +87,12 @@ export class BackgroundService implements OnDestroy {
       canvas: this.canvas,
     });
     this.renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-    this.renderer.setSize(window.innerWidth, window.innerHeight);
+    this.renderer.setSize(window.outerWidth, window.outerHeight);
     this.renderer.setClearColor(0x0d0d0d, 1);
     this.renderer.outputColorSpace = SRGBColorSpace;
     this.camera = new PerspectiveCamera(
       70,
-      window.innerWidth / window.innerHeight,
+      window.outerWidth / window.outerHeight,
       0.1,
       100
     );
@@ -162,17 +162,17 @@ export class BackgroundService implements OnDestroy {
   }
 
   private onResize(): void {
-    this.renderer?.setSize(window.innerWidth, window.innerHeight);
+    this.renderer?.setSize(window.outerWidth, window.outerHeight);
     this.renderer?.setPixelRatio(Math.min(window.devicePixelRatio, 2));
     (this.camera as PerspectiveCamera).aspect =
-      window.innerWidth / window.innerHeight;
+      window.outerWidth / window.outerHeight;
     (this.camera as PerspectiveCamera).updateProjectionMatrix();
   }
 
   private onPointerMove(event: PointerEvent): void {
     const pointer = new Vector2();
-    pointer.x = (event.clientX / window.innerWidth) * 2 - 1;
-    pointer.y = -(event.clientY / window.innerHeight) * 2 + 1;
+    pointer.x = (event.clientX / window.outerWidth) * 2 - 1;
+    pointer.y = -(event.clientY / window.outerHeight) * 2 + 1;
 
     this.raycaster.setFromCamera(pointer, this.camera as PerspectiveCamera);
     const intersects = this.raycaster.intersectObjects([this.mesh as Mesh]);
@@ -182,7 +182,7 @@ export class BackgroundService implements OnDestroy {
   }
 
   private addParticles(config: any): void {
-    const width = window.innerWidth;
+    const width = window.outerWidth;
     let count =
       width <= 500 ? 2000 : width <= 768 ? 3000 : width <= 1024 ? 5000 : 7000;
     const minRadius = config.minRadius;
