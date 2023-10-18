@@ -4,7 +4,7 @@
   [@leave]
   [show]="isLoading"
 ></app-main-loader>
-<app-header></app-header>
-<div class="container" [@routerAnimation]="prepareRoute(outlet)">
+<app-header [appContainer]="container"></app-header>
+<div #container class="container" [@routerAnimation]="prepareRoute(outlet)">
   <router-outlet #outlet="outlet"></router-outlet>
 </div>

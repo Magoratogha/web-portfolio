@@ -18,6 +18,8 @@ import { RouterOutlet } from '@angular/router';
 export class AppComponent implements OnInit, AfterViewInit {
   @ViewChild('bg', { read: ElementRef })
   private canvas: ElementRef<HTMLElement> | undefined;
+  @ViewChild('container', { read: ElementRef })
+  public container: ElementRef<HTMLElement> | undefined;
   public isLoading: boolean = true;
 
   constructor(private backgroundService: BackgroundService) {}

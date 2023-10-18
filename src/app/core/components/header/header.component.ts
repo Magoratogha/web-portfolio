@@ -1,4 +1,4 @@
-import { Component, HostListener } from '@angular/core';
+import { Component, HostListener, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import {
   ABOUT_ROUTE,
@@ -15,6 +15,7 @@ import { BackgroundService } from '../../services';
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent {
+  @Input() appContainer: HTMLElement | undefined;
   public currentPage: Pages = Pages.Home;
   private isNavigating: boolean = false;
   Pages = Pages;
@@ -43,12 +44,16 @@ export class HeaderComponent {
     }
   }
 
-  @HostListener('window:wheel', ['$event'])
+  ngOnInit() {
+    this.appContainer?.addEventListener('scroll', console.log);
+  }
+
+  /*@HostListener('window:wheel', ['$event'])
   onScroll(event: WheelEvent) {
     if (!this.isNavigating) {
       this.navigate(event.deltaY > 0);
     }
-  }
+  }*/
 
   private navigate(next: boolean): void {
     if (next) {

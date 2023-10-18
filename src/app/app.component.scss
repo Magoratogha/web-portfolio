@@ -1,11 +1,9 @@
 .container {
   margin-top: 4rem;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
   overflow: scroll;
-  height: calc(100vh - 5.5rem);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+  height: calc(100vh - 5rem);
+  display: grid;
   @media (max-width: 768px) {
     align-items: center;
   }
@@ -14,4 +12,8 @@
 canvas {
   position: fixed;
   z-index: -1;
+}
+
+router-outlet {
+  display: none;
 }
