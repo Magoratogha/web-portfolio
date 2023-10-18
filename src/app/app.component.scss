@@ -4,9 +4,6 @@
   overflow: scroll;
   height: calc(100vh - 5rem);
   display: grid;
-  @media (max-width: 768px) {
-    align-items: center;
-  }
 }
 
 canvas {
