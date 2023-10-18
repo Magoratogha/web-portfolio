@@ -183,8 +183,8 @@ export class BackgroundService implements OnDestroy {
 
   private addParticles(config: any): void {
     const width = window.outerWidth;
-    let count = 1000;
-    //  width <= 500 ? 2000 : width <= 768 ? 3000 : width <= 1024 ? 5000 : 7000;
+    let count =
+      width <= 500 ? 2000 : width <= 768 ? 3000 : width <= 1024 ? 5000 : 7000;
     const minRadius = config.minRadius;
     const maxRadius = config.maxRadius;
     const particlesGeo = new PlaneGeometry(1, 1);
