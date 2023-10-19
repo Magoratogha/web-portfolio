@@ -20,6 +20,9 @@ export class HeaderComponent {
   private isNavigating: boolean = false;
   private shouldScroll: boolean = false;
   private scrolledToEdge: boolean = false;
+  private isTouchDevice: boolean = !!(
+    window.navigator.maxTouchPoints || 'ontouchstart' in document
+  );
   Pages = Pages;
   HOME_ROUTE = HOME_ROUTE;
   ABOUT_ROUTE = ABOUT_ROUTE;
@@ -69,14 +72,14 @@ export class HeaderComponent {
 
   @HostListener('window:wheel', ['$event'])
   onWheel(event: WheelEvent) {
-    if (!this.isNavigating && !this.shouldScroll) {
+    if (!this.isNavigating && !this.shouldScroll && !this.isTouchDevice) {
       this.navigate(event.deltaY > 0);
     }
   }
 
   @HostListener('window:scroll', ['$event'])
   onScroll() {
-    if (!this.isNavigating && this.shouldScroll) {
+    if (!this.isNavigating && this.shouldScroll && !this.isTouchDevice) {
       if (
         window.innerHeight + Math.round(window.scrollY) >=
           document.body.offsetHeight - window.innerHeight * 0.15 ||
