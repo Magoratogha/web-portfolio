@@ -1,4 +1,5 @@
-<header>
+<header [ngClass]="{ light: !isDarkMode }">
+  <input type="checkbox" [(ngModel)]="isDarkMode" (change)="toggleDarkMode()" />
   <ul>
     <li>
       <a
@@ -32,4 +33,4 @@
     >Contact</a
   >
 </header>
-<div class="header-shadow"></div>
+<div class="header-shadow" [ngClass]="{ light: !isDarkMode }"></div>

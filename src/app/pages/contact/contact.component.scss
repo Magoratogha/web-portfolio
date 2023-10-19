@@ -1,0 +1,21 @@
+:host {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: calc(100dvh - 5rem);
+}
+
+.form-wrapper {
+  opacity: 0;
+  animation: fadeIn 300ms ease-in;
+  animation-delay: 1s;
+  animation-fill-mode: forwards;
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+}

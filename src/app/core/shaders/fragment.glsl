@@ -1,4 +1,5 @@
 uniform float time;
+uniform float uOpacity;
 uniform float progress;
 uniform vec3 uColor;
 uniform sampler2D uTexture;
@@ -8,5 +9,5 @@ varying vec3 vPosition;
 float PI = 3.141592653589793238;
 void main() {
     vec3 ttt = texture2D(uTexture, vUv).rgb;
-    gl_FragColor = vec4(uColor * 0.7, ttt.r);
+    gl_FragColor = vec4(uColor * uOpacity, ttt.r);
 }

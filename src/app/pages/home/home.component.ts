@@ -7,10 +7,6 @@ import { BackgroundService } from 'src/app/core/services';
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
-  public isTouchDevice: boolean = !!(
-    window.navigator.maxTouchPoints || 'ontouchstart' in document
-  );
-
   constructor(private bgService: BackgroundService) {}
 
   ngOnInit(): void {

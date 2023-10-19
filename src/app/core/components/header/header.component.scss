@@ -77,6 +77,17 @@ header {
       margin-left: 1.5rem;
     }
   }
+  &.light {
+    a {
+      color: #3f3f3f;
+      &:hover {
+        color: black;
+      }
+      &.active {
+        color: black;
+      }
+    }
+  }
 }
 
 .header-shadow {
@@ -87,4 +98,7 @@ header {
   width: 100%;
   height: 150px;
   z-index: 1;
+  &.light {
+    box-shadow: #f2f2f2 0px 160px 65px -70px inset;
+  }
 }

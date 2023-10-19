@@ -45,10 +45,12 @@ export class BackgroundService implements OnDestroy {
     window.navigator.maxTouchPoints || 'ontouchstart' in document
   );
   private isMobileDevice: boolean = window.outerWidth <= 768;
+  private isDarkMode: boolean = true;
 
   private pointerRadius: number = 0.0;
   private pointerHalo: number = 0.06;
   private pointerGravity: number = 12;
+  private particlesOpacity: number = 0.7;
 
   private ngRenderer: Renderer2;
   private onResizeUnlistenFn: Function | undefined;
@@ -59,18 +61,18 @@ export class BackgroundService implements OnDestroy {
     {
       minRadius: 0.2,
       maxRadius: this.isMobileDevice ? 1.2 : 1.5,
-      color: '#88b3c3',
+      colorLight: '#88b3c3',
       size: this.isMobileDevice ? 1.2 : 1,
       apm: 0.2,
-      changeColor: true,
+      color: '#88b3c3',
     },
     {
       minRadius: 0.2,
       maxRadius: this.isMobileDevice ? 1.2 : 1.5,
-      color: '#f7b373',
+      colorLight: '#9e9e9e',
       size: this.isMobileDevice ? 1 : 0.7,
       apm: 0.6,
-      changeColor: false,
+      color: '#ffffff',
     },
   ];
 
@@ -114,6 +116,10 @@ export class BackgroundService implements OnDestroy {
       material.uniforms['uPointerRadius'].value = this.pointerRadius;
       material.uniforms['uPointerHalo'].value = this.pointerHalo;
       material.uniforms['uPointerGravity'].value = this.pointerGravity;
+      material.uniforms['uOpacity'].value = this.particlesOpacity;
+      material.uniforms['uColor'].value = this.isDarkMode
+        ? material.uniforms['uDarkColor'].value
+        : material.uniforms['uLightColor'].value;
     });
     requestAnimationFrame(this.animate.bind(this));
     this.renderer?.render(
@@ -218,8 +224,10 @@ export class BackgroundService implements OnDestroy {
         uPointerGravity: { value: this.pointerGravity },
         size: { value: config.size },
         uColor: { value: new Color(config.color) },
+        uDarkColor: { value: new Color(config.color) },
+        uLightColor: { value: new Color(config.colorLight) },
         resolution: { value: new Vector4() },
-        changeColor: { value: config.changeColor },
+        uOpacity: { value: config.particlesOpacity },
       },
       transparent: true,
       depthTest: false,
@@ -318,5 +326,17 @@ export class BackgroundService implements OnDestroy {
   ngOnDestroy(): void {
     this.onResizeUnlistenFn && this.onResizeUnlistenFn();
     this.onPointerMoveUnlistenFn && this.onPointerMoveUnlistenFn();
+  }
+
+  public setDarkMode() {
+    this.isDarkMode = true;
+    this.renderer?.setClearColor(0x0d0d0d, 1);
+    this.particlesOpacity = 0.7;
+  }
+
+  public setLightMode() {
+    this.isDarkMode = false;
+    this.renderer?.setClearColor(0xf2f2f2, 1);
+    this.particlesOpacity = 1.5;
   }
 }

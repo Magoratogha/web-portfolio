@@ -38,3 +38,9 @@ svg {
 .fw-light {
   font-weight: 200 !important;
 }
+
+.light {
+  .fw-light {
+    font-weight: 300 !important;
+  }
+}
