@@ -92,8 +92,15 @@ svg {
   font-weight: 600 !important;
 }
 
+.divider {
+  background-color: white;
+}
+
 .light {
   .loader-container {
     background-color: #f2f2f2 !important;
+  }
+  .divider {
+    background-color: black;
   }
 }
