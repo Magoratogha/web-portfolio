@@ -4,7 +4,16 @@
   [@leave]
   [show]="isLoading"
 ></app-main-loader>
-<app-header></app-header>
+<app-header [isDarkMode]="isDarkMode"></app-header>
 <div #container class="container" [@routerAnimation]="prepareRoute(outlet)">
   <router-outlet #outlet="outlet"></router-outlet>
 </div>
+<button
+  class="dark-mode-toggle"
+  [ngClass]="{ light: !isDarkMode }"
+  (click)="setTheme(!isDarkMode)"
+>
+  <mat-icon [@iconChange]="isDarkMode">{{
+    isDarkMode ? "dark_mode" : "light_mode"
+  }}</mat-icon>
+</button>

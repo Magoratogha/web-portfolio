@@ -2,16 +2,16 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+import { MatIconModule } from '@angular/material/icon';
+import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent, MainLoaderComponent } from './core/components';
-import { AppRoutingModule } from './app-routing.module';
 import {
   AboutMeComponent,
   ContactComponent,
   HomeComponent,
   SkillsComponent,
 } from './pages';
-import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -27,7 +27,7 @@ import { FormsModule } from '@angular/forms';
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
-    FormsModule,
+    MatIconModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

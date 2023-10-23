@@ -1,4 +1,4 @@
-import { Component, Renderer2 } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { filter } from 'rxjs';
 import {
@@ -8,7 +8,6 @@ import {
   SKILLS_ROUTE,
 } from '../../constants';
 import { Pages } from '../../enums';
-import { BackgroundService } from '../../services';
 
 @Component({
   selector: 'app-header',
@@ -16,19 +15,15 @@ import { BackgroundService } from '../../services';
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent {
+  @Input() isDarkMode: boolean = true;
   public currentPage: Pages = Pages.Home;
-  public isDarkMode: boolean = true;
   Pages = Pages;
   HOME_ROUTE = HOME_ROUTE;
   ABOUT_ROUTE = ABOUT_ROUTE;
   SKILLS_ROUTE = SKILLS_ROUTE;
   CONTACT_ROUTE = CONTACT_ROUTE;
 
-  constructor(
-    private bgService: BackgroundService,
-    private router: Router,
-    private renderer: Renderer2
-  ) {
+  constructor(private router: Router) {
     this.router.events
       .pipe(filter((e) => e instanceof NavigationEnd))
       .subscribe((event) => {
@@ -50,17 +45,5 @@ export class HeaderComponent {
             break;
         }
       });
-  }
-
-  public toggleDarkMode() {
-    if (this.isDarkMode) {
-      this.renderer.removeClass(document.body, 'light');
-      this.renderer.setStyle(document.body, 'color', 'white');
-      this.bgService.setDarkMode();
-    } else {
-      this.renderer.addClass(document.body, 'light');
-      this.renderer.setStyle(document.body, 'color', 'black');
-      this.bgService.setLightMode();
-    }
   }
 }

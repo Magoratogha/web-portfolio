@@ -83,6 +83,7 @@ export class BackgroundService implements OnDestroy {
   public initBackground(canvas: HTMLElement): void {
     this.canvas = canvas;
     this.scene = new Scene();
+    this.scene.background = new Color('#0d0d0d');
     this.renderer = new WebGLRenderer({
       preserveDrawingBuffer: true,
       antialias: true,
@@ -90,7 +91,6 @@ export class BackgroundService implements OnDestroy {
     });
     this.renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
     this.renderer.setSize(window.outerWidth, window.outerHeight);
-    this.renderer.setClearColor(0x0d0d0d, 1);
     this.renderer.outputColorSpace = SRGBColorSpace;
     this.camera = new PerspectiveCamera(
       70,
@@ -330,13 +330,25 @@ export class BackgroundService implements OnDestroy {
 
   public setDarkMode() {
     this.isDarkMode = true;
-    this.renderer?.setClearColor(0x0d0d0d, 1);
     this.particlesOpacity = 0.7;
+    const color = new Color('#0d0d0d');
+    gsap.to((this.scene as Scene).background, {
+      duration: 0.5,
+      r: color.r,
+      g: color.g,
+      b: color.b,
+    });
   }
 
   public setLightMode() {
     this.isDarkMode = false;
-    this.renderer?.setClearColor(0xf2f2f2, 1);
     this.particlesOpacity = 1.5;
+    const color = new Color('#f2f2f2');
+    gsap.to((this.scene as Scene).background, {
+      duration: 0.5,
+      r: color.r,
+      g: color.g,
+      b: color.b,
+    });
   }
 }
