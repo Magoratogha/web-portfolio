@@ -112,7 +112,6 @@ export class BackgroundService implements OnDestroy {
   private animate(): void {
     this.materials.map((material: ShaderMaterial) => {
       material.uniforms['time'].value += 0.02;
-      material.uniforms['uMouse'].value = this.pointer;
       material.uniforms['uPointerRadius'].value = this.pointerRadius;
       material.uniforms['uPointerHalo'].value = this.pointerHalo;
       material.uniforms['uPointerGravity'].value = this.pointerGravity;
@@ -148,22 +147,6 @@ export class BackgroundService implements OnDestroy {
     if (this.isTouchDevice) {
       this.pointerHalo = 0;
       this.pointerGravity = 30;
-    } else {
-      this.mesh = new Mesh(
-        new PlaneGeometry(6, 10, 10, 10).rotateX(-Math.PI / 2),
-        new MeshBasicMaterial({
-          color: 0xff0000,
-          wireframe: true,
-        })
-      );
-      this.mesh.visible = false;
-      this.scene?.add(this.mesh);
-
-      this.onPointerMoveUnlistenFn = this.ngRenderer.listen(
-        window,
-        'pointermove',
-        this.onPointerMove.bind(this)
-      );
     }
   }
 
@@ -173,18 +156,6 @@ export class BackgroundService implements OnDestroy {
     (this.camera as PerspectiveCamera).aspect =
       window.outerWidth / window.outerHeight;
     (this.camera as PerspectiveCamera).updateProjectionMatrix();
-  }
-
-  private onPointerMove(event: PointerEvent): void {
-    const pointer = new Vector2();
-    pointer.x = (event.clientX / window.innerWidth) * 2 - 1;
-    pointer.y = -(event.clientY / window.innerHeight) * 2 + 1;
-
-    this.raycaster.setFromCamera(pointer, this.camera as PerspectiveCamera);
-    const intersects = this.raycaster.intersectObjects([this.mesh as Mesh]);
-    if (intersects.length) {
-      this.pointer.copy(intersects[0].point);
-    }
   }
 
   private addParticles(config: any): void {
@@ -218,7 +189,6 @@ export class BackgroundService implements OnDestroy {
         uTexture: { value: new TextureLoader().load(particleTexture) },
         time: { value: 0 },
         uAmp: { value: config.amp },
-        uMouse: { value: new Vector3() },
         uPointerRadius: { value: this.pointerRadius },
         uPointerHalo: { value: this.pointerHalo },
         uPointerGravity: { value: this.pointerGravity },

@@ -4,7 +4,6 @@ uniform float uPointerRadius;
 uniform float uPointerHalo;
 uniform float uPointerGravity;
 uniform float size;
-uniform vec3 uMouse;
 varying vec2 vUv;
 varying vec3 vPosition;
 uniform vec2 pixels;
@@ -117,12 +116,6 @@ mat3 rotation3dY(float angle) {
   );
 }
 
-float saturate(float x)
-{
-  return clamp(x, 0.0, 1.0);
-}
-
-
 vec3 fbmVec3(vec3 p, float frequency, float offset)
 {
   return vec3(
@@ -139,22 +132,12 @@ vec3 getOffset(vec3 p) {
     return offset * uApm;
 }
 
-vec3 getPointOnMouse(vec3 pos, float t)
-{
-  vec3 dir = (pos - uMouse);
-  return mix(pos, uMouse + normalize(dir) * uPointerRadius, t);
-}
-
 void main() {
   float particle_size = cnoise(pos * 5.0) * 0.5 + 0.5;
   vec3 world_pos = rotation3dY(time * 0.3 * (0.1 + 0.5 * particle_size)) * pos;
   vec3 offset1 = getOffset(world_pos);
   vec3 offset2 = fbmVec3(world_pos + offset1, 0.0, 0.0);
   vec3 particle_position = (modelMatrix * vec4(world_pos + offset1 + offset2, 1.0)).xyz;
-
-  float distance_to_mouse = 1.0 - saturate((length(uMouse.xy - particle_position.xy) - uPointerHalo));
-  particle_position = getPointOnMouse(particle_position, pow(distance_to_mouse, uPointerGravity));
-
   vec4 view_pos = viewMatrix * vec4(particle_position, 1.0);
   view_pos.xyz += position * size * (0.01 + 0.1 * particle_size);
   gl_Position = projectionMatrix * view_pos;

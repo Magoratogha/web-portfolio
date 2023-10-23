@@ -26,7 +26,9 @@ export class AppComponent implements OnInit, AfterViewInit {
     private bgService: BackgroundService,
     private renderer: Renderer2
   ) {
-    this.isDarkMode = localStorage.getItem('darkMode') === 'true';
+    this.isDarkMode = localStorage.getItem('darkMode')
+      ? localStorage.getItem('darkMode') === 'true'
+      : true;
     if (!this.isDarkMode) {
       this.renderer.addClass(document.body, 'light');
     }
