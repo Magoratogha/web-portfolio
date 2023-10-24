@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Renderer2 } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { filter } from 'rxjs';
 import {
@@ -8,6 +8,7 @@ import {
   SKILLS_ROUTE,
 } from '../../constants';
 import { Pages } from '../../enums';
+import { BackgroundService } from '../../services';
 
 @Component({
   selector: 'app-header',
@@ -23,7 +24,11 @@ export class HeaderComponent {
   SKILLS_ROUTE = SKILLS_ROUTE;
   CONTACT_ROUTE = CONTACT_ROUTE;
 
-  constructor(private router: Router) {
+  constructor(
+    private router: Router,
+    private bgService: BackgroundService,
+    private renderer: Renderer2
+  ) {
     this.router.events
       .pipe(filter((e) => e instanceof NavigationEnd))
       .subscribe((event) => {
@@ -44,6 +49,26 @@ export class HeaderComponent {
             this.currentPage = Pages.Home;
             break;
         }
+
+        setTimeout(() => {
+          const elements = document.getElementsByClassName(
+            'hoverable'
+          ) as HTMLCollectionOf<HTMLElement>;
+          for (let i = 0; i < elements.length; i++) {
+            elements[i].onmouseover = this.setMouseEnter.bind(this);
+            elements[i].onmouseleave = this.setMouseLeave.bind(this);
+          }
+        }, this.bgService.animationTime * 1000);
       });
+  }
+
+  setMouseEnter(): void {
+    const cursor = document.querySelector('.cursor') as HTMLElement;
+    this.renderer.addClass(cursor, 'hover');
+  }
+
+  setMouseLeave(): void {
+    const cursor = document.querySelector('.cursor') as HTMLElement;
+    this.renderer.removeClass(cursor, 'hover');
   }
 }

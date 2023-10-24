@@ -34,12 +34,33 @@ $portfolio-v2-theme: mat.define-light-theme(
 // that you are using.
 @include mat.all-component-themes($portfolio-v2-theme);
 
+.cursor {
+  width: 24px;
+  height: 24px;
+  border: 2px solid white;
+  border-radius: 50%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  box-shadow: 0px 0px 20px 0px rgba(255, 255, 255, 0.6);
+  z-index: 10;
+  pointer-events: none;
+  transition: transform 100ms linear;
+  &.hover {
+    transform-origin: center;
+    transform: scale3d(2, 2, 1);
+    mix-blend-mode: difference;
+    background: white;
+  }
+}
+
 html,
 body {
   overflow-x: hidden;
 }
 
 body {
+  cursor: none;
   margin: 0;
   font-family: Roboto Condensed, "Helvetica Neue", sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -49,6 +70,15 @@ body {
     background: #f2f2f2;
     color: black;
   }
+}
+
+*:hover,
+*:active,
+*:focus,
+*:focus-visible,
+*:focus-within,
+*:link {
+  cursor: none !important;
 }
 
 button,
@@ -102,5 +132,12 @@ svg {
   }
   .divider {
     background-color: black;
+  }
+  .cursor {
+    border-color: black;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.4) !important;
+    &.hover {
+      border-color: white;
+    }
   }
 }

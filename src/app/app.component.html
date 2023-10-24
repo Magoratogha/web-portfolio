@@ -9,7 +9,7 @@
   <router-outlet #outlet="outlet"></router-outlet>
 </div>
 <button
-  class="dark-mode-toggle"
+  class="dark-mode-toggle hoverable"
   [ngClass]="{ light: !isDarkMode }"
   (click)="setTheme(!isDarkMode)"
 >
@@ -17,3 +17,4 @@
     isDarkMode ? "dark_mode" : "light_mode"
   }}</mat-icon>
 </button>
+<div class="cursor"></div>

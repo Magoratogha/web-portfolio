@@ -2,6 +2,7 @@ import {
   AfterViewInit,
   Component,
   ElementRef,
+  HostListener,
   OnInit,
   Renderer2,
   ViewChild,
@@ -43,6 +44,15 @@ export class AppComponent implements OnInit, AfterViewInit {
     if (!this.isDarkMode) {
       this.bgService.setLightMode();
     }
+  }
+
+  @HostListener('document:mousemove', ['$event'])
+  onMouseMove($event: MouseEvent) {
+    const cursor = document.querySelector('.cursor') as HTMLElement;
+    let x = $event.pageX;
+    let y = $event.pageY;
+    this.renderer.setStyle(cursor, 'left', x - 12 + 'px');
+    this.renderer.setStyle(cursor, 'top', y - 12 + 'px');
   }
 
   prepareRoute(outlet: RouterOutlet) {
