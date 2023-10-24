@@ -39,7 +39,7 @@ export class BackgroundService implements OnDestroy {
   );
   private isMobileDevice: boolean = window.outerWidth <= 768;
   private isDarkMode: boolean = true;
-  private particlesOpacity: number = 0.7;
+  private particlesOpacity: number = 0.55;
 
   private ngRenderer: Renderer2;
   private onResizeUnlistenFn: Function | undefined;
@@ -50,7 +50,7 @@ export class BackgroundService implements OnDestroy {
     {
       minRadius: 0.2,
       maxRadius: this.isMobileDevice ? 1.2 : 1.5,
-      colorLight: '#88b3c3',
+      colorLight: '#aac9d4',
       size: this.isMobileDevice ? 1.2 : 1,
       apm: 0.2,
       color: '#88b3c3',
@@ -58,7 +58,7 @@ export class BackgroundService implements OnDestroy {
     {
       minRadius: 0.2,
       maxRadius: this.isMobileDevice ? 1.2 : 1.5,
-      colorLight: '#9e9e9e',
+      colorLight: '#b7b7b7',
       size: this.isMobileDevice ? 1 : 0.7,
       apm: 0.6,
       color: '#ffffff',
@@ -120,6 +120,8 @@ export class BackgroundService implements OnDestroy {
       'resize',
       this.onResize.bind(this)
     );
+
+    screen.orientation.onchange = this.onResize.bind(this);
 
     this.ngRenderer.listen(this.canvas, 'webglcontextlost', (event) => {
       event.preventDefault();
@@ -263,7 +265,7 @@ export class BackgroundService implements OnDestroy {
 
   public setDarkMode() {
     this.isDarkMode = true;
-    this.particlesOpacity = 0.7;
+    this.particlesOpacity = 0.55;
     const color = new Color('#0d0d0d');
     gsap.to((this.scene as Scene).background, {
       duration: 0.5,
@@ -275,7 +277,7 @@ export class BackgroundService implements OnDestroy {
 
   public setLightMode() {
     this.isDarkMode = false;
-    this.particlesOpacity = 1.5;
+    this.particlesOpacity = 1.25;
     const color = new Color('#f2f2f2');
     gsap.to((this.scene as Scene).background, {
       duration: 0.5,
