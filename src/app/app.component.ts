@@ -2,14 +2,14 @@ import {
   AfterViewInit,
   Component,
   ElementRef,
-  HostListener,
+  OnDestroy,
   OnInit,
   Renderer2,
   ViewChild,
 } from '@angular/core';
+import { RouterOutlet } from '@angular/router';
 import { IconChange, Leave, RouterAnimation } from './core/animations';
 import { BackgroundService } from './core/services';
-import { RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -17,11 +17,16 @@ import { RouterOutlet } from '@angular/router';
   styleUrls: ['./app.component.scss'],
   animations: [Leave(), RouterAnimation, IconChange],
 })
-export class AppComponent implements OnInit, AfterViewInit {
+export class AppComponent implements OnInit, AfterViewInit, OnDestroy {
   @ViewChild('bg', { read: ElementRef })
   private canvas: ElementRef<HTMLElement> | undefined;
   public isLoading: boolean = true;
   public isDarkMode: boolean;
+  public isTouchDevice: boolean = !!(
+    window.navigator.maxTouchPoints || 'ontouchstart' in document
+  );
+  private unlistenMousemoveFn: Function | undefined;
+  private cursor: HTMLElement | undefined;
 
   constructor(
     private bgService: BackgroundService,
@@ -44,15 +49,22 @@ export class AppComponent implements OnInit, AfterViewInit {
     if (!this.isDarkMode) {
       this.bgService.setLightMode();
     }
+
+    if (!this.isTouchDevice) {
+      this.cursor = document.querySelector('.cursor') as HTMLElement;
+      this.unlistenMousemoveFn = this.renderer.listen(
+        document,
+        'mousemove',
+        this.onMouseMove.bind(this)
+      );
+    }
   }
 
-  @HostListener('document:mousemove', ['$event'])
   onMouseMove($event: MouseEvent) {
-    const cursor = document.querySelector('.cursor') as HTMLElement;
     let x = $event.pageX;
     let y = $event.pageY;
-    this.renderer.setStyle(cursor, 'left', x - 12 + 'px');
-    this.renderer.setStyle(cursor, 'top', y - 12 + 'px');
+    this.renderer.setStyle(this.cursor, 'left', x - 12 + 'px');
+    this.renderer.setStyle(this.cursor, 'top', y - 12 + 'px');
   }
 
   prepareRoute(outlet: RouterOutlet) {
@@ -69,5 +81,9 @@ export class AppComponent implements OnInit, AfterViewInit {
       this.renderer.addClass(document.body, 'light');
       this.bgService.setLightMode();
     }
+  }
+
+  ngOnDestroy(): void {
+    this.unlistenMousemoveFn && this.unlistenMousemoveFn();
   }
 }

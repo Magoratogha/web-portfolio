@@ -1,8 +1,5 @@
 uniform float time;
 uniform float uApm;
-uniform float uPointerRadius;
-uniform float uPointerHalo;
-uniform float uPointerGravity;
 uniform float size;
 varying vec2 vUv;
 varying vec3 vPosition;

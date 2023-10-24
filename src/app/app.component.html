@@ -17,4 +17,4 @@
     isDarkMode ? "dark_mode" : "light_mode"
   }}</mat-icon>
 </button>
-<div class="cursor"></div>
+<div *ngIf="!isTouchDevice" class="cursor"></div>

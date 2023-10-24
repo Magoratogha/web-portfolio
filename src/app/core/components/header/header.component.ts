@@ -18,6 +18,10 @@ import { BackgroundService } from '../../services';
 export class HeaderComponent {
   @Input() isDarkMode: boolean = true;
   public currentPage: Pages = Pages.Home;
+  private cursor: HTMLElement | undefined;
+  private isTouchDevice: boolean = !!(
+    window.navigator.maxTouchPoints || 'ontouchstart' in document
+  );
   Pages = Pages;
   HOME_ROUTE = HOME_ROUTE;
   ABOUT_ROUTE = ABOUT_ROUTE;
@@ -50,25 +54,26 @@ export class HeaderComponent {
             break;
         }
 
-        setTimeout(() => {
-          const elements = document.getElementsByClassName(
-            'hoverable'
-          ) as HTMLCollectionOf<HTMLElement>;
-          for (let i = 0; i < elements.length; i++) {
-            elements[i].onmouseover = this.setMouseEnter.bind(this);
-            elements[i].onmouseleave = this.setMouseLeave.bind(this);
-          }
-        }, this.bgService.animationTime * 1000);
+        if (!this.isTouchDevice) {
+          this.cursor = document.querySelector('.cursor') as HTMLElement;
+          setTimeout(() => {
+            const elements = document.getElementsByClassName(
+              'hoverable'
+            ) as HTMLCollectionOf<HTMLElement>;
+            for (let i = 0; i < elements.length; i++) {
+              elements[i].onmouseover = this.setMouseEnter.bind(this);
+              elements[i].onmouseleave = this.setMouseLeave.bind(this);
+            }
+          }, this.bgService.animationTime * 1000);
+        }
       });
   }
 
   setMouseEnter(): void {
-    const cursor = document.querySelector('.cursor') as HTMLElement;
-    this.renderer.addClass(cursor, 'hover');
+    this.renderer.addClass(this.cursor, 'hover');
   }
 
   setMouseLeave(): void {
-    const cursor = document.querySelector('.cursor') as HTMLElement;
-    this.renderer.removeClass(cursor, 'hover');
+    this.renderer.removeClass(this.cursor, 'hover');
   }
 }

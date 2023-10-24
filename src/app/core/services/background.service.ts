@@ -5,13 +5,13 @@ import {
   Renderer2,
   RendererFactory2,
 } from '@angular/core';
+import gsap from 'gsap';
 import {
   Color,
   DoubleSide,
   InstancedBufferAttribute,
   InstancedBufferGeometry,
   Mesh,
-  MeshBasicMaterial,
   PerspectiveCamera,
   PlaneGeometry,
   Raycaster,
@@ -19,14 +19,12 @@ import {
   Scene,
   ShaderMaterial,
   TextureLoader,
-  Vector2,
   Vector3,
   Vector4,
   WebGLRenderer,
 } from 'three';
 import fragment from '../shaders/fragment.glsl';
 import vertex from '../shaders/vertex.glsl';
-import gsap from 'gsap';
 
 @Injectable({
   providedIn: 'root',
@@ -36,9 +34,6 @@ export class BackgroundService implements OnDestroy {
   private renderer: WebGLRenderer | undefined;
   private scene: Scene | undefined;
   private camera: PerspectiveCamera | undefined;
-  private mesh: Mesh | undefined;
-  private raycaster: Raycaster = new Raycaster();
-  private pointer: Vector3 = new Vector3();
   public animationTime: number = 1.5;
   private animationEase: string = 'power3.inOut';
   private isTouchDevice: boolean = !!(
@@ -46,10 +41,6 @@ export class BackgroundService implements OnDestroy {
   );
   private isMobileDevice: boolean = window.outerWidth <= 768;
   private isDarkMode: boolean = true;
-
-  private pointerRadius: number = 0.0;
-  private pointerHalo: number = 0.06;
-  private pointerGravity: number = 12;
   private particlesOpacity: number = 0.7;
 
   private ngRenderer: Renderer2;
@@ -112,9 +103,6 @@ export class BackgroundService implements OnDestroy {
   private animate(): void {
     this.materials.map((material: ShaderMaterial) => {
       material.uniforms['time'].value += 0.02;
-      material.uniforms['uPointerRadius'].value = this.pointerRadius;
-      material.uniforms['uPointerHalo'].value = this.pointerHalo;
-      material.uniforms['uPointerGravity'].value = this.pointerGravity;
       material.uniforms['uOpacity'].value = this.particlesOpacity;
       material.uniforms['uColor'].value = this.isDarkMode
         ? material.uniforms['uDarkColor'].value
@@ -143,11 +131,6 @@ export class BackgroundService implements OnDestroy {
       'webglcontextrestored',
       this.initBackground.bind(this)
     );
-
-    if (this.isTouchDevice) {
-      this.pointerHalo = 0;
-      this.pointerGravity = 30;
-    }
   }
 
   private onResize(): void {
@@ -189,9 +172,6 @@ export class BackgroundService implements OnDestroy {
         uTexture: { value: new TextureLoader().load(particleTexture) },
         time: { value: 0 },
         uAmp: { value: config.amp },
-        uPointerRadius: { value: this.pointerRadius },
-        uPointerHalo: { value: this.pointerHalo },
-        uPointerGravity: { value: this.pointerGravity },
         size: { value: config.size },
         uColor: { value: new Color(config.color) },
         uDarkColor: { value: new Color(config.color) },
@@ -210,10 +190,6 @@ export class BackgroundService implements OnDestroy {
   }
 
   public setPanoramicView(): void {
-    if (!this.isTouchDevice) {
-      this.pointerHalo = 0.12;
-      this.pointerGravity = 5;
-    }
     gsap.to((this.camera as PerspectiveCamera)?.position, {
       duration: this.animationTime,
       ease: this.animationEase,
@@ -231,10 +207,6 @@ export class BackgroundService implements OnDestroy {
   }
 
   public setMiddleView(): void {
-    if (!this.isTouchDevice) {
-      this.pointerHalo = 0.09;
-      this.pointerGravity = 10;
-    }
     gsap.to((this.camera as PerspectiveCamera)?.position, {
       duration: this.animationTime,
       ease: this.animationEase,
@@ -252,10 +224,6 @@ export class BackgroundService implements OnDestroy {
   }
 
   public setMiddleView2(): void {
-    if (!this.isTouchDevice) {
-      this.pointerHalo = 0.09;
-      this.pointerGravity = 12;
-    }
     gsap.to((this.camera as PerspectiveCamera)?.position, {
       duration: this.animationTime,
       ease: this.animationEase,
@@ -273,10 +241,6 @@ export class BackgroundService implements OnDestroy {
   }
 
   public setInmerseView(): void {
-    if (!this.isTouchDevice) {
-      this.pointerHalo = 0.06;
-      this.pointerGravity = 12;
-    }
     gsap.to((this.camera as PerspectiveCamera)?.position, {
       duration: this.animationTime,
       ease: this.animationEase,
