@@ -14,12 +14,10 @@ import {
   Mesh,
   PerspectiveCamera,
   PlaneGeometry,
-  Raycaster,
   SRGBColorSpace,
   Scene,
   ShaderMaterial,
   TextureLoader,
-  Vector3,
   Vector4,
   WebGLRenderer,
 } from 'three';
@@ -76,8 +74,10 @@ export class BackgroundService implements OnDestroy {
     this.scene = new Scene();
     this.scene.background = new Color('#0d0d0d');
     this.renderer = new WebGLRenderer({
-      preserveDrawingBuffer: true,
-      antialias: true,
+      powerPreference: 'high-performance',
+      antialias: false,
+      stencil: false,
+      depth: false,
       canvas: this.canvas,
     });
     this.renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
