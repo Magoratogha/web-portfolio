@@ -74,7 +74,6 @@ export class BackgroundService implements OnDestroy {
     this.scene = new Scene();
     this.scene.background = new Color('#0d0d0d');
     this.renderer = new WebGLRenderer({
-      powerPreference: 'high-performance',
       antialias: false,
       stencil: false,
       depth: false,
