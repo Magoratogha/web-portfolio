@@ -1,3 +1,5 @@
+@import "../../../../styles/variables.scss";
+
 header {
   position: fixed;
   width: 100%;
@@ -10,7 +12,7 @@ header {
   z-index: 2;
   a {
     text-decoration: none;
-    color: #c0c0c0;
+    color: $light-darkest-color;
     position: relative;
     &:before {
       content: "";
@@ -27,14 +29,14 @@ header {
       transition: transform 0.3s ease-in-out;
     }
     &:hover {
-      color: white;
+      color: $light-lightest-color;
       &:before {
         transform: scale3d(1, 1, 1);
         transform-origin: left;
       }
     }
     &.active {
-      color: white;
+      color: $light-lightest-color;
       font-weight: 600;
       &:before {
         content: "";
@@ -79,19 +81,19 @@ header {
   }
   &.light {
     a {
-      color: #3f3f3f;
+      color: $dark-lightest-color;
       &:hover {
-        color: black;
+        color: $dark-darkest-color;
       }
       &.active {
-        color: black;
+        color: $dark-darkest-color;
       }
     }
   }
 }
 
 .header-shadow {
-  box-shadow: #0d0d0d 0px 160px 65px -70px inset;
+  box-shadow: $dark-main-color 0px 160px 65px -70px inset;
   position: fixed;
   top: 0;
   left: 0;
@@ -99,6 +101,6 @@ header {
   height: 150px;
   z-index: 1;
   &.light {
-    box-shadow: #f2f2f2 0px 160px 65px -70px inset;
+    box-shadow: $light-main-color 0px 160px 65px -70px inset;
   }
 }

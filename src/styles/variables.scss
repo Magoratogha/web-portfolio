@@ -1,0 +1,108 @@
+$dark-main-color: #0d0d0d;
+$dark-darkest-color: black;
+$dark-lightest-color: #3f3f3f;
+$dark-warn-color: #ff625d;
+$light-main-color: #f2f2f2;
+$light-darkest-color: #c0c0c0;
+$light-lightest-color: white;
+$light-warn-color: #ff625d;
+
+$dark-palette: (
+  50: $light-lightest-color,
+  100: $light-lightest-color,
+  200: $light-lightest-color,
+  300: $light-lightest-color,
+  400: $light-lightest-color,
+  500: $light-lightest-color,
+  600: $light-lightest-color,
+  700: $light-lightest-color,
+  800: $light-lightest-color,
+  900: $light-lightest-color,
+  contrast: (
+    50: $dark-darkest-color,
+    100: $dark-darkest-color,
+    200: $dark-darkest-color,
+    300: $dark-darkest-color,
+    400: $dark-darkest-color,
+    500: $dark-darkest-color,
+    600: $dark-darkest-color,
+    700: $dark-darkest-color,
+    800: $dark-darkest-color,
+    900: $dark-darkest-color,
+  ),
+);
+
+$dark-warn-palette: (
+  50: $dark-warn-color,
+  100: $dark-warn-color,
+  200: $dark-warn-color,
+  300: $dark-warn-color,
+  400: $dark-warn-color,
+  500: $dark-warn-color,
+  600: $dark-warn-color,
+  700: $dark-warn-color,
+  800: $dark-warn-color,
+  900: $dark-warn-color,
+  contrast: (
+    50: $dark-darkest-color,
+    100: $dark-darkest-color,
+    200: $dark-darkest-color,
+    300: $dark-darkest-color,
+    400: $dark-darkest-color,
+    500: $dark-darkest-color,
+    600: $dark-darkest-color,
+    700: $dark-darkest-color,
+    800: $dark-darkest-color,
+    900: $dark-darkest-color,
+  ),
+);
+
+$light-palette: (
+  50: $dark-darkest-color,
+  100: $dark-darkest-color,
+  200: $dark-darkest-color,
+  300: $dark-darkest-color,
+  400: $dark-darkest-color,
+  500: $dark-darkest-color,
+  600: $dark-darkest-color,
+  700: $dark-darkest-color,
+  800: $dark-darkest-color,
+  900: $dark-darkest-color,
+  contrast: (
+    50: $light-lightest-color,
+    100: $light-lightest-color,
+    200: $light-lightest-color,
+    300: $light-lightest-color,
+    400: $light-lightest-color,
+    500: $light-lightest-color,
+    600: $light-lightest-color,
+    700: $light-lightest-color,
+    800: $light-lightest-color,
+    900: $light-lightest-color,
+  ),
+);
+
+$light-warn-palette: (
+  50: $light-warn-color,
+  100: $light-warn-color,
+  200: $light-warn-color,
+  300: $light-warn-color,
+  400: $light-warn-color,
+  500: $light-warn-color,
+  600: $light-warn-color,
+  700: $light-warn-color,
+  800: $light-warn-color,
+  900: $light-warn-color,
+  contrast: (
+    50: $light-lightest-color,
+    100: $light-lightest-color,
+    200: $light-lightest-color,
+    300: $light-lightest-color,
+    400: $light-lightest-color,
+    500: $light-lightest-color,
+    600: $light-lightest-color,
+    700: $light-lightest-color,
+    800: $light-lightest-color,
+    900: $light-lightest-color,
+  ),
+);

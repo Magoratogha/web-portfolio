@@ -5,7 +5,12 @@
   [show]="isLoading"
 ></app-main-loader>
 <app-header [isDarkMode]="isDarkMode"></app-header>
-<div #container class="container" [@routerAnimation]="prepareRoute(outlet)">
+<div
+  #container
+  class="container"
+  [ngClass]="{ 'light-theme': !isDarkMode }"
+  [@routerAnimation]="prepareRoute(outlet)"
+>
   <router-outlet #outlet="outlet"></router-outlet>
 </div>
 <button

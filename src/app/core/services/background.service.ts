@@ -4,6 +4,7 @@ import {
   OnDestroy,
   Renderer2,
   RendererFactory2,
+  isDevMode,
 } from '@angular/core';
 import gsap from 'gsap';
 import {
@@ -144,8 +145,15 @@ export class BackgroundService implements OnDestroy {
 
   private addParticles(config: any): void {
     const width = window.outerWidth;
-    let count =
-      width <= 500 ? 2000 : width <= 768 ? 3000 : width <= 1024 ? 5000 : 7000;
+    let count = isDevMode()
+      ? 500
+      : width <= 500
+      ? 2000
+      : width <= 768
+      ? 3000
+      : width <= 1024
+      ? 5000
+      : 7000;
     const minRadius = config.minRadius;
     const maxRadius = config.maxRadius;
     const particlesGeo = new PlaneGeometry(1, 1);

@@ -6,6 +6,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent, MainLoaderComponent } from './core/components';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
 import {
   AboutMeComponent,
   ContactComponent,
@@ -28,6 +30,8 @@ import {
     BrowserAnimationsModule,
     AppRoutingModule,
     MatIconModule,
+    MatFormFieldModule,
+    MatInputModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

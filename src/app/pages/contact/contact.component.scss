@@ -1,11 +1,27 @@
 :host {
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   height: calc(100dvh - 5rem);
 }
 
-.form-wrapper {
+.form-shadow {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 100dvh;
+  background-color: rgba(13, 13, 13, 0.4);
+  border-top: 2px solid #3f3f3f;
+  clip-path: polygon(
+    100% 23%,
+    90% 25%,
+    63% 42%,
+    24% 47%,
+    0 59%,
+    0 100%,
+    100% 100%
+  );
   opacity: 0;
   animation: fadeIn 300ms ease-in;
   animation-delay: 1s;
@@ -17,5 +33,62 @@
     to {
       opacity: 1;
     }
+  }
+  @media (max-width: 768px) {
+    clip-path: polygon(100% 40%, 60% 45%, 30% 44%, 0 48%, 0 100%, 100% 100%);
+  }
+}
+
+@supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {
+  .form-shadow {
+    -webkit-backdrop-filter: blur(4px);
+    backdrop-filter: blur(4px);
+  }
+}
+
+form {
+  width: 100%;
+  max-width: 600px;
+  flex-basis: 60%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  animation: fadeIn 300ms ease-in;
+  animation-delay: 1s;
+  animation-fill-mode: forwards;
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  .row {
+    width: 100%;
+  }
+}
+
+.content-wrapper {
+  flex-basis: 40%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  animation: fadeIn 300ms ease-in;
+  animation-delay: 1s;
+  animation-fill-mode: forwards;
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  .row {
+    width: 100%;
   }
 }
