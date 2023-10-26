@@ -7,7 +7,6 @@
 <app-header [isDarkMode]="isDarkMode"></app-header>
 <div
   #container
-  class="container"
   [ngClass]="{ 'light-theme': !isDarkMode }"
   [@routerAnimation]="prepareRoute(outlet)"
 >

@@ -143,3 +143,23 @@ svg {
 mat-form-field {
   width: 100%;
 }
+
+.container {
+  padding-top: 4rem;
+  padding-bottom: 1rem;
+}
+
+.fade-in {
+  opacity: 0;
+  animation: fadeIn 300ms ease-in;
+  animation-delay: 1s;
+  animation-fill-mode: forwards;
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+}
