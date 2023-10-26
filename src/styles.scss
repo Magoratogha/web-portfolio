@@ -48,6 +48,10 @@ $dark-theme: mat.define-dark-theme(
   }
 }
 
+html {
+  position: relative;
+}
+
 html,
 body {
   overflow-x: hidden;
@@ -135,7 +139,6 @@ svg {
     }
   }
   .form-shadow {
-    border-top: 2px solid #c0c0c0 !important;
     background-color: rgba(242, 242, 242, 0.4) !important;
   }
 }
