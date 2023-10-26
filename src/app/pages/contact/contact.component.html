@@ -4,29 +4,56 @@
     <p>HOLA</p>
   </div>
   <div class="form-wrapper">
-    <form class="row justify-content-center">
-      <div class="col-12 col-sm-6">
+    <form
+      id="contact-form"
+      [formGroup]="contactForm"
+      class="row justify-content-center"
+    >
+      <div class="col-12 col-sm-6 pb-2">
         <mat-form-field class="hoverable" appearance="outline">
           <mat-label>Your name</mat-label>
-          <input matInput placeholder="John Doe" />
+          <input formControlName="name" matInput placeholder="John Doe" />
+          <mat-error>Your name is required</mat-error>
         </mat-form-field>
       </div>
-      <div class="col-12 col-sm-6">
+      <div class="col-12 col-sm-6 pb-2">
         <mat-form-field class="hoverable" appearance="outline">
           <mat-label>Your email address</mat-label>
-          <input matInput placeholder="pat@example.com" />
+          <input
+            formControlName="email"
+            matInput
+            placeholder="pat@example.com"
+          />
+          <mat-error
+            >{{
+              contactForm.get("email")?.hasError("email")
+                ? "Please enter a valid email address"
+                : "Your email address is required"
+            }}
+          </mat-error>
         </mat-form-field>
       </div>
       <div class="col-12">
         <mat-form-field class="hoverable" appearance="outline">
           <mat-label>Your message</mat-label>
           <textarea
+            formControlName="message"
             matInput
             rows="3"
             placeholder="Write whatever you want to say to me"
           ></textarea>
+          <mat-error>Your message is required</mat-error>
         </mat-form-field>
       </div>
     </form>
+    <button
+      (click)="sendEmail()"
+      class="submit-button hoverable"
+      type="button"
+      form="contact-form"
+      [disabled]="!contactForm.valid"
+    >
+      <mat-icon>send</mat-icon>
+    </button>
   </div>
 </div>

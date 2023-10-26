@@ -7,7 +7,7 @@ $light-theme: mat.define-light-theme(
     color: (
       primary: mat.define-palette($light-palette),
       accent: mat.define-palette($light-palette),
-      warn: mat.define-palette($light-warn-palette),
+      warn: mat.define-palette($warn-palette),
     ),
   )
 );
@@ -17,7 +17,7 @@ $dark-theme: mat.define-dark-theme(
     color: (
       primary: mat.define-palette($dark-palette),
       accent: mat.define-palette($dark-palette),
-      warn: mat.define-palette($dark-warn-palette),
+      warn: mat.define-palette($warn-palette),
     ),
   )
 );
@@ -141,6 +141,11 @@ svg {
   .form-shadow {
     background-color: rgba(242, 242, 242, 0.4) !important;
   }
+  button.submit-button {
+    &:disabled {
+      color: #00000061 !important;
+    }
+  }
 }
 
 mat-form-field {
@@ -165,4 +170,9 @@ mat-form-field {
       opacity: 1;
     }
   }
+}
+
+mat-error {
+  line-height: 20px;
+  font-size: 12px;
 }
