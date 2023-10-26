@@ -61,8 +61,8 @@ export class AppComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   onMouseMove($event: MouseEvent) {
-    let x = $event.pageX;
-    let y = $event.pageY;
+    let x = $event.clientX;
+    let y = $event.clientY;
     this.renderer.setStyle(this.cursor, 'left', x - 12 + 'px');
     this.renderer.setStyle(this.cursor, 'top', y - 12 + 'px');
   }
