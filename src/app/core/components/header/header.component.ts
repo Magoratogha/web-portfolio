@@ -48,7 +48,7 @@ export class HeaderComponent {
             break;
         }
 
-        if (!IS_TOUCH_DEVICE) {
+        if (!IS_TOUCH_DEVICE()) {
           this.cursor = document.querySelector('.cursor') as HTMLElement;
           setTimeout(() => {
             const elements = document.getElementsByClassName(

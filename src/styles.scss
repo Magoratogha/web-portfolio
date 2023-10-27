@@ -165,6 +165,19 @@ svg {
     background-color: $light-toggle-button-color !important;
     box-shadow: $light-toggle-button-shadow !important;
   }
+  .btn-group,
+  .btn-group-vertical {
+    a {
+      border-color: $dark-main-color !important;
+      color: $dark-main-color !important;
+    }
+  }
+  .contact-content-wrapper {
+    h2::before,
+    h2::after {
+      border-top: 1px solid $dark-main-color !important;
+    }
+  }
 }
 
 mat-form-field {

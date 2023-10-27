@@ -49,7 +49,7 @@ export class AppComponent implements OnInit, AfterViewInit, OnDestroy {
       this.bgService.setLightMode();
     }
 
-    if (!IS_TOUCH_DEVICE) {
+    if (!IS_TOUCH_DEVICE()) {
       this.cursor = document.querySelector('.cursor') as HTMLElement;
       this.unlistenMousemoveFn = this.renderer.listen(
         document,

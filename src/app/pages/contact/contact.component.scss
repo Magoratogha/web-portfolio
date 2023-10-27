@@ -29,19 +29,24 @@
   }
 }
 
-.content-wrapper {
-  min-height: calc(60dvh - 5rem);
+.contact-content-wrapper {
+  min-height: calc(100dvh - 5rem);
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-}
-
-.form-wrapper {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 40dvh;
+  justify-content: space-around;
+  h2 {
+    font-weight: 300 !important;
+    &::before,
+    &::after {
+      display: inline-block;
+      content: "";
+      border-top: 1px solid $light-main-color;
+      width: 10dvw;
+      margin: 0 0.5rem;
+      transform: translateY(-0.5rem);
+    }
+  }
 }
 
 button.submit-button {
@@ -105,5 +110,39 @@ button.submit-button {
   }
   &.red {
     color: $warn-color;
+  }
+}
+
+.btn-group,
+.btn-group-vertical {
+  a {
+    border-color: $light-main-color;
+    color: $light-main-color;
+    &:hover {
+      color: $light-lightest-color !important;
+    }
+    &.github:hover {
+      border-color: #6cc644 !important;
+      background-color: #6cc644;
+    }
+    &.linkedin:hover {
+      border-color: #0077b5 !important;
+      background-color: #0077b5;
+    }
+    &.facebook:hover {
+      border-color: #3b5998 !important;
+      background-color: #3b5998;
+    }
+    &.instagram:hover {
+      border-color: transparent !important;
+      border-left-color: #ff7a00 !important;
+      border-right-color: #d300c5 !important;
+      background-image: linear-gradient(
+        72.44deg,
+        #ff7a00 11.92%,
+        #ff0169 51.56%,
+        #d300c5 85.69%
+      );
+    }
   }
 }

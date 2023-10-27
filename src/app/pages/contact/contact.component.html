@@ -1,97 +1,132 @@
 <div class="form-shadow fade-in"></div>
 <div class="container fade-in">
-  <div class="content-wrapper">
-    <p>HOLA</p>
-  </div>
-  <div class="form-wrapper" [ngSwitch]="sendingStatus">
-    <div class="d-flex flex-column" *ngSwitchCase="EmailSendingStatus.NotSent">
-      <div class="d-flex fade-in-fast">
-        <form
-          id="contact-form"
-          [formGroup]="contactForm"
-          class="row justify-content-center"
-        >
-          <div class="col-12 col-sm-6 pb-1">
-            <mat-form-field class="hoverable" appearance="outline">
-              <mat-label>Your name</mat-label>
-              <input formControlName="name" matInput placeholder="John Doe" />
-              <mat-error>Your name is required</mat-error>
-            </mat-form-field>
-          </div>
-          <div class="col-12 col-sm-6 pb-1">
-            <mat-form-field class="hoverable" appearance="outline">
-              <mat-label>Your email address</mat-label>
-              <input
-                formControlName="email"
-                matInput
-                placeholder="pat@example.com"
-              />
-              <mat-error
-                >{{
-                  contactForm.get("email")?.hasError("email")
-                    ? "Please enter a valid email address"
-                    : "Your email address is required"
-                }}
-              </mat-error>
-            </mat-form-field>
-          </div>
-          <div class="col-12">
-            <mat-form-field class="hoverable" appearance="outline">
-              <mat-label>Your message</mat-label>
-              <textarea
-                formControlName="message"
-                matInput
-                rows="3"
-                placeholder="Write whatever you want to say to me"
-              ></textarea>
-              <mat-error>Your message is required</mat-error>
-            </mat-form-field>
-          </div>
-        </form>
+  <div class="contact-content-wrapper">
+    <div class="text-center mt-5">
+      <h1 class="fw-light text-center">Do you want to talk to me?</h1>
+      <h3 class="fw-light text-center">
+        You can find me in almost all social networks as
+        <b class="hoverable">Magoratogha</b>
+      </h3>
+      <div
+        class="pt-4"
+        [ngClass]="{
+          'btn-group': !IS_SMALL_MOBILE_DEVICE(),
+          'btn-group-vertical w-50': IS_SMALL_MOBILE_DEVICE()
+        }"
+        role="group"
+      >
+        <a type="button" class="btn btn-outline-dark github hoverable">
+          <i class="bi bi-github me-1"></i>Github
+        </a>
+        <a type="button" class="btn btn-outline-dark linkedin hoverable">
+          <i class="bi bi-linkedin me-1"></i>Linkedin
+        </a>
+        <a type="button" class="btn btn-outline-dark instagram hoverable">
+          <i class="bi bi-instagram me-1"></i>Instagram
+        </a>
+        <a type="button" class="btn btn-outline-dark facebook hoverable">
+          <i class="bi bi-facebook me-1"></i>Facebook
+        </a>
+      </div>
+    </div>
+    <h2 class="fw-light text-center mt-5 pt-3 mb-5 mb-md-3">
+      Or if you want to write me
+    </h2>
+    <div [ngSwitch]="sendingStatus">
+      <div
+        class="d-flex flex-column"
+        *ngSwitchCase="EmailSendingStatus.NotSent"
+      >
+        <div class="d-flex fade-in-fast">
+          <form
+            id="contact-form"
+            [formGroup]="contactForm"
+            class="row justify-content-center"
+          >
+            <div class="col-12 col-sm-6 pb-1">
+              <mat-form-field class="hoverable" appearance="outline">
+                <mat-label>Your name</mat-label>
+                <input formControlName="name" matInput placeholder="John Doe" />
+                <mat-error>Your name is required</mat-error>
+              </mat-form-field>
+            </div>
+            <div class="col-12 col-sm-6 pb-1">
+              <mat-form-field class="hoverable" appearance="outline">
+                <mat-label>Your email address</mat-label>
+                <input
+                  formControlName="email"
+                  matInput
+                  placeholder="pat@example.com"
+                />
+                <mat-error
+                  >{{
+                    contactForm.get("email")?.hasError("email")
+                      ? "Please enter a valid email address"
+                      : "Your email address is required"
+                  }}
+                </mat-error>
+              </mat-form-field>
+            </div>
+            <div class="col-12">
+              <mat-form-field class="hoverable" appearance="outline">
+                <mat-label>Your message</mat-label>
+                <textarea
+                  formControlName="message"
+                  matInput
+                  rows="3"
+                  placeholder="Write whatever you want to say to me"
+                ></textarea>
+                <mat-error>Your message is required</mat-error>
+              </mat-form-field>
+            </div>
+          </form>
+          <button
+            (click)="sendEmail()"
+            class="submit-button hoverable ms-4"
+            type="button"
+            [disabled]="!contactForm.valid"
+          >
+            <mat-icon>send</mat-icon>
+          </button>
+        </div>
         <button
           (click)="sendEmail()"
-          class="submit-button hoverable ms-4"
+          class="mobile-submit-button fade-in-fast"
           type="button"
           [disabled]="!contactForm.valid"
         >
+          SEND
           <mat-icon>send</mat-icon>
         </button>
       </div>
-      <button
-        (click)="sendEmail()"
-        class="mobile-submit-button fade-in-fast"
-        type="button"
-        [disabled]="!contactForm.valid"
-      >
-        SEND
-        <mat-icon>send</mat-icon>
-      </button>
+      <ng-container *ngSwitchCase="EmailSendingStatus.Sending">
+        <div
+          class="d-flex align-items-center mx-4 text-center text-sm-start fade-in-fast"
+        >
+          <span class="loader me-3"></span>
+          <h5 class="mb-0">
+            Your message is being sent, please wait a moment...
+          </h5>
+        </div>
+      </ng-container>
+      <ng-container *ngSwitchCase="EmailSendingStatus.Ok">
+        <div
+          class="d-flex align-items-center mx-4 text-center text-sm-start fade-in-fast"
+        >
+          <mat-icon class="loader-icon green me-2"
+            >check_circle_outline</mat-icon
+          >
+          <h5 class="mb-0">Your message was sent!</h5>
+        </div>
+      </ng-container>
+      <ng-container *ngSwitchCase="EmailSendingStatus.Error">
+        <div
+          class="d-flex align-items-center mx-4 text-center text-sm-start fade-in-fast"
+        >
+          <mat-icon class="loader-icon red me-2">cancel</mat-icon>
+          <h5 class="mb-0">Something went wrong, please try again... :c</h5>
+        </div>
+      </ng-container>
     </div>
-    <ng-container *ngSwitchCase="EmailSendingStatus.Sending">
-      <div
-        class="d-flex align-items-center mx-4 text-center text-sm-start fade-in-fast"
-      >
-        <span class="loader me-3"></span>
-        <h5 class="mb-0">
-          Your message is being sent, please wait a moment...
-        </h5>
-      </div>
-    </ng-container>
-    <ng-container *ngSwitchCase="EmailSendingStatus.Ok">
-      <div
-        class="d-flex align-items-center mx-4 text-center text-sm-start fade-in-fast"
-      >
-        <mat-icon class="loader-icon green me-2">check_circle_outline</mat-icon>
-        <h5 class="mb-0">¡Your message was sent!</h5>
-      </div>
-    </ng-container>
-    <ng-container *ngSwitchCase="EmailSendingStatus.Error">
-      <div
-        class="d-flex align-items-center mx-4 text-center text-sm-start fade-in-fast"
-      >
-        <mat-icon class="loader-icon red me-2">cancel</mat-icon>
-        <h5 class="mb-0">Something went wrong, please try again... :c</h5>
-      </div>
-    </ng-container>
   </div>
 </div>

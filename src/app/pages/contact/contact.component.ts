@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { IS_SMALL_MOBILE_DEVICE } from 'src/app/core/constants';
 import { EmailSendingStatus } from 'src/app/core/enums';
 import { ContactRequest } from 'src/app/core/models';
 import { BackgroundService } from 'src/app/core/services';
@@ -18,6 +19,7 @@ export class ContactComponent implements OnInit {
     message: new FormControl<string>('', [Validators.required]),
   });
   EmailSendingStatus = EmailSendingStatus;
+  IS_SMALL_MOBILE_DEVICE = IS_SMALL_MOBILE_DEVICE;
 
   constructor(
     private bgService: BackgroundService,

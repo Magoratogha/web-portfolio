@@ -76,7 +76,7 @@ export class BackgroundService implements OnDestroy {
       0.1,
       100
     );
-    if (IS_TOUCH_DEVICE) {
+    if (IS_TOUCH_DEVICE()) {
       this.camera.position.set(-0.7, -0.4, 2);
     } else {
       this.camera.position.set(-0.7, -0.4, 1);
@@ -206,7 +206,7 @@ export class BackgroundService implements OnDestroy {
     gsap.to((this.camera as PerspectiveCamera)?.position, {
       duration: BG_ANIMATION_TIME,
       ease: BG_ANIMATION_EASE,
-      x: IS_MOBILE_DEVICE ? -0.25 : -0.7,
+      x: IS_MOBILE_DEVICE() ? -0.25 : -0.7,
       y: -0.4,
       z: 1,
     });
@@ -223,7 +223,7 @@ export class BackgroundService implements OnDestroy {
     gsap.to((this.camera as PerspectiveCamera)?.position, {
       duration: BG_ANIMATION_TIME,
       ease: BG_ANIMATION_EASE,
-      x: IS_MOBILE_DEVICE ? 0.2 : 0.5,
+      x: IS_MOBILE_DEVICE() ? 0.2 : 0.5,
       y: 0.2,
       z: 1,
     });
@@ -240,7 +240,7 @@ export class BackgroundService implements OnDestroy {
     gsap.to((this.camera as PerspectiveCamera)?.position, {
       duration: BG_ANIMATION_TIME,
       ease: BG_ANIMATION_EASE,
-      x: IS_MOBILE_DEVICE ? -0.25 : -0.7,
+      x: IS_MOBILE_DEVICE() ? -0.25 : -0.7,
       y: -0.4,
       z: 1,
     });
