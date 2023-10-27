@@ -1,8 +1,18 @@
 <div class="container fade-in">
-  <h1 class="display-2 pb-2 fw-normal hoverable">Welcome</h1>
-  <h2 class="display-5 pt-3 fw-light">
-    <span>My name is <b class="hoverable">Santiago</b></span>
-    <br />
-    <span>and I'm a <b class="hoverable">Frontend developer</b></span>
+  <h4 class="display-6 mb-0 fw-light">Hi, my name is</h4>
+  <h1 class="display-3 mb-0 fw-light hoverable">
+    <b>Santiago Gómez</b>
+  </h1>
+  <h2 class="display-4 fw-light">
+    I build <b class="hoverable">amazing things</b> for
+    <b class="hoverable">the web</b>
   </h2>
+  <div class="links-wrapper mt-5">
+    <a class="underlined hoverable" [routerLink]="['/' + ABOUT_ROUTE]"
+      ><span class="link-arrow"></span>More about me</a
+    >
+    <a class="underlined hoverable" [routerLink]="['/' + SKILLS_ROUTE]"
+      ><span class="link-arrow"></span>Chek out what I can do</a
+    >
+  </div>
 </div>

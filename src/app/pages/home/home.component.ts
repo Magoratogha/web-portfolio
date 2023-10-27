@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ABOUT_ROUTE, SKILLS_ROUTE } from 'src/app/core/constants';
 import { BackgroundService } from 'src/app/core/services';
 
 @Component({
@@ -7,6 +8,9 @@ import { BackgroundService } from 'src/app/core/services';
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
+  ABOUT_ROUTE = ABOUT_ROUTE;
+  SKILLS_ROUTE = SKILLS_ROUTE;
+
   constructor(private bgService: BackgroundService) {}
 
   ngOnInit(): void {

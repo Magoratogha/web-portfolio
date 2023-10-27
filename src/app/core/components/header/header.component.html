@@ -2,7 +2,7 @@
   <ul>
     <li>
       <a
-        class="hoverable route-item"
+        class="hoverable underlined"
         [routerLink]="['/' + HOME_ROUTE]"
         routerLinkActive="active"
         (click)="currentPage = Pages.Home"
@@ -11,7 +11,7 @@
     </li>
     <li>
       <a
-        class="hoverable route-item"
+        class="hoverable underlined"
         [routerLink]="['/' + ABOUT_ROUTE]"
         routerLinkActive="active"
         (click)="currentPage = Pages.About"
@@ -20,7 +20,7 @@
     </li>
     <li>
       <a
-        class="hoverable route-item"
+        class="hoverable underlined"
         [routerLink]="['/' + SKILLS_ROUTE]"
         routerLinkActive="active"
         (click)="currentPage = Pages.Skills"
@@ -67,7 +67,7 @@
       <div @leave class="spacer fade-in"></div>
     </ng-container>
     <a
-      class="hoverable route-item"
+      class="hoverable underlined"
       [routerLink]="['/' + CONTACT_ROUTE]"
       routerLinkActive="active"
       (click)="currentPage = Pages.Contact"
