@@ -178,6 +178,25 @@ svg {
       border-top: 1px solid $dark-main-color !important;
     }
   }
+  header {
+    a {
+      color: $dark-lightest-color !important;
+      &:hover {
+        color: $dark-darkest-color !important;
+      }
+      &.active {
+        color: $dark-darkest-color !important;
+      }
+    }
+    .contact-wrapper {
+      .spacer {
+        background-color: $dark-lightest-color !important;
+      }
+    }
+  }
+  .header-shadow {
+    box-shadow: $light-main-color 0px 160px 65px -70px inset !important;
+  }
 }
 
 mat-form-field {

@@ -1,6 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { IS_SMALL_MOBILE_DEVICE } from 'src/app/core/constants';
+import {
+  FACEBOOK_URL,
+  GITHUB_URL,
+  INSTAGRAM_URL,
+  IS_SMALL_MOBILE_DEVICE,
+  LINKEDIN_URL,
+} from 'src/app/core/constants';
 import { EmailSendingStatus } from 'src/app/core/enums';
 import { ContactRequest } from 'src/app/core/models';
 import { BackgroundService } from 'src/app/core/services';
@@ -20,6 +26,10 @@ export class ContactComponent implements OnInit {
   });
   EmailSendingStatus = EmailSendingStatus;
   IS_SMALL_MOBILE_DEVICE = IS_SMALL_MOBILE_DEVICE;
+  GITHUB_URL = GITHUB_URL;
+  LINKEDIN_URL = LINKEDIN_URL;
+  INSTAGRAM_URL = INSTAGRAM_URL;
+  FACEBOOK_URL = FACEBOOK_URL;
 
   constructor(
     private bgService: BackgroundService,

@@ -5,19 +5,25 @@ import {
   ABOUT_ROUTE,
   BG_ANIMATION_TIME,
   CONTACT_ROUTE,
+  FACEBOOK_URL,
+  GITHUB_URL,
   HOME_ROUTE,
+  INSTAGRAM_URL,
+  IS_SMALL_MOBILE_DEVICE,
   IS_TOUCH_DEVICE,
+  LINKEDIN_URL,
   SKILLS_ROUTE,
 } from '../../constants';
 import { Pages } from '../../enums';
+import { Leave } from '../../animations';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
+  animations: [Leave()],
 })
 export class HeaderComponent {
-  @Input() isDarkMode: boolean = true;
   public currentPage: Pages = Pages.Home;
   private cursor: HTMLElement | undefined;
   Pages = Pages;
@@ -25,6 +31,11 @@ export class HeaderComponent {
   ABOUT_ROUTE = ABOUT_ROUTE;
   SKILLS_ROUTE = SKILLS_ROUTE;
   CONTACT_ROUTE = CONTACT_ROUTE;
+  GITHUB_URL = GITHUB_URL;
+  LINKEDIN_URL = LINKEDIN_URL;
+  INSTAGRAM_URL = INSTAGRAM_URL;
+  FACEBOOK_URL = FACEBOOK_URL;
+  IS_SMALL_MOBILE_DEVICE = IS_SMALL_MOBILE_DEVICE;
 
   constructor(private router: Router, private renderer: Renderer2) {
     this.router.events

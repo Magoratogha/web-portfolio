@@ -1,8 +1,8 @@
-<header [ngClass]="{ light: !isDarkMode }">
+<header>
   <ul>
     <li>
       <a
-        class="hoverable"
+        class="hoverable route-item"
         [routerLink]="['/' + HOME_ROUTE]"
         routerLinkActive="active"
         (click)="currentPage = Pages.Home"
@@ -11,7 +11,7 @@
     </li>
     <li>
       <a
-        class="hoverable"
+        class="hoverable route-item"
         [routerLink]="['/' + ABOUT_ROUTE]"
         routerLinkActive="active"
         (click)="currentPage = Pages.About"
@@ -20,7 +20,7 @@
     </li>
     <li>
       <a
-        class="hoverable"
+        class="hoverable route-item"
         [routerLink]="['/' + SKILLS_ROUTE]"
         routerLinkActive="active"
         (click)="currentPage = Pages.Skills"
@@ -28,12 +28,51 @@
       >
     </li>
   </ul>
-  <a
-    class="hoverable"
-    [routerLink]="['/' + CONTACT_ROUTE]"
-    routerLinkActive="active"
-    (click)="currentPage = Pages.Contact"
-    >Contact</a
-  >
+  <div class="contact-wrapper">
+    <ng-container
+      *ngIf="currentPage != Pages.Contact && !IS_SMALL_MOBILE_DEVICE()"
+    >
+      <a
+        @leave
+        class="hoverable fade-in"
+        target="_blank"
+        rel="noreferrer"
+        [href]="GITHUB_URL"
+        ><i class="bi bi-github"></i
+      ></a>
+      <a
+        @leave
+        class="hoverable fade-in"
+        target="_blank"
+        rel="noreferrer"
+        [href]="LINKEDIN_URL"
+        ><i class="bi bi-linkedin"></i
+      ></a>
+      <a
+        @leave
+        class="hoverable fade-in"
+        target="_blank"
+        rel="noreferrer"
+        [href]="INSTAGRAM_URL"
+        ><i class="bi bi-instagram"></i
+      ></a>
+      <a
+        @leave
+        class="hoverable fade-in"
+        target="_blank"
+        rel="noreferrer"
+        [href]="FACEBOOK_URL"
+        ><i class="bi bi-facebook"></i
+      ></a>
+      <div @leave class="spacer fade-in"></div>
+    </ng-container>
+    <a
+      class="hoverable route-item"
+      [routerLink]="['/' + CONTACT_ROUTE]"
+      routerLinkActive="active"
+      (click)="currentPage = Pages.Contact"
+      >Contact</a
+    >
+  </div>
 </header>
-<div class="header-shadow" [ngClass]="{ light: !isDarkMode }"></div>
+<div class="header-shadow"></div>

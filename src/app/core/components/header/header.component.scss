@@ -11,33 +11,16 @@ header {
   font-weight: 600;
   z-index: 2;
   a {
-    text-decoration: none;
     color: $light-darkest-color;
-    position: relative;
-    &:before {
-      content: "";
-      position: absolute;
-      bottom: -4px;
-      left: 0;
-      width: 100%;
-      height: 1px;
-      background: currentColor;
-    }
-    &:not(.active):before {
-      transform: scale3d(0, 1, 1);
-      transform-origin: right;
-      transition: transform 0.3s ease-in-out;
-    }
     &:hover {
       color: $light-lightest-color;
-      &:before {
-        transform: scale3d(1, 1, 1);
-        transform-origin: left;
-      }
     }
     &.active {
       color: $light-lightest-color;
-      font-weight: 600;
+    }
+    &.route-item {
+      text-decoration: none;
+      position: relative;
       &:before {
         content: "";
         position: absolute;
@@ -46,9 +29,32 @@ header {
         width: 100%;
         height: 1px;
         background: currentColor;
-        transform: scale3d(1, 1, 1);
-        transform-origin: left;
+      }
+      &:not(.active):before {
+        transform: scale3d(0, 1, 1);
+        transform-origin: right;
         transition: transform 0.3s ease-in-out;
+      }
+      &:hover {
+        &:before {
+          transform: scale3d(1, 1, 1);
+          transform-origin: left;
+        }
+      }
+      &.active {
+        font-weight: 600;
+        &:before {
+          content: "";
+          position: absolute;
+          bottom: -4px;
+          left: 0;
+          width: 100%;
+          height: 1px;
+          background: currentColor;
+          transform: scale3d(1, 1, 1);
+          transform-origin: left;
+          transition: transform 0.3s ease-in-out;
+        }
       }
     }
   }
@@ -75,19 +81,26 @@ header {
   @media (max-width: 500px) {
     padding: 1.5rem 1rem;
     justify-content: center;
-    & > a {
+    .contact-wrapper a {
       margin-left: 1.5rem;
     }
   }
-  &.light {
+  .contact-wrapper {
+    display: flex;
+    align-items: center;
     a {
-      color: $dark-lightest-color;
-      &:hover {
-        color: $dark-darkest-color;
-      }
-      &.active {
-        color: $dark-darkest-color;
-      }
+      margin-right: 0.75rem;
+    }
+    a:last-child {
+      margin-right: 0;
+    }
+    .spacer {
+      width: 1px;
+      height: 1.5rem;
+      background-color: $light-darkest-color;
+      display: inline-block;
+      margin-right: 1.75rem;
+      margin-left: 1rem;
     }
   }
 }
@@ -100,7 +113,4 @@ header {
   width: 100%;
   height: 150px;
   z-index: 1;
-  &.light {
-    box-shadow: $light-main-color 0px 160px 65px -70px inset;
-  }
 }

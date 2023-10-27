@@ -32,3 +32,7 @@ export const PARTICLES_CONFIG = [
     color: '#ffffff',
   },
 ];
+export const LINKEDIN_URL = 'https://www.linkedin.com/in/magoratogha';
+export const GITHUB_URL = 'https://github.com/Magoratogha';
+export const INSTAGRAM_URL = 'https://www.instagram.com/magoratogha';
+export const FACEBOOK_URL = 'https://www.facebook.com/Magoratoga';

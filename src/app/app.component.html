@@ -1,10 +1,6 @@
 <canvas #bg></canvas>
-<app-main-loader
-  *ngIf="isLoading"
-  [@leave]
-  [show]="isLoading"
-></app-main-loader>
-<app-header [isDarkMode]="isDarkMode"></app-header>
+<app-main-loader @leave *ngIf="isLoading" [show]="isLoading"></app-main-loader>
+<app-header></app-header>
 <div
   #container
   [ngClass]="{ 'light-theme': !isDarkMode }"
