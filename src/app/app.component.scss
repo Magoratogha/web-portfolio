@@ -18,7 +18,11 @@ canvas {
   border-radius: 50%;
   border: none;
   z-index: 1;
-  background-color: $dark-toggle-button-color;
   color: $light-lightest-color;
   box-shadow: $dark-toggle-button-shadow;
+  background-color: $dark-shadow-color;
+  @supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {
+    -webkit-backdrop-filter: blur(4px);
+    backdrop-filter: blur(4px);
+  }
 }
