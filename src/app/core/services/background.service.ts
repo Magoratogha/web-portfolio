@@ -24,6 +24,17 @@ import {
 } from 'three';
 import fragment from '../shaders/fragment.glsl';
 import vertex from '../shaders/vertex.glsl';
+import {
+  BG_ANIMATION_EASE,
+  BG_ANIMATION_TIME,
+  BG_DARK_OPACITY,
+  BG_LIGHT_OPACITY,
+  DARK_BG_COLOR,
+  IS_MOBILE_DEVICE,
+  IS_TOUCH_DEVICE,
+  LIGHT_BG_COLOR,
+  PARTICLES_CONFIG,
+} from '../constants';
 
 @Injectable({
   providedIn: 'root',
@@ -33,38 +44,14 @@ export class BackgroundService implements OnDestroy {
   private renderer: WebGLRenderer | undefined;
   private scene: Scene | undefined;
   private camera: PerspectiveCamera | undefined;
-  public animationTime: number = 1.5;
-  private animationEase: string = 'power3.inOut';
-  private isTouchDevice: boolean = !!(
-    window.navigator.maxTouchPoints || 'ontouchstart' in document
-  );
-  private isMobileDevice: boolean = window.outerWidth <= 768;
   private isDarkMode: boolean = true;
-  private particlesOpacity: number = 0.55;
+  private particlesOpacity: number = BG_DARK_OPACITY;
 
   private ngRenderer: Renderer2;
   private onResizeUnlistenFn: Function | undefined;
   private onPointerMoveUnlistenFn: Function | undefined;
 
   private materials: ShaderMaterial[] = [];
-  private PARTICLES_CONFIG: any[] = [
-    {
-      minRadius: 0.2,
-      maxRadius: this.isMobileDevice ? 1.2 : 1.5,
-      colorLight: '#aac9d4',
-      size: this.isMobileDevice ? 1.2 : 1,
-      apm: 0.2,
-      color: '#88b3c3',
-    },
-    {
-      minRadius: 0.2,
-      maxRadius: this.isMobileDevice ? 1.2 : 1.5,
-      colorLight: '#b7b7b7',
-      size: this.isMobileDevice ? 1 : 0.7,
-      apm: 0.6,
-      color: '#ffffff',
-    },
-  ];
 
   constructor(private rendererFactory2: RendererFactory2) {
     this.ngRenderer = this.rendererFactory2.createRenderer(null, null);
@@ -73,7 +60,7 @@ export class BackgroundService implements OnDestroy {
   public initBackground(canvas: HTMLElement): void {
     this.canvas = canvas;
     this.scene = new Scene();
-    this.scene.background = new Color('#0d0d0d');
+    this.scene.background = new Color(DARK_BG_COLOR);
     this.renderer = new WebGLRenderer({
       antialias: false,
       stencil: false,
@@ -89,12 +76,12 @@ export class BackgroundService implements OnDestroy {
       0.1,
       100
     );
-    if (this.isTouchDevice) {
+    if (IS_TOUCH_DEVICE) {
       this.camera.position.set(-0.7, -0.4, 2);
     } else {
       this.camera.position.set(-0.7, -0.4, 1);
     }
-    this.PARTICLES_CONFIG.map((config) => this.addParticles(config));
+    PARTICLES_CONFIG.map((config) => this.addParticles(config));
     this.setEventListeners();
     this.scene.rotateX(0.8);
     this.animate();
@@ -200,15 +187,15 @@ export class BackgroundService implements OnDestroy {
 
   public setPanoramicView(): void {
     gsap.to((this.camera as PerspectiveCamera)?.position, {
-      duration: this.animationTime,
-      ease: this.animationEase,
+      duration: BG_ANIMATION_TIME,
+      ease: BG_ANIMATION_EASE,
       x: 0,
       y: 0,
       z: 2,
     });
     gsap.to((this.scene as Scene)?.rotation, {
-      duration: this.animationTime,
-      ease: this.animationEase,
+      duration: BG_ANIMATION_TIME,
+      ease: BG_ANIMATION_EASE,
       x: Math.PI / 2,
       y: 0,
       z: 0,
@@ -217,15 +204,15 @@ export class BackgroundService implements OnDestroy {
 
   public setMiddleView(): void {
     gsap.to((this.camera as PerspectiveCamera)?.position, {
-      duration: this.animationTime,
-      ease: this.animationEase,
-      x: this.isMobileDevice ? -0.25 : -0.7,
+      duration: BG_ANIMATION_TIME,
+      ease: BG_ANIMATION_EASE,
+      x: IS_MOBILE_DEVICE ? -0.25 : -0.7,
       y: -0.4,
       z: 1,
     });
     gsap.to((this.scene as Scene)?.rotation, {
-      duration: this.animationTime,
-      ease: this.animationEase,
+      duration: BG_ANIMATION_TIME,
+      ease: BG_ANIMATION_EASE,
       x: Math.PI / 2,
       y: -Math.PI / 4,
       z: 0,
@@ -234,15 +221,15 @@ export class BackgroundService implements OnDestroy {
 
   public setMiddleView2(): void {
     gsap.to((this.camera as PerspectiveCamera)?.position, {
-      duration: this.animationTime,
-      ease: this.animationEase,
-      x: this.isMobileDevice ? 0.2 : 0.5,
+      duration: BG_ANIMATION_TIME,
+      ease: BG_ANIMATION_EASE,
+      x: IS_MOBILE_DEVICE ? 0.2 : 0.5,
       y: 0.2,
       z: 1,
     });
     gsap.to((this.scene as Scene)?.rotation, {
-      duration: this.animationTime,
-      ease: this.animationEase,
+      duration: BG_ANIMATION_TIME,
+      ease: BG_ANIMATION_EASE,
       x: 0.5,
       y: Math.PI / 4,
       z: 0,
@@ -251,15 +238,15 @@ export class BackgroundService implements OnDestroy {
 
   public setInmerseView(): void {
     gsap.to((this.camera as PerspectiveCamera)?.position, {
-      duration: this.animationTime,
-      ease: this.animationEase,
-      x: this.isMobileDevice ? -0.25 : -0.7,
+      duration: BG_ANIMATION_TIME,
+      ease: BG_ANIMATION_EASE,
+      x: IS_MOBILE_DEVICE ? -0.25 : -0.7,
       y: -0.4,
       z: 1,
     });
     gsap.to((this.scene as Scene)?.rotation, {
-      duration: this.animationTime,
-      ease: this.animationEase,
+      duration: BG_ANIMATION_TIME,
+      ease: BG_ANIMATION_EASE,
       x: 0.8,
       y: 0,
       z: 0,
@@ -273,8 +260,8 @@ export class BackgroundService implements OnDestroy {
 
   public setDarkMode() {
     this.isDarkMode = true;
-    this.particlesOpacity = 0.55;
-    const color = new Color('#0d0d0d');
+    this.particlesOpacity = BG_DARK_OPACITY;
+    const color = new Color(DARK_BG_COLOR);
     gsap.to((this.scene as Scene).background, {
       duration: 0.5,
       r: color.r,
@@ -285,8 +272,8 @@ export class BackgroundService implements OnDestroy {
 
   public setLightMode() {
     this.isDarkMode = false;
-    this.particlesOpacity = 1.25;
-    const color = new Color('#f2f2f2');
+    this.particlesOpacity = BG_LIGHT_OPACITY;
+    const color = new Color(LIGHT_BG_COLOR);
     gsap.to((this.scene as Scene).background, {
       duration: 0.5,
       r: color.r,

@@ -28,26 +28,6 @@ $dark-theme: mat.define-dark-theme(
   @include mat.all-component-colors($light-theme);
 }
 
-.cursor {
-  width: 24px;
-  height: 24px;
-  border: 2px solid white;
-  border-radius: 50%;
-  position: fixed;
-  top: 0;
-  left: 0;
-  box-shadow: 0px 0px 20px 0px rgba(255, 255, 255, 0.6);
-  z-index: 10;
-  pointer-events: none;
-  transition: transform 100ms linear;
-  &.hover {
-    transform-origin: center;
-    transform: scale3d(2, 2, 1);
-    mix-blend-mode: difference;
-    background: white;
-  }
-}
-
 html {
   position: relative;
 }
@@ -62,11 +42,11 @@ body {
   margin: 0;
   font-family: Roboto Condensed, "Helvetica Neue", sans-serif;
   -webkit-font-smoothing: antialiased;
-  background: #0d0d0d;
-  color: white;
+  background: $dark-main-color;
+  color: $light-lightest-color;
   &.light {
-    background: #f2f2f2;
-    color: black;
+    background: $light-main-color;
+    color: $dark-darkest-color;
   }
 }
 
@@ -105,6 +85,26 @@ svg {
   max-width: 100%;
 }
 
+.cursor {
+  width: 24px;
+  height: 24px;
+  border: 2px solid $light-lightest-color;
+  border-radius: 50%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  box-shadow: $dark-cursor-shadow;
+  z-index: 10;
+  pointer-events: none;
+  transition: transform 100ms linear;
+  &.hover {
+    transform-origin: center;
+    transform: scale3d(2, 2, 1);
+    mix-blend-mode: difference;
+    background: $light-lightest-color;
+  }
+}
+
 .fw-light {
   font-weight: 200 !important;
   @media (max-width: 768px) {
@@ -121,48 +121,49 @@ svg {
 }
 
 .divider {
-  background-color: white;
+  background-color: $light-lightest-color;
 }
 
 .light {
   .loader-container {
-    background-color: #f2f2f2 !important;
+    background-color: $light-main-color !important;
   }
   .divider {
-    background-color: black;
+    background-color: $dark-darkest-color;
   }
   .cursor {
-    border-color: black;
-    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.4) !important;
+    border-color: $dark-darkest-color;
+    box-shadow: $light-cursor-shadow !important;
     &.hover {
-      border-color: white;
+      border-color: $light-lightest-color;
     }
   }
   .form-shadow {
-    background-color: rgba(242, 242, 242, 0.4) !important;
+    background-color: $light-shadow-color !important;
   }
   button.submit-button {
     &:disabled {
-      color: #00000061 !important;
+      color: $light-disabled-color !important;
     }
   }
-  .loader::after,
-  .loader::before {
-    border: 2px solid #88b3c3;
-  }
   .loader::after {
-    border-color: #516b75;
+    border-color: $light-secondary-primary-color;
   }
   .mobile-submit-button {
-    color: white !important;
-    border: 1px solid black !important;
-    background-color: black !important;
+    color: $light-lightest-color !important;
+    border: 1px solid $dark-darkest-color !important;
+    background-color: $dark-darkest-color !important;
     &[disabled],
     &:disabled {
       background-color: transparent !important;
-      color: #00000061 !important;
-      border-color: #00000061 !important;
+      color: $light-disabled-color !important;
+      border-color: $light-disabled-color !important;
     }
+  }
+  .dark-mode-toggle {
+    color: $dark-darkest-color !important;
+    background-color: $light-toggle-button-color !important;
+    box-shadow: $light-toggle-button-shadow !important;
   }
 }
 
@@ -221,7 +222,7 @@ mat-error {
   content: "";
   width: 38px;
   height: 38px;
-  border: 2px solid #88b3c3;
+  border: 2px solid $loader-primary-color;
   position: absolute;
   left: 0;
   top: 0;
@@ -229,7 +230,7 @@ mat-error {
   animation: rotation 2s ease-in-out infinite;
 }
 .loader::after {
-  border-color: #5f7d88;
+  border-color: $dark-secondary-primary-color;
   animation-delay: 1s;
 }
 

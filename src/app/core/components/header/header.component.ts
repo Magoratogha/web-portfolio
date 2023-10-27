@@ -3,12 +3,13 @@ import { NavigationEnd, Router } from '@angular/router';
 import { filter } from 'rxjs';
 import {
   ABOUT_ROUTE,
+  BG_ANIMATION_TIME,
   CONTACT_ROUTE,
   HOME_ROUTE,
+  IS_TOUCH_DEVICE,
   SKILLS_ROUTE,
 } from '../../constants';
 import { Pages } from '../../enums';
-import { BackgroundService } from '../../services';
 
 @Component({
   selector: 'app-header',
@@ -19,20 +20,13 @@ export class HeaderComponent {
   @Input() isDarkMode: boolean = true;
   public currentPage: Pages = Pages.Home;
   private cursor: HTMLElement | undefined;
-  private isTouchDevice: boolean = !!(
-    window.navigator.maxTouchPoints || 'ontouchstart' in document
-  );
   Pages = Pages;
   HOME_ROUTE = HOME_ROUTE;
   ABOUT_ROUTE = ABOUT_ROUTE;
   SKILLS_ROUTE = SKILLS_ROUTE;
   CONTACT_ROUTE = CONTACT_ROUTE;
 
-  constructor(
-    private router: Router,
-    private bgService: BackgroundService,
-    private renderer: Renderer2
-  ) {
+  constructor(private router: Router, private renderer: Renderer2) {
     this.router.events
       .pipe(filter((e) => e instanceof NavigationEnd))
       .subscribe((event) => {
@@ -54,7 +48,7 @@ export class HeaderComponent {
             break;
         }
 
-        if (!this.isTouchDevice) {
+        if (!IS_TOUCH_DEVICE) {
           this.cursor = document.querySelector('.cursor') as HTMLElement;
           setTimeout(() => {
             const elements = document.getElementsByClassName(
@@ -64,7 +58,7 @@ export class HeaderComponent {
               elements[i].onmouseover = this.setMouseEnter.bind(this);
               elements[i].onmouseleave = this.setMouseLeave.bind(this);
             }
-          }, this.bgService.animationTime * 1000);
+          }, BG_ANIMATION_TIME * 1000);
         }
       });
   }

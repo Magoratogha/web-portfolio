@@ -1,3 +1,5 @@
+@import "../../../styles/variables.scss";
+
 .container {
   min-height: 100dvh;
 }
@@ -8,7 +10,7 @@
   width: 100%;
   z-index: -1;
   height: 80dvh;
-  background-color: rgba(13, 13, 13, 0.4);
+  background-color: $dark-shadow-color;
   clip-path: polygon(
     100% 23%,
     90% 25%,
@@ -55,7 +57,7 @@ button.submit-button {
   }
   &[disabled],
   &:disabled {
-    color: #ffffff61;
+    color: $dark-disabled-color;
     mat-icon {
       font-family: "Material Icons Outlined";
     }
@@ -75,16 +77,16 @@ button.submit-button {
   border-radius: 4px;
   margin: 0.25rem 0 0 0;
   font-size: 18px;
-  color: black;
+  color: $dark-darkest-color;
   background-color: transparent;
-  border: 1px solid white;
-  background-color: white;
+  border: 1px solid $light-lightest-color;
+  background-color: $light-lightest-color;
   display: none;
   &[disabled],
   &:disabled {
     background-color: transparent;
-    color: #ffffff61;
-    border-color: #ffffff61;
+    color: $dark-disabled-color;
+    border-color: $dark-disabled-color;
     mat-icon {
       font-family: "Material Icons Outlined";
     }
@@ -99,9 +101,9 @@ button.submit-button {
   width: 40px;
   height: 40px;
   &.green {
-    color: #6aa84f;
+    color: $success-color;
   }
   &.red {
-    color: #ff625d;
+    color: $warn-color;
   }
 }

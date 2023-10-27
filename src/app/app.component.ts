@@ -10,6 +10,7 @@ import {
 import { RouterOutlet } from '@angular/router';
 import { IconChange, Leave, RouterAnimation } from './core/animations';
 import { BackgroundService } from './core/services';
+import { IS_TOUCH_DEVICE } from './core/constants';
 
 @Component({
   selector: 'app-root',
@@ -22,11 +23,9 @@ export class AppComponent implements OnInit, AfterViewInit, OnDestroy {
   private canvas: ElementRef<HTMLElement> | undefined;
   public isLoading: boolean = true;
   public isDarkMode: boolean;
-  public isTouchDevice: boolean = !!(
-    window.navigator.maxTouchPoints || 'ontouchstart' in document
-  );
   private unlistenMousemoveFn: Function | undefined;
   private cursor: HTMLElement | undefined;
+  IS_TOUCH_DEVICE = IS_TOUCH_DEVICE;
 
   constructor(
     private bgService: BackgroundService,
@@ -50,7 +49,7 @@ export class AppComponent implements OnInit, AfterViewInit, OnDestroy {
       this.bgService.setLightMode();
     }
 
-    if (!this.isTouchDevice) {
+    if (!IS_TOUCH_DEVICE) {
       this.cursor = document.querySelector('.cursor') as HTMLElement;
       this.unlistenMousemoveFn = this.renderer.listen(
         document,

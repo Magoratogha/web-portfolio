@@ -12,13 +12,9 @@
 >
   <router-outlet #outlet="outlet"></router-outlet>
 </div>
-<button
-  class="dark-mode-toggle hoverable"
-  [ngClass]="{ light: !isDarkMode }"
-  (click)="setTheme(!isDarkMode)"
->
+<button class="dark-mode-toggle hoverable" (click)="setTheme(!isDarkMode)">
   <mat-icon [@iconChange]="isDarkMode">{{
     isDarkMode ? "dark_mode" : "light_mode"
   }}</mat-icon>
 </button>
-<div *ngIf="!isTouchDevice" class="cursor"></div>
+<div *ngIf="!IS_TOUCH_DEVICE" class="cursor"></div>
