@@ -1,12 +1,11 @@
 $dark-main-color: #0d0d0d;
 $dark-darkest-color: black;
 $dark-lightest-color: #3f3f3f;
-$dark-warn-color: #ff625d;
+$warn-color: #ff625d;
 $dark-disabled-color: #ffffff61;
 $light-main-color: #f2f2f2;
 $light-darkest-color: #c0c0c0;
 $light-lightest-color: white;
-$light-warn-color: #ff625d;
 $light-disabled-color: #00000061;
 
 $dark-palette: (
@@ -35,16 +34,16 @@ $dark-palette: (
 );
 
 $warn-palette: (
-  50: $dark-warn-color,
-  100: $dark-warn-color,
-  200: $dark-warn-color,
-  300: $dark-warn-color,
-  400: $dark-warn-color,
-  500: $dark-warn-color,
-  600: $dark-warn-color,
-  700: $dark-warn-color,
-  800: $dark-warn-color,
-  900: $dark-warn-color,
+  50: $warn-color,
+  100: $warn-color,
+  200: $warn-color,
+  300: $warn-color,
+  400: $warn-color,
+  500: $warn-color,
+  600: $warn-color,
+  700: $warn-color,
+  800: $warn-color,
+  900: $warn-color,
   contrast: (
     50: $dark-darkest-color,
     100: $dark-darkest-color,

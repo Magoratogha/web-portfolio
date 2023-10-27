@@ -23,7 +23,7 @@
     backdrop-filter: blur(4px);
   }
   @media (max-width: 768px) {
-    clip-path: polygon(100% 28%, 60% 33%, 30% 32%, 0 36%, 0 100%, 100% 100%);
+    clip-path: polygon(100% 27%, 60% 32%, 30% 31%, 0 35%, 0 100%, 100% 100%);
   }
 }
 
@@ -37,7 +37,6 @@
 
 .form-wrapper {
   display: flex;
-  gap: 25px;
   align-items: center;
   justify-content: center;
   min-height: 40dvh;
@@ -50,9 +49,9 @@ button.submit-button {
   background-color: transparent;
   border: none;
   mat-icon {
-    width: 40px;
-    height: 40px;
-    font-size: 40px;
+    width: 48px;
+    height: 48px;
+    font-size: 48px;
   }
   &[disabled],
   &:disabled {
@@ -60,5 +59,49 @@ button.submit-button {
     mat-icon {
       font-family: "Material Icons Outlined";
     }
+  }
+  @media (max-width: 768px) {
+    display: none;
+  }
+}
+
+.mobile-submit-button {
+  align-self: center;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 4px 10px;
+  width: 100%;
+  border-radius: 4px;
+  margin: 0.25rem 0 0 0;
+  font-size: 18px;
+  color: black;
+  background-color: transparent;
+  border: 1px solid white;
+  background-color: white;
+  display: none;
+  &[disabled],
+  &:disabled {
+    background-color: transparent;
+    color: #ffffff61;
+    border-color: #ffffff61;
+    mat-icon {
+      font-family: "Material Icons Outlined";
+    }
+  }
+  @media (max-width: 768px) {
+    display: flex;
+  }
+}
+
+.loader-icon {
+  font-size: 40px;
+  width: 40px;
+  height: 40px;
+  &.green {
+    color: #6aa84f;
+  }
+  &.red {
+    color: #ff625d;
   }
 }

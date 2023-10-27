@@ -146,6 +146,24 @@ svg {
       color: #00000061 !important;
     }
   }
+  .loader::after,
+  .loader::before {
+    border: 2px solid #88b3c3;
+  }
+  .loader::after {
+    border-color: #516b75;
+  }
+  .mobile-submit-button {
+    color: white !important;
+    border: 1px solid black !important;
+    background-color: black !important;
+    &[disabled],
+    &:disabled {
+      background-color: transparent !important;
+      color: #00000061 !important;
+      border-color: #00000061 !important;
+    }
+  }
 }
 
 mat-form-field {
@@ -172,7 +190,54 @@ mat-form-field {
   }
 }
 
+.fade-in-fast {
+  opacity: 0;
+  animation: fadeIn 300ms ease-in;
+  animation-delay: 300ms;
+  animation-fill-mode: forwards;
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+}
+
 mat-error {
   line-height: 20px;
   font-size: 12px;
+}
+
+.loader {
+  width: 48px;
+  height: 48px;
+  display: inline-block;
+  position: relative;
+}
+.loader::after,
+.loader::before {
+  content: "";
+  width: 38px;
+  height: 38px;
+  border: 2px solid #88b3c3;
+  position: absolute;
+  left: 0;
+  top: 0;
+  box-sizing: border-box;
+  animation: rotation 2s ease-in-out infinite;
+}
+.loader::after {
+  border-color: #5f7d88;
+  animation-delay: 1s;
+}
+
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
