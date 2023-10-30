@@ -7,6 +7,7 @@ import {
   isDevMode,
 } from '@angular/core';
 import gsap from 'gsap';
+import * as Stats from 'stats.js';
 import {
   Color,
   DoubleSide,
@@ -22,21 +23,21 @@ import {
   Vector4,
   WebGLRenderer,
 } from 'three';
-import fragment from '../shaders/fragment.glsl';
-import vertex from '../shaders/vertex.glsl';
 import {
   BG_ANIMATION_EASE,
   BG_ANIMATION_TIME,
   BG_DARK_OPACITY,
   BG_LIGHT_OPACITY,
+  BG_RENDER_PX_RATIO,
   DARK_BG_COLOR,
   IS_MOBILE_DEVICE,
   IS_TOUCH_DEVICE,
   LIGHT_BG_COLOR,
-  LOCAL_PERFORMANCE_RATIO,
   PARTICLES_CONFIG,
+  PERFORMANCE_RATIO,
 } from '../constants';
-import * as Stats from 'stats.js';
+import fragment from '../shaders/fragment.glsl';
+import vertex from '../shaders/vertex.glsl';
 
 @Injectable({
   providedIn: 'root',
@@ -70,13 +71,14 @@ export class BackgroundService implements OnDestroy {
     this.scene = new Scene();
     this.scene.background = new Color(DARK_BG_COLOR);
     this.renderer = new WebGLRenderer({
-      powerPreference: 'high-performance',
       antialias: false,
       stencil: false,
       depth: false,
       canvas: this.canvas,
     });
-    this.renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    this.renderer?.setPixelRatio(
+      Math.min(window.devicePixelRatio, BG_RENDER_PX_RATIO)
+    );
     this.renderer.setSize(window.outerWidth, window.outerHeight);
     this.renderer.outputColorSpace = SRGBColorSpace;
     this.camera = new PerspectiveCamera(
@@ -134,8 +136,10 @@ export class BackgroundService implements OnDestroy {
   }
 
   private onResize(): void {
+    this.renderer?.setPixelRatio(
+      Math.min(window.devicePixelRatio, BG_RENDER_PX_RATIO)
+    );
     this.renderer?.setSize(window.outerWidth, window.outerHeight);
-    this.renderer?.setPixelRatio(Math.min(window.devicePixelRatio, 2));
     (this.camera as PerspectiveCamera).aspect =
       window.outerWidth / window.outerHeight;
     (this.camera as PerspectiveCamera).updateProjectionMatrix();
@@ -143,15 +147,14 @@ export class BackgroundService implements OnDestroy {
 
   private addParticles(config: any): void {
     const width = window.outerWidth;
-    let count = isDevMode()
-      ? 500 * LOCAL_PERFORMANCE_RATIO
-      : width <= 500
-      ? 2000
-      : width <= 768
-      ? 3000
-      : width <= 1024
-      ? 5000
-      : 7000;
+    let count =
+      (width <= 500
+        ? 3000
+        : width <= 768
+        ? 5000
+        : width <= 1024
+        ? 7000
+        : 10000) * PERFORMANCE_RATIO;
     const minRadius = config.minRadius;
     const maxRadius = config.maxRadius;
     const particlesGeo = new PlaneGeometry(1, 1);
