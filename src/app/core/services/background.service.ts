@@ -59,7 +59,7 @@ export class BackgroundService implements OnDestroy {
 
   constructor(private rendererFactory2: RendererFactory2) {
     this.ngRenderer = this.rendererFactory2.createRenderer(null, null);
-    if (!isDevMode()) {
+    if (isDevMode()) {
       this.stats = new Stats();
       this.stats.showPanel(0);
       document.body.appendChild(this.stats.dom);
@@ -99,7 +99,7 @@ export class BackgroundService implements OnDestroy {
   }
 
   private animate(): void {
-    !isDevMode() && this.stats?.begin();
+    isDevMode() && this.stats?.begin();
     this.materials.map((material: ShaderMaterial) => {
       material.uniforms['time'].value += 0.02;
       material.uniforms['uOpacity'].value = this.particlesOpacity;
@@ -111,7 +111,7 @@ export class BackgroundService implements OnDestroy {
       this.scene as Scene,
       this.camera as PerspectiveCamera
     );
-    !isDevMode() && this.stats?.end();
+    isDevMode() && this.stats?.end();
     requestAnimationFrame(this.animate.bind(this));
   }
 
