@@ -33,8 +33,10 @@ import {
   IS_MOBILE_DEVICE,
   IS_TOUCH_DEVICE,
   LIGHT_BG_COLOR,
+  LOCAL_PERFORMANCE_RATIO,
   PARTICLES_CONFIG,
 } from '../constants';
+import * as Stats from 'stats.js';
 
 @Injectable({
   providedIn: 'root',
@@ -52,9 +54,15 @@ export class BackgroundService implements OnDestroy {
   private onPointerMoveUnlistenFn: Function | undefined;
 
   private materials: ShaderMaterial[] = [];
+  private stats: Stats | undefined;
 
   constructor(private rendererFactory2: RendererFactory2) {
     this.ngRenderer = this.rendererFactory2.createRenderer(null, null);
+    if (isDevMode()) {
+      this.stats = new Stats();
+      this.stats.showPanel(0);
+      document.body.appendChild(this.stats.dom);
+    }
   }
 
   public initBackground(canvas: HTMLElement): void {
@@ -62,6 +70,7 @@ export class BackgroundService implements OnDestroy {
     this.scene = new Scene();
     this.scene.background = new Color(DARK_BG_COLOR);
     this.renderer = new WebGLRenderer({
+      powerPreference: 'high-performance',
       antialias: false,
       stencil: false,
       depth: false,
@@ -88,6 +97,7 @@ export class BackgroundService implements OnDestroy {
   }
 
   private animate(): void {
+    isDevMode() && this.stats?.begin();
     this.materials.map((material: ShaderMaterial) => {
       material.uniforms['time'].value += 0.02;
       material.uniforms['uOpacity'].value = this.particlesOpacity;
@@ -95,11 +105,12 @@ export class BackgroundService implements OnDestroy {
         ? material.uniforms['uDarkColor'].value
         : material.uniforms['uLightColor'].value;
     });
-    requestAnimationFrame(this.animate.bind(this));
     this.renderer?.render(
       this.scene as Scene,
       this.camera as PerspectiveCamera
     );
+    isDevMode() && this.stats?.end();
+    requestAnimationFrame(this.animate.bind(this));
   }
 
   private setEventListeners(): void {
@@ -133,7 +144,7 @@ export class BackgroundService implements OnDestroy {
   private addParticles(config: any): void {
     const width = window.outerWidth;
     let count = isDevMode()
-      ? 500
+      ? 500 * LOCAL_PERFORMANCE_RATIO
       : width <= 500
       ? 2000
       : width <= 768

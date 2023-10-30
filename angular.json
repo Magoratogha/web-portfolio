@@ -34,7 +34,8 @@
             ],
             "customWebpackConfig": {
               "path": "./webpack.config.js"
-            }
+            },
+            "allowedCommonJsDependencies": ["stats.js"]
           },
           "configurations": {
             "production": {
