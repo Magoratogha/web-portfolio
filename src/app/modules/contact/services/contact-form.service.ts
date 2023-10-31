@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { ContactRequest } from '../models';
-import { EMAIL_SEND_ENDPOINT, EMAIL_SUBJECT } from '../constants';
+import { ContactRequest } from '../../../models';
+import { EMAIL_SEND_ENDPOINT, EMAIL_SUBJECT } from '../../../constants';
 import { lastValueFrom } from 'rxjs';
 
 @Injectable({

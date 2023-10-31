@@ -1,30 +1,43 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
-import {
-  AboutMeComponent,
-  ContactComponent,
-  HomeComponent,
-  SkillsComponent,
-} from './pages';
+import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import {
   ABOUT_ROUTE,
   CONTACT_ROUTE,
   HOME_ROUTE,
   SKILLS_ROUTE,
-} from './core/constants';
+} from './constants';
 
 const routes: Routes = [
-  { path: HOME_ROUTE, component: HomeComponent },
-  { path: ABOUT_ROUTE, component: AboutMeComponent },
-  { path: SKILLS_ROUTE, component: SkillsComponent },
-  { path: CONTACT_ROUTE, component: ContactComponent },
+  {
+    path: HOME_ROUTE,
+    loadChildren: () =>
+      import('./modules/home/home.module').then((m) => m.HomeModule),
+  },
+  {
+    path: ABOUT_ROUTE,
+    loadChildren: () =>
+      import('./modules/about-me/about-me.module').then((m) => m.AboutMeModule),
+  },
+  {
+    path: SKILLS_ROUTE,
+    loadChildren: () =>
+      import('./modules/skills/skills.module').then((m) => m.SkillsModule),
+  },
+  {
+    path: CONTACT_ROUTE,
+    loadChildren: () =>
+      import('./modules/contact/contact.module').then((m) => m.ContactModule),
+  },
   { path: '', redirectTo: '/' + HOME_ROUTE, pathMatch: 'full' },
   { path: '**', redirectTo: '/' + HOME_ROUTE, pathMatch: 'full' },
 ];
 
 @NgModule({
   imports: [
-    RouterModule.forRoot(routes, { scrollPositionRestoration: 'enabled' }),
+    RouterModule.forRoot(routes, {
+      preloadingStrategy: PreloadAllModules,
+      scrollPositionRestoration: 'enabled',
+    }),
   ],
   exports: [RouterModule],
 })

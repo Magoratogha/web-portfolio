@@ -1,4 +1,4 @@
-import particleTexture from '!!file-loader!../../../assets/images/particle.webp';
+import particleTexture from '!!file-loader!../../../../assets/images/particle.webp';
 import {
   Injectable,
   OnDestroy,
@@ -35,9 +35,9 @@ import {
   LIGHT_BG_COLOR,
   PARTICLES_CONFIG,
   PERFORMANCE_RATIO,
-} from '../constants';
-import fragment from '../shaders/fragment.glsl';
-import vertex from '../shaders/vertex.glsl';
+} from '../../../constants';
+import fragment from '../../../shaders/fragment.glsl';
+import vertex from '../../../shaders/vertex.glsl';
 
 @Injectable({
   providedIn: 'root',

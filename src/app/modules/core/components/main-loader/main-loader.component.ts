@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { AutoHide } from '../../animations';
+import { AutoHide } from '../../../../animations';
 
 @Component({
   selector: 'app-main-loader',

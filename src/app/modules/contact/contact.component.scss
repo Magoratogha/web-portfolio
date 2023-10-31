@@ -10,16 +10,9 @@
   width: 100%;
   z-index: -1;
   height: 50vh;
-  background-color: $dark-shadow-color;
-  @supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {
-    -webkit-backdrop-filter: blur(4px);
-    backdrop-filter: blur(4px);
-  }
-
   @media (max-width: 768px) {
     height: 55vh;
   }
-
   @media (max-width: 576px) {
     height: 62vh;
   }

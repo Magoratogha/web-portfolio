@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { BackgroundService } from 'src/app/core/services';
+import { BackgroundService } from '../../modules/core/services';
 
 @Component({
   selector: 'app-about-me',

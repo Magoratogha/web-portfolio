@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ABOUT_ROUTE, SKILLS_ROUTE } from 'src/app/core/constants';
-import { BackgroundService } from 'src/app/core/services';
+import { ABOUT_ROUTE, SKILLS_ROUTE } from 'src/app/constants';
+import { BackgroundService } from '../core/services';
 
 @Component({
   selector: 'app-home',

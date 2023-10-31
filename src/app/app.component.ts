@@ -8,9 +8,9 @@ import {
   ViewChild,
 } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { IconChange, Leave, RouterAnimation } from './core/animations';
-import { BackgroundService } from './core/services';
-import { IS_TOUCH_DEVICE } from './core/constants';
+import { IconChange, Leave, RouterAnimation } from './animations';
+import { BackgroundService } from './modules/core/services';
+import { IS_TOUCH_DEVICE } from './constants';
 
 @Component({
   selector: 'app-root',

@@ -6,11 +6,11 @@ import {
   INSTAGRAM_URL,
   IS_SMALL_MOBILE_DEVICE,
   LINKEDIN_URL,
-} from 'src/app/core/constants';
-import { EmailSendingStatus } from 'src/app/core/enums';
-import { ContactRequest } from 'src/app/core/models';
-import { BackgroundService } from 'src/app/core/services';
-import { ContactFormService } from 'src/app/core/services/contact-form.service';
+} from 'src/app/constants';
+import { EmailSendingStatus } from 'src/app/enums';
+import { ContactRequest } from 'src/app/models';
+import { BackgroundService } from '../../modules/core/services';
+import { ContactFormService } from './services';
 
 @Component({
   selector: 'app-contact',

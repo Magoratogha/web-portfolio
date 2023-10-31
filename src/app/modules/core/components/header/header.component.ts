@@ -1,6 +1,7 @@
-import { Component, Input, Renderer2 } from '@angular/core';
+import { Component, Renderer2 } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { filter } from 'rxjs';
+import { Leave } from '../../../../animations';
 import {
   ABOUT_ROUTE,
   BG_ANIMATION_TIME,
@@ -13,9 +14,8 @@ import {
   IS_TOUCH_DEVICE,
   LINKEDIN_URL,
   SKILLS_ROUTE,
-} from '../../constants';
-import { Pages } from '../../enums';
-import { Leave } from '../../animations';
+} from '../../../../constants';
+import { Pages } from '../../../../enums';
 
 @Component({
   selector: 'app-header',
