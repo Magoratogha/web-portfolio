@@ -1,3 +1,10 @@
 <div class="fade-in-fast">
-  <h4 class="fw-light" [innerHTML]="detailsData?.description"></h4>
+  <h4
+    *ngIf="detailsData?.description"
+    class="fw-light"
+    [innerHTML]="detailsData?.description"
+  ></h4>
+  <div *ngIf="detailsData?.iconName" class="w-100 text-center pt-3">
+    <mat-icon [svgIcon]="$any(detailsData).iconName"></mat-icon>
+  </div>
 </div>
