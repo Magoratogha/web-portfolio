@@ -125,6 +125,9 @@ svg {
 }
 
 .light {
+  .fw-light {
+    font-weight: 300 !important;
+  }
   .loader-container {
     background-color: $light-main-color !important;
   }
@@ -213,6 +216,12 @@ svg {
   .link-arrow::after {
     background-color: $dark-darkest-color !important;
   }
+
+  .selected {
+    .link-arrow {
+      border: 3px solid $dark-darkest-color !important;
+    }
+  }
 }
 
 mat-form-field {
@@ -241,7 +250,7 @@ mat-form-field {
 
 .fade-in-fast {
   opacity: 0;
-  animation: fadeIn 300ms ease-in;
+  animation: fadeIn 500ms ease-in;
   animation-delay: 300ms;
   animation-fill-mode: forwards;
   @keyframes fadeIn {
@@ -369,7 +378,8 @@ mat-error {
   border-top: 1px solid $light-lightest-color;
   border-left: 1px solid $light-lightest-color;
   transform: rotate(135deg);
-  margin-inline: 3px 5px;
+  margin-inline: 3px 7px;
+  transition: all 200ms ease-in-out;
 }
 
 .link-arrow::after {
@@ -381,4 +391,18 @@ mat-error {
   transform: rotate(-45deg) translate(7px, 3px);
   left: 0;
   top: 0;
+  transition: all 200ms ease-in-out;
+}
+
+.selected {
+  .link-arrow {
+    width: 18px;
+    height: 18px;
+    border: 3px solid $light-lightest-color;
+    transition: all 200ms ease-in-out;
+    &:after {
+      width: 0;
+      transition: all 200ms ease-in-out;
+    }
+  }
 }

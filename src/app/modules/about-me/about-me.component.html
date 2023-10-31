@@ -1,21 +1,45 @@
 <section class="right fade-in">
-  <h1 class="fw-light hoverable">¿Who am I?</h1>
-  <h2 class="display-5 fw-normal hoverable">¿Where have I worked at?</h2>
-  <div class="links-wrapper mt-5">
-    <a class="underlined hoverable"><span class="link-arrow"></span>Globant</a>
-    <a class="underlined hoverable"><span class="link-arrow"></span>VC@Soft</a>
-    <a class="underlined hoverable"
+  <h2
+    class="fw-light hoverable text-center"
+    [routerLink]="[ABOUT_ME_ROUTE]"
+    routerLinkActive="selected display-6"
+  >
+    ¿Who am I?
+  </h2>
+  <h2
+    class="fw-light hoverable text-center"
+    [routerLink]="[ABOUT_GLOBANT_ROUTE]"
+    [ngClass]="{ 'selected display-6': showWork }"
+  >
+    ¿Where have I worked at?
+  </h2>
+  <div
+    class="links-wrapper mt-5 fade-in-fast"
+    [ngClass]="{ 'd-none': !showWork }"
+  >
+    <a
+      class="underlined hoverable"
+      [routerLink]="[ABOUT_GLOBANT_ROUTE]"
+      routerLinkActive="selected"
+      ><span class="link-arrow"></span>Globant</a
+    >
+    <a
+      class="underlined hoverable"
+      [routerLink]="[ABOUT_VCSOFT_ROUTE]"
+      routerLinkActive="selected"
+      ><span class="link-arrow"></span>VC@Soft</a
+    >
+    <a
+      class="underlined hoverable"
+      [routerLink]="[ABOUT_FREELANCE_ROUTE]"
+      routerLinkActive="selected"
       ><span class="link-arrow"></span>As freelancer</a
     >
   </div>
 </section>
-<section class="left fade-in blurred">
-  <h4 class="fw-light">
-    My name is Santiago and I'm a
-    <b class="hoverable">software development engineer with 5+ years</b> of
-    experience. I'm a <b class="hoverable">FrontEnd</b> specialist and I've had
-    the chance to work with an extensive variety of projects, from small
-    <b class="hoverable">startups</b> to big
-    <b class="hoverable">enterprice companies.</b>
-  </h4>
+<section
+  class="left fade-in blurred"
+  [@fastRouterAnimation]="prepareRoute(outlet)"
+>
+  <router-outlet #outlet="outlet"></router-outlet>
 </section>
