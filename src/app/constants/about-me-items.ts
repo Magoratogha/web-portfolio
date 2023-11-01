@@ -7,7 +7,7 @@ const workingYears = Math.floor(
 );
 
 export const ME_DETAILS: AboutMeItemDetails = {
-  description: `My name is Santiago and I'm a <b class="hoverable">software development engineer with ${workingYears}+ years</b> of experience. I'm a <b class="hoverable">FrontEnd</b> specialist and I've had the chance to work with an extensive variety of projects, from small <b class="hoverable">startups</b> to big <b class="hoverable">enterprice companies.</b>`,
+  description: `My name is Santiago and I'm a <b class="hoverable">software development engineer with ${workingYears}+ years</b> of experience.<br><br> I'm a <b class="hoverable">FrontEnd</b> specialist and I've had the chance to work with an extensive variety of projects, from small <b class="hoverable">startups</b> to big <b class="hoverable">enterprice companies.</b>`,
   iconName: 'made-in-colombia',
 };
 

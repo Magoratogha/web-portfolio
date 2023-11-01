@@ -4,7 +4,7 @@
     class="fw-light"
     [innerHTML]="detailsData?.description"
   ></h4>
-  <div *ngIf="detailsData?.iconName" class="w-100 text-center pt-3">
+  <div *ngIf="detailsData?.iconName" class="w-100 text-center pt-5 pt-md-4">
     <mat-icon [svgIcon]="$any(detailsData).iconName"></mat-icon>
   </div>
 </div>

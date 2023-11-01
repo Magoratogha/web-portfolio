@@ -1,4 +1,4 @@
-<section class="right fade-in">
+<section class="right desktop-nav fade-in">
   <h2
     class="fw-light hoverable text-center"
     [routerLink]="[ABOUT_ME_ROUTE]"
@@ -43,3 +43,40 @@
 >
   <router-outlet #outlet="outlet"></router-outlet>
 </section>
+<div class="mobile-nav fade-in">
+  <div>
+    <p class="mb-0" routerLinkActive="selected" [routerLink]="[ABOUT_ME_ROUTE]">
+      Who I am?
+    </p>
+    <p
+      class="mb-0"
+      [ngClass]="{ selected: showWork }"
+      [routerLink]="[ABOUT_GLOBANT_ROUTE]"
+    >
+      ¿Where have I worked at?
+    </p>
+  </div>
+  <div class="fade-in-fast" [ngClass]="{ 'd-none': !showWork }">
+    <p
+      class="mb-0"
+      routerLinkActive="selected"
+      [routerLink]="[ABOUT_GLOBANT_ROUTE]"
+    >
+      Globant
+    </p>
+    <p
+      class="mb-0"
+      routerLinkActive="selected"
+      [routerLink]="[ABOUT_VCSOFT_ROUTE]"
+    >
+      VC@Soft
+    </p>
+    <p
+      class="mb-0"
+      routerLinkActive="selected"
+      [routerLink]="[ABOUT_FREELANCE_ROUTE]"
+    >
+      As freelancer
+    </p>
+  </div>
+</div>

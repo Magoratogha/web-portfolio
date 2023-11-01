@@ -218,8 +218,18 @@ svg {
   }
 
   .selected {
+    color: $dark-darkest-color !important;
     .link-arrow {
       border: 3px solid $dark-darkest-color !important;
+    }
+  }
+  .mobile-nav {
+    div:first-child {
+      background-color: $light-darkest-color !important;
+    }
+    div {
+      color: $dark-lightest-color !important;
+      background-color: $light-mid-color !important;
     }
   }
 }
