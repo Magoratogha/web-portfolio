@@ -3,11 +3,9 @@ import { NavigationEnd, Router, RouterOutlet } from '@angular/router';
 import { filter } from 'rxjs';
 import { FastRouterAnimation } from 'src/app/animations';
 import {
-  ABOUT_FREELANCE_ROUTE,
-  ABOUT_GLOBANT_ROUTE,
   ABOUT_ME_ROUTE,
   ABOUT_ROUTE,
-  ABOUT_VCSOFT_ROUTE,
+  ABOUT_WORK_ROUTE,
 } from 'src/app/constants';
 import { BackgroundService } from '../../modules/core/services';
 
@@ -20,9 +18,7 @@ import { BackgroundService } from '../../modules/core/services';
 export class AboutMeComponent implements OnInit {
   public showWork: boolean = false;
   ABOUT_ME_ROUTE = ABOUT_ME_ROUTE;
-  ABOUT_GLOBANT_ROUTE = ABOUT_GLOBANT_ROUTE;
-  ABOUT_VCSOFT_ROUTE = ABOUT_VCSOFT_ROUTE;
-  ABOUT_FREELANCE_ROUTE = ABOUT_FREELANCE_ROUTE;
+  ABOUT_WORK_ROUTE = ABOUT_WORK_ROUTE;
 
   constructor(private router: Router, private bgService: BackgroundService) {
     this.router.events
@@ -43,5 +39,20 @@ export class AboutMeComponent implements OnInit {
 
   prepareRoute(outlet: RouterOutlet) {
     return outlet && outlet.activatedRouteData;
+  }
+
+  scrollToSection(id: string) {
+    window.scrollTo({
+      top:
+        (document.getElementById(id)?.getBoundingClientRect().top as number) +
+        window.scrollY -
+        this.remToPx(6.5),
+    });
+  }
+
+  private remToPx(rem: number) {
+    return (
+      rem * parseFloat(getComputedStyle(document.documentElement).fontSize)
+    );
   }
 }

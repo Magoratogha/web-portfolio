@@ -8,8 +8,9 @@
   </h2>
   <h2
     class="fw-light hoverable text-center"
-    [routerLink]="[ABOUT_GLOBANT_ROUTE]"
-    [ngClass]="{ 'selected display-6': showWork }"
+    [routerLink]="[ABOUT_WORK_ROUTE]"
+    fragment="globant"
+    routerLinkActive="selected display-6"
   >
     ¿Where have I worked at?
   </h2>
@@ -19,20 +20,23 @@
   >
     <a
       class="underlined hoverable"
-      [routerLink]="[ABOUT_GLOBANT_ROUTE]"
+      [routerLink]="[ABOUT_WORK_ROUTE]"
+      fragment="globant"
       routerLinkActive="selected"
       ><span class="link-arrow"></span>Globant</a
     >
     <a
       class="underlined hoverable"
-      [routerLink]="[ABOUT_VCSOFT_ROUTE]"
+      [routerLink]="[ABOUT_WORK_ROUTE]"
+      fragment="vcsoft"
       routerLinkActive="selected"
       ><span class="link-arrow"></span>VC@Soft</a
     >
     <a
       class="underlined hoverable"
-      [routerLink]="[ABOUT_FREELANCE_ROUTE]"
+      [routerLink]="[ABOUT_WORK_ROUTE]"
       routerLinkActive="selected"
+      fragment="freelance"
       ><span class="link-arrow"></span>As freelancer</a
     >
   </div>
@@ -51,32 +55,14 @@
     <p
       class="mb-0"
       [ngClass]="{ selected: showWork }"
-      [routerLink]="[ABOUT_GLOBANT_ROUTE]"
+      [routerLink]="[ABOUT_WORK_ROUTE]"
     >
       ¿Where have I worked at?
     </p>
   </div>
   <div class="fade-in-fast" [ngClass]="{ 'd-none': !showWork }">
-    <p
-      class="mb-0"
-      routerLinkActive="selected"
-      [routerLink]="[ABOUT_GLOBANT_ROUTE]"
-    >
-      Globant
-    </p>
-    <p
-      class="mb-0"
-      routerLinkActive="selected"
-      [routerLink]="[ABOUT_VCSOFT_ROUTE]"
-    >
-      VC@Soft
-    </p>
-    <p
-      class="mb-0"
-      routerLinkActive="selected"
-      [routerLink]="[ABOUT_FREELANCE_ROUTE]"
-    >
-      As freelancer
-    </p>
+    <p class="mb-0" (click)="scrollToSection('globant')">Globant</p>
+    <p class="mb-0" (click)="scrollToSection('vcsoft')">VC@Soft</p>
+    <p class="mb-0" (click)="scrollToSection('freelance')">As freelancer</p>
   </div>
 </div>

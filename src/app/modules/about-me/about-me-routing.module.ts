@@ -1,14 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import {
-  ABOUT_FREELANCE_ROUTE,
-  ABOUT_GLOBANT_ROUTE,
   ABOUT_ME_ROUTE,
-  ABOUT_VCSOFT_ROUTE,
-  FREELANCE_DETAILS,
-  GLOBANT_DETAILS,
+  ABOUT_WORK_ROUTE,
   ME_DETAILS,
-  VC_SOFT_DETAILS,
+  WORK_DETAILS,
 } from 'src/app/constants';
 import { AboutMeComponent } from './about-me.component';
 import { ItemDetailsComponent } from './components';
@@ -29,19 +25,9 @@ const routes: Routes = [
         data: ME_DETAILS,
       },
       {
-        path: ABOUT_GLOBANT_ROUTE,
+        path: ABOUT_WORK_ROUTE,
         component: ItemDetailsComponent,
-        data: GLOBANT_DETAILS,
-      },
-      {
-        path: ABOUT_VCSOFT_ROUTE,
-        component: ItemDetailsComponent,
-        data: VC_SOFT_DETAILS,
-      },
-      {
-        path: ABOUT_FREELANCE_ROUTE,
-        component: ItemDetailsComponent,
-        data: FREELANCE_DETAILS,
+        data: WORK_DETAILS,
       },
     ],
   },

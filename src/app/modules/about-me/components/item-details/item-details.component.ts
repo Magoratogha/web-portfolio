@@ -13,6 +13,6 @@ export class ItemDetailsComponent implements OnInit {
   constructor(private route: ActivatedRoute) {}
 
   ngOnInit(): void {
-    this.detailsData = this.route.snapshot.data;
+    this.detailsData = this.route.snapshot.data as AboutMeItemDetails;
   }
 }
