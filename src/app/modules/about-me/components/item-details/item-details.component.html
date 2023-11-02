@@ -8,9 +8,6 @@
     <mat-icon [svgIcon]="$any(detailsData).iconName"></mat-icon>
   </div>
   <ng-container *ngIf="detailsData?.timeline">
-    <app-timeline
-      *ngFor="let item of detailsData?.timelineItems"
-      [timeLineData]="item"
-    ></app-timeline>
+    <app-timeline [timeLineData]="detailsData?.timelineItems"></app-timeline>
   </ng-container>
 </div>

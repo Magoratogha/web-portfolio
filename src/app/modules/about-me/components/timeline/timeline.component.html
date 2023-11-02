@@ -1,13 +1,12 @@
-<div class="main-wrapper" [id]="timeLineData?.hastag">
+<div class="wrapper">
   <div
-    *ngFor="let item of timeLineData?.items"
-    class="item-wrapper"
-    [ngClass]="{
-      start: timeLineData?.starting,
-      end: timeLineData?.ending,
-      'one-item': timeLineData?.items?.length == 1
-    }"
+    [id]="section.hastag"
+    *ngFor="let section of timeLineData"
+    class="section"
   >
-    <div class="item"></div>
+    <div class="title">
+      <h3>Title</h3>
+    </div>
+    <div *ngFor="let item of section.items" class="item"></div>
   </div>
 </div>

@@ -9,7 +9,6 @@
   <h2
     class="fw-light hoverable text-center"
     [routerLink]="[ABOUT_WORK_ROUTE]"
-    fragment="globant"
     routerLinkActive="selected display-6"
   >
     ¿Where have I worked at?
@@ -18,31 +17,19 @@
     class="links-wrapper mt-5 fade-in-fast"
     [ngClass]="{ 'd-none': !showWork }"
   >
-    <a
-      class="underlined hoverable"
-      [routerLink]="[ABOUT_WORK_ROUTE]"
-      fragment="globant"
-      routerLinkActive="selected"
+    <a class="underlined hoverable" (click)="scrollToSection('globant', 8)"
       ><span class="link-arrow"></span>Globant</a
     >
-    <a
-      class="underlined hoverable"
-      [routerLink]="[ABOUT_WORK_ROUTE]"
-      fragment="vcsoft"
-      routerLinkActive="selected"
+    <a class="underlined hoverable" (click)="scrollToSection('vcsoft', 8)"
       ><span class="link-arrow"></span>VC@Soft</a
     >
-    <a
-      class="underlined hoverable"
-      [routerLink]="[ABOUT_WORK_ROUTE]"
-      routerLinkActive="selected"
-      fragment="freelance"
+    <a class="underlined hoverable" (click)="scrollToSection('freelance', 8)"
       ><span class="link-arrow"></span>As freelancer</a
     >
   </div>
 </section>
 <section
-  class="left fade-in blurred"
+  class="left fade-in blurred info-wrapper"
   [@fastRouterAnimation]="prepareRoute(outlet)"
 >
   <router-outlet #outlet="outlet"></router-outlet>
@@ -61,8 +48,10 @@
     </p>
   </div>
   <div class="fade-in-fast" [ngClass]="{ 'd-none': !showWork }">
-    <p class="mb-0" (click)="scrollToSection('globant')">Globant</p>
-    <p class="mb-0" (click)="scrollToSection('vcsoft')">VC@Soft</p>
-    <p class="mb-0" (click)="scrollToSection('freelance')">As freelancer</p>
+    <p class="mb-0" (click)="scrollToSection('globant', 9.5)">Globant</p>
+    <p class="mb-0" (click)="scrollToSection('vcsoft', 9.5)">VC@Soft</p>
+    <p class="mb-0" (click)="scrollToSection('freelance', 9.5)">
+      As freelancer
+    </p>
   </div>
 </div>

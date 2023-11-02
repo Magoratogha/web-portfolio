@@ -7,5 +7,5 @@ import { TimelineItem } from 'src/app/models';
   styleUrls: ['./timeline.component.scss'],
 })
 export class TimelineComponent {
-  @Input() timeLineData: TimelineItem | undefined;
+  @Input() timeLineData: TimelineItem[] | undefined;
 }

@@ -41,12 +41,12 @@ export class AboutMeComponent implements OnInit {
     return outlet && outlet.activatedRouteData;
   }
 
-  scrollToSection(id: string) {
+  scrollToSection(id: string, padding: number) {
     window.scrollTo({
       top:
         (document.getElementById(id)?.getBoundingClientRect().top as number) +
         window.scrollY -
-        this.remToPx(6.5),
+        this.remToPx(padding),
     });
   }
 
