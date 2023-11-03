@@ -6,8 +6,14 @@ export interface AboutMeItemDetails {
 }
 
 export interface TimelineItem {
-  starting: boolean;
-  ending: boolean;
   hastag: string;
-  items: Array<any>;
+  title: string;
+  subItems: Array<TimelineSubItem>;
+}
+
+export interface TimelineSubItem {
+  title: string;
+  timePeriod: string;
+  description: string;
+  skills: Array<string>;
 }

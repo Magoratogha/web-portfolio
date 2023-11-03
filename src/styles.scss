@@ -77,6 +77,10 @@ h6 {
   overflow-wrap: break-word;
   font-weight: 400;
 }
+a {
+  text-decoration: none;
+  color: inherit;
+}
 
 img,
 video,
@@ -230,6 +234,46 @@ svg {
     div {
       color: $dark-lightest-color !important;
       background-color: $light-mid-color !important;
+    }
+  }
+  .contrast {
+    color: $dark-darkest-color !important;
+  }
+
+  app-timeline {
+    .wrapper {
+      .section {
+        &:hover {
+          background-color: $light-timeline-color-2 !important;
+        }
+        &:before {
+          background-color: $light-timeline-color-1 !important;
+        }
+        .title {
+          &:before {
+            background-color: $light-timeline-color-1 !important;
+          }
+          &:after {
+            background-color: $light-timeline-color-1 !important;
+          }
+        }
+        .item {
+          background-color: $light-timeline-color-3 !important;
+          color: $dark-mid-color !important;
+          &:before {
+            background-color: $light-main-color !important;
+            border: 2px solid $dark-darkest-color !important;
+          }
+          h6 {
+            color: $dark-darkest-color !important;
+          }
+          .skills-wrapper {
+            .skill-badge {
+              border: 2px solid $light-timeline-color-1 !important;
+            }
+          }
+        }
+      }
     }
   }
 }
@@ -416,4 +460,8 @@ mat-error {
       transition: all 200ms ease-in-out;
     }
   }
+}
+
+.contrast {
+  color: $light-lightest-color;
 }
