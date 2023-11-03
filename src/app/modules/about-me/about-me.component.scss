@@ -7,13 +7,20 @@
   }
 }
 
+h2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+}
+
 section {
   min-height: 100dvh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 0 5rem;
+  padding: 0 2rem;
   width: 50%;
   @media (max-width: 992px) {
     padding-inline: 3rem;

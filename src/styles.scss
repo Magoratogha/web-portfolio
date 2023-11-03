@@ -323,12 +323,13 @@ mat-error {
     height: 1px;
     background: currentColor;
   }
-  &:not(.active):before {
+  &:not(.active):before,
+  &:not(.selected):before {
     transform: scale3d(0, 1, 1);
     transform-origin: right;
     transition: transform 0.3s ease-in-out;
   }
-  &:hover {
+  &:not(.selected):hover {
     color: $light-lightest-color;
     &:before {
       transform: scale3d(1, 1, 1);
