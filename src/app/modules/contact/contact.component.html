@@ -1,61 +1,60 @@
-<div class="form-shadow blurred fade-in"></div>
-<div class="container fade-in">
-  <div class="contact-content-wrapper">
-    <div class="text-center mt-5">
-      <h1 class="fw-light text-center">Do you want to talk to me?</h1>
-      <h3 class="fw-light text-center">
-        You can find me in almost all social networks as
-        <b class="hoverable">Magoratogha</b>
-      </h3>
-      <div
-        class="pt-4"
-        [ngClass]="{
-          'btn-group': !IS_SMALL_MOBILE_DEVICE(),
-          'btn-group-vertical w-50': IS_SMALL_MOBILE_DEVICE()
-        }"
-        role="group"
-      >
-        <a
-          type="button"
-          class="btn btn-outline-dark github hoverable"
-          target="_blank"
-          rel="noreferrer"
-          [href]="GITHUB_URL"
-        >
-          <i class="bi bi-github me-1"></i>Github
-        </a>
-        <a
-          type="button"
-          class="btn btn-outline-dark linkedin hoverable"
-          target="_blank"
-          rel="noreferrer"
-          [href]="LINKEDIN_URL"
-        >
-          <i class="bi bi-linkedin me-1"></i>Linkedin
-        </a>
-        <a
-          type="button"
-          class="btn btn-outline-dark instagram hoverable"
-          target="_blank"
-          rel="noreferrer"
-          [href]="INSTAGRAM_URL"
-        >
-          <i class="bi bi-instagram me-1"></i>Instagram
-        </a>
-        <a
-          type="button"
-          class="btn btn-outline-dark facebook hoverable"
-          target="_blank"
-          rel="noreferrer"
-          [href]="FACEBOOK_URL"
-        >
-          <i class="bi bi-facebook me-1"></i>Facebook
-        </a>
-      </div>
-    </div>
-    <h2 class="fw-light text-center mt-5 pt-3 mb-5 mb-md-3">
-      Or if you want to write me
-    </h2>
+<div class="contact-wrapper container fade-in">
+  <h1 class="fw-light text-center pb-1 pb-md-0">Do you want to talk to me?</h1>
+  <h3 class="fw-light text-center">
+    You can find me in almost all social networks as
+    <b class="hoverable">Magoratogha</b>
+  </h3>
+  <div
+    class="py-4"
+    [ngClass]="{
+      'btn-group': !IS_SMALL_MOBILE_DEVICE(),
+      'btn-group-vertical w-50': IS_SMALL_MOBILE_DEVICE()
+    }"
+    role="group"
+  >
+    <a
+      type="button"
+      class="btn btn-outline-dark github hoverable"
+      target="_blank"
+      rel="noreferrer"
+      [href]="GITHUB_URL"
+    >
+      <i class="bi bi-github me-1"></i>Github
+    </a>
+    <a
+      type="button"
+      class="btn btn-outline-dark linkedin hoverable"
+      target="_blank"
+      rel="noreferrer"
+      [href]="LINKEDIN_URL"
+    >
+      <i class="bi bi-linkedin me-1"></i>Linkedin
+    </a>
+    <a
+      type="button"
+      class="btn btn-outline-dark instagram hoverable"
+      target="_blank"
+      rel="noreferrer"
+      [href]="INSTAGRAM_URL"
+    >
+      <i class="bi bi-instagram me-1"></i>Instagram
+    </a>
+    <a
+      type="button"
+      class="btn btn-outline-dark facebook hoverable"
+      target="_blank"
+      rel="noreferrer"
+      [href]="FACEBOOK_URL"
+    >
+      <i class="bi bi-facebook me-1"></i>Facebook
+    </a>
+  </div>
+</div>
+<div class="form-wrapper blurred fade-in">
+  <div class="container">
+    <h2 class="fw-light text-center">Or if you want to write me</h2>
+  </div>
+  <div class="container">
     <div [ngSwitch]="sendingStatus">
       <div
         class="d-flex flex-column"
@@ -125,7 +124,7 @@
       </div>
       <ng-container *ngSwitchCase="EmailSendingStatus.Sending">
         <div
-          class="d-flex align-items-center mx-4 text-center text-sm-start fade-in-fast"
+          class="d-flex align-items-center mx-4 text-center text-sm-start fade-in-fast pb-5"
         >
           <span class="loader me-3"></span>
           <h5 class="mb-0">
@@ -135,7 +134,7 @@
       </ng-container>
       <ng-container *ngSwitchCase="EmailSendingStatus.Ok">
         <div
-          class="d-flex align-items-center mx-4 text-center text-sm-start fade-in-fast"
+          class="d-flex align-items-center mx-4 text-center text-sm-start fade-in-fast pb-5"
         >
           <mat-icon class="loader-icon green me-2"
             >check_circle_outline</mat-icon
@@ -145,7 +144,7 @@
       </ng-container>
       <ng-container *ngSwitchCase="EmailSendingStatus.Error">
         <div
-          class="d-flex align-items-center mx-4 text-center text-sm-start fade-in-fast"
+          class="d-flex align-items-center mx-4 text-center text-sm-start fade-in-fast pb-5"
         >
           <mat-icon class="loader-icon red me-2">cancel</mat-icon>
           <h5 class="mb-0">Something went wrong, please try again... :c</h5>
