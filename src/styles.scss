@@ -276,6 +276,14 @@ svg {
       }
     }
   }
+  a.btn-outline {
+    border-color: $dark-darkest-color;
+    color: $dark-darkest-color;
+    &:hover {
+      color: $light-main-color;
+      background-color: $dark-main-color;
+    }
+  }
 }
 
 mat-form-field {
@@ -464,4 +472,13 @@ mat-error {
 
 .contrast {
   color: $light-lightest-color;
+}
+
+a.btn-outline {
+  border-color: $light-lightest-color;
+  color: $light-lightest-color;
+  &:hover {
+    color: $dark-main-color;
+    background-color: $light-main-color;
+  }
 }
