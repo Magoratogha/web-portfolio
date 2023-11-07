@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NavigationEnd, Router, RouterOutlet } from '@angular/router';
-import { filter } from 'rxjs';
+import { Subscription, filter } from 'rxjs';
 import { FastRouterAnimation } from 'src/app/animations';
 import {
   ABOUT_ME_ROUTE,
@@ -8,6 +8,7 @@ import {
   ABOUT_WORK_ROUTE,
 } from 'src/app/constants';
 import { BackgroundService } from '../../modules/core/services';
+import { ItemDetailsComponent } from './components';
 
 @Component({
   selector: 'app-about-me',
@@ -19,6 +20,8 @@ export class AboutMeComponent implements OnInit {
   public showWork: boolean = false;
   ABOUT_ME_ROUTE = ABOUT_ME_ROUTE;
   ABOUT_WORK_ROUTE = ABOUT_WORK_ROUTE;
+  timelineSubs: Subscription | undefined;
+  activeTimelineSection: string | undefined;
 
   constructor(private router: Router, private bgService: BackgroundService) {
     this.router.events
@@ -54,5 +57,19 @@ export class AboutMeComponent implements OnInit {
     return (
       rem * parseFloat(getComputedStyle(document.documentElement).fontSize)
     );
+  }
+
+  componentActivated(component: any) {
+    if (component instanceof ItemDetailsComponent) {
+      this.timelineSubs = component.sectionChanged.subscribe((section) => {
+        this.activeTimelineSection = section;
+      });
+    }
+  }
+
+  componentDeactivated(component: any) {
+    if (component instanceof ItemDetailsComponent) {
+      this.timelineSubs && this.timelineSubs.unsubscribe();
+    }
   }
 }

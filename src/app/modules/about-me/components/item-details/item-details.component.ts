@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { AboutMeItemDetails } from 'src/app/models';
 
@@ -9,6 +9,7 @@ import { AboutMeItemDetails } from 'src/app/models';
 })
 export class ItemDetailsComponent implements OnInit {
   public detailsData: AboutMeItemDetails | undefined;
+  @Output() sectionChanged = new EventEmitter<string>();
 
   constructor(private route: ActivatedRoute) {}
 

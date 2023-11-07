@@ -19,13 +19,22 @@
     class="links-wrapper mt-5 fade-in-fast"
     [ngClass]="{ 'd-none': !showWork }"
   >
-    <a class="underlined hoverable" (click)="scrollToSection('globant', 8)"
+    <a
+      class="underlined hoverable"
+      (click)="scrollToSection('globant', 8)"
+      [ngClass]="{ selected: activeTimelineSection == 'globant' }"
       ><span class="link-arrow"></span>Globant</a
     >
-    <a class="underlined hoverable" (click)="scrollToSection('vcsoft', 8)"
+    <a
+      class="underlined hoverable"
+      (click)="scrollToSection('vcsoft', 8)"
+      [ngClass]="{ selected: activeTimelineSection == 'vcsoft' }"
       ><span class="link-arrow"></span>VC@Soft</a
     >
-    <a class="underlined hoverable" (click)="scrollToSection('freelance', 8)"
+    <a
+      class="underlined hoverable"
+      (click)="scrollToSection('freelance', 8)"
+      [ngClass]="{ selected: activeTimelineSection == 'freelance' }"
       ><span class="link-arrow"></span>As freelancer</a
     >
   </div>
@@ -34,7 +43,11 @@
   class="left fade-in blurred info-wrapper"
   [@fastRouterAnimation]="prepareRoute(outlet)"
 >
-  <router-outlet #outlet="outlet"></router-outlet>
+  <router-outlet
+    #outlet="outlet"
+    (activate)="componentActivated($event)"
+    (deactivate)="componentDeactivated($event)"
+  ></router-outlet>
 </section>
 <div class="mobile-nav fade-in">
   <div>
@@ -50,9 +63,25 @@
     </p>
   </div>
   <div class="fade-in-fast" [ngClass]="{ 'd-none': !showWork }">
-    <p class="mb-0" (click)="scrollToSection('globant', 9.5)">Globant</p>
-    <p class="mb-0" (click)="scrollToSection('vcsoft', 9.5)">VC@Soft</p>
-    <p class="mb-0" (click)="scrollToSection('freelance', 9.5)">
+    <p
+      class="mb-0"
+      (click)="scrollToSection('globant', 9.5)"
+      [ngClass]="{ selected: activeTimelineSection == 'globant' }"
+    >
+      Globant
+    </p>
+    <p
+      class="mb-0"
+      (click)="scrollToSection('vcsoft', 9.5)"
+      [ngClass]="{ selected: activeTimelineSection == 'vcsoft' }"
+    >
+      VC@Soft
+    </p>
+    <p
+      class="mb-0"
+      (click)="scrollToSection('freelance', 9.5)"
+      [ngClass]="{ selected: activeTimelineSection == 'freelance' }"
+    >
       As freelancer
     </p>
   </div>
