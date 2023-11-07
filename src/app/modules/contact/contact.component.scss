@@ -109,6 +109,7 @@ button.submit-button {
   a {
     border-color: $light-main-color;
     color: $light-main-color;
+    background-color: $dark-timeline-color-3;
     &:hover {
       color: $light-lightest-color !important;
     }

@@ -186,6 +186,16 @@ svg {
     a {
       border-color: $dark-main-color !important;
       color: $dark-main-color !important;
+      background-color: $light-timeline-color-3 !important;
+      &.github:hover {
+        background-color: #6cc644 !important;
+      }
+      &.linkedin:hover {
+        background-color: #0077b5 !important;
+      }
+      &.facebook:hover {
+        background-color: #3b5998 !important;
+      }
     }
   }
   .form-wrapper {
@@ -288,6 +298,7 @@ svg {
   a.btn-outline {
     border-color: $dark-darkest-color;
     color: $dark-darkest-color;
+    background-color: $light-timeline-color-3;
     &:hover {
       color: $light-main-color;
       background-color: $dark-main-color;
@@ -486,6 +497,7 @@ mat-error {
 a.btn-outline {
   border-color: $light-lightest-color;
   color: $light-lightest-color;
+  background-color: $dark-timeline-color-3;
   &:hover {
     color: $dark-main-color;
     background-color: $light-main-color;
