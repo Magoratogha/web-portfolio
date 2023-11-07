@@ -70,7 +70,7 @@ export const WORK_DETAILS: AboutMeItemDetails = {
         '<b class="hoverable underlined contrast"><a href="https://www.vc-soft.com/" target="_blank">VC-SOFT</a></b> outsourcing <b class="hoverable underlined contrast"><a href="https://www.bancolombia.com/personas" target="_blank">Grupo Bancolombia</a></b>',
       subItems: [
         {
-          title: 'Cloud Frontend Team Lead',
+          title: '<b>Cloud Frontend Team Lead</b>',
           timePeriod: 'March 2020 - July 2021',
           description:
             'Implementation of incremental features looking for improve the user experience and add application functionalities',
@@ -91,7 +91,7 @@ export const WORK_DETAILS: AboutMeItemDetails = {
           ],
         },
         {
-          title: 'Frontend Developer',
+          title: '<b>Frontend Developer</b>',
           timePeriod: 'February 2019 - March 2020',
           description:
             'Implementation of incremental features looking for improve the user experience and add application functionalities',
@@ -117,7 +117,7 @@ export const WORK_DETAILS: AboutMeItemDetails = {
       title: '<b>As Frelancer</b>',
       subItems: [
         {
-          title: 'Freelance Developer',
+          title: '<b>Freelance Developer</b>',
           timePeriod: '2018 - 2019',
           description:
             'Implementation of incremental features looking for improve the user experience and add application functionalities',
