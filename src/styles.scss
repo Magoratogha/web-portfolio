@@ -101,11 +101,18 @@ svg {
   z-index: 10;
   pointer-events: none;
   transition: transform 100ms linear;
+  background-color: $dark-shadow-color;
+  @supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {
+    -webkit-backdrop-filter: blur(3px);
+    backdrop-filter: blur(3px);
+  }
   &.hover {
     transform-origin: center;
     transform: scale3d(2, 2, 1);
     mix-blend-mode: difference;
     background: $light-lightest-color;
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
   }
 }
 
@@ -141,8 +148,10 @@ svg {
   .cursor {
     border-color: $dark-darkest-color;
     box-shadow: $light-cursor-shadow !important;
+    background-color: $light-shadow-color;
     &.hover {
       border-color: $light-lightest-color;
+      background-color: $light-lightest-color;
     }
   }
   .blurred {
