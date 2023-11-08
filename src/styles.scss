@@ -244,6 +244,10 @@ svg {
     }
   }
 
+  .selected {
+    color: $dark-darkest-color;
+  }
+
   .mobile-nav {
     div:first-child {
       background-color: $light-darkest-color !important;
