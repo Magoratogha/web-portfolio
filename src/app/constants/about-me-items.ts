@@ -7,7 +7,7 @@ const workingYears = Math.floor(
 );
 
 export const ME_DETAILS: AboutMeItemDetails = {
-  description: `My name is Santiago and I'm a <b class="hoverable">software development engineer with ${workingYears}+ years</b> of experience.<br><br> I'm a <b class="hoverable">FrontEnd</b> specialist and I've had the chance to work with an extensive variety of projects, from small <b class="hoverable">startups</b> to big <b class="hoverable">enterprice companies.</b>`,
+  description: `My name is Santiago and I'm a <b class="hoverable">software development engineer with ${workingYears}+ years</b> of experience.<br><br> I'm a <b class="hoverable">FrontEnd</b> specialist and I've had the chance to work with an extensive variety of projects, from small <b class="hoverable">startups</b> to big <b class="hoverable">enterprise companies.</b>`,
   iconName: 'made-in-colombia',
   timeline: false,
 };
@@ -22,10 +22,11 @@ export const WORK_DETAILS: AboutMeItemDetails = {
       subItems: [
         {
           title: '<b>Technical Leader</b>',
-          timePeriod: 'October 2022 - Present',
+          timePeriod: 'October 2022 - <b>Present</b>',
           description:
-            'Implementation of incremental features looking for improve the user experience and add application functionalities',
+            'Technical team leader responsible for establishing guidelines and good practices for the development process and the definition of the applications architecture.',
           skills: [
+            'Leadership',
             'Azure DevOps',
             'CI/CD',
             'Angular 2+',
@@ -44,9 +45,9 @@ export const WORK_DETAILS: AboutMeItemDetails = {
         },
         {
           title: '<b>SR Web UI Developer</b>',
-          timePeriod: 'July 2021 - Present',
+          timePeriod: 'July 2021 - <b>Present</b>',
           description:
-            'Implementation of incremental features looking for improve the user experience and add application functionalities',
+            '<p>Web UI Developer in charge of the implementation of incremental features in existent and new applications using agile methodologies.</p><p>Support and migration of legacy web applications to newer technologies.</p>',
           skills: [
             'Angular 2+',
             'TypeScript',
@@ -56,7 +57,7 @@ export const WORK_DETAILS: AboutMeItemDetails = {
             'KarmaJS',
             'Jasmine',
             'Kendo',
-            'API REST',
+            'SAFe',
             'HTML',
             'CSS',
             'LESS',
@@ -73,7 +74,7 @@ export const WORK_DETAILS: AboutMeItemDetails = {
           title: '<b>Cloud Frontend Team Lead</b>',
           timePeriod: 'March 2020 - July 2021',
           description:
-            'Implementation of incremental features looking for improve the user experience and add application functionalities',
+            '<p>Frontend development team leader responsible for establishing guidelines and good practices for the technical team.</p><p>DevOps analyst for infrastructures built on OpenShift and AWS. Support of applications in a productive environment under the Standby model.</p>',
           skills: [
             'AWS',
             'OpenShift',
@@ -94,7 +95,7 @@ export const WORK_DETAILS: AboutMeItemDetails = {
           title: '<b>Frontend Developer</b>',
           timePeriod: 'February 2019 - March 2020',
           description:
-            'Implementation of incremental features looking for improve the user experience and add application functionalities',
+            'Frontend software developer focused on the implementation of incremental features for existing projects and the development of new applications using agile methodologies.',
           skills: [
             'Angular 2+',
             'TypeScript',
@@ -107,7 +108,7 @@ export const WORK_DETAILS: AboutMeItemDetails = {
             'Bootstrap',
             'KarmaJS',
             'Jasmine',
-            'API REST',
+            'Scrum',
           ],
         },
       ],
@@ -120,7 +121,7 @@ export const WORK_DETAILS: AboutMeItemDetails = {
           title: '<b>Freelance Developer</b>',
           timePeriod: '2018 - 2019',
           description:
-            'Implementation of incremental features looking for improve the user experience and add application functionalities',
+            'Independent freelance developer focused on frontend and mobile development for different projects with different needs.',
           skills: [
             'Google Firebase',
             'Angular 2+',

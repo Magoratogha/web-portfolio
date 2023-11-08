@@ -485,12 +485,14 @@ mat-error {
       }
     }
   }
-  &.selected {
-    font-weight: bolder !important;
-    transition: font-weight 300ms ease-in-out;
-    .link-arrow {
-      height: 2px;
-    }
+}
+
+.selected {
+  color: $light-lightest-color;
+  font-weight: bolder !important;
+  transition: font-weight 300ms ease-in-out;
+  .link-arrow {
+    height: 2px;
   }
 }
 
