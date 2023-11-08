@@ -19,7 +19,7 @@ export class TimelineComponent implements AfterViewInit {
   ngAfterViewInit(): void {
     const observer = new IntersectionObserver(this.onIntersection.bind(this), {
       root: null,
-      rootMargin: '-200px 0px 0px 0px',
+      rootMargin: `-${window.innerHeight * 0.25}px 0px 0px 0px`,
       threshold: 0.5,
     });
     this.timeLineData?.map((section) => {
