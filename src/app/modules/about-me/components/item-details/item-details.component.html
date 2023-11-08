@@ -5,7 +5,10 @@
     [innerHTML]="detailsData?.description"
   ></h4>
   <div *ngIf="detailsData?.iconName" class="w-100 text-center pt-5 pt-md-4">
-    <mat-icon [svgIcon]="$any(detailsData).iconName"></mat-icon>
+    <mat-icon
+      class="hoverable"
+      [svgIcon]="$any(detailsData).iconName"
+    ></mat-icon>
   </div>
   <ng-container *ngIf="detailsData?.timeline">
     <app-timeline
