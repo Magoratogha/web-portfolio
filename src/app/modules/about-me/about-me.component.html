@@ -1,6 +1,6 @@
 <section class="right desktop-nav fade-in">
   <h2
-    class="fw-light hoverable underlined text-center"
+    class="fw-light hoverable text-center arrow-wrapper"
     [routerLink]="[ABOUT_ME_ROUTE]"
     routerLinkActive="selected display-6"
   >
@@ -8,7 +8,7 @@
     ¿Who am I?
   </h2>
   <h2
-    class="fw-light hoverable underlined text-center"
+    class="fw-light hoverable text-center arrow-wrapper"
     [routerLink]="[ABOUT_WORK_ROUTE]"
     routerLinkActive="selected display-6"
   >
@@ -20,19 +20,19 @@
     [ngClass]="{ 'd-none': !showWork }"
   >
     <a
-      class="underlined hoverable"
+      class="hoverable arrow-wrapper"
       (click)="scrollToSection('globant', 8)"
       [ngClass]="{ selected: activeTimelineSection == 'globant' }"
       ><span class="link-arrow"></span>Globant</a
     >
     <a
-      class="underlined hoverable"
+      class="hoverable arrow-wrapper"
       (click)="scrollToSection('vcsoft', 8)"
       [ngClass]="{ selected: activeTimelineSection == 'vcsoft' }"
       ><span class="link-arrow"></span>VC@Soft</a
     >
     <a
-      class="underlined hoverable"
+      class="hoverable arrow-wrapper"
       (click)="scrollToSection('freelance', 8)"
       [ngClass]="{ selected: activeTimelineSection == 'freelance' }"
       ><span class="link-arrow"></span>As freelancer</a

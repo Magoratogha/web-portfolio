@@ -44,11 +44,6 @@ section {
   }
 }
 
-.selected {
-  color: $light-lightest-color;
-  font-weight: bolder !important;
-}
-
 .desktop-nav {
   display: none;
   @media (min-width: 768px) {

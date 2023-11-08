@@ -231,21 +231,20 @@ svg {
     color: $dark-darkest-color !important;
   }
 
-  .link-arrow {
-    border-top: 1px solid $dark-darkest-color !important;
-    border-left: 1px solid $dark-darkest-color !important;
-  }
-
-  .link-arrow::after {
-    background-color: $dark-darkest-color !important;
-  }
-
-  .selected {
-    color: $dark-darkest-color !important;
+  .arrow-wrapper {
     .link-arrow {
-      border: 3px solid $dark-darkest-color !important;
+      background-color: $dark-darkest-color;
+      &::after {
+        border-top: 1px solid $dark-darkest-color;
+        border-left: 1px solid $dark-darkest-color;
+      }
+    }
+    &.selected,
+    &:hover {
+      color: $dark-darkest-color;
     }
   }
+
   .mobile-nav {
     div:first-child {
       background-color: $light-darkest-color !important;
@@ -439,7 +438,7 @@ mat-error {
   flex-direction: column;
   align-items: flex-start;
   justify-content: center;
-  gap: 16px;
+  gap: 1rem;
   @media (max-width: 768px) {
     align-items: center;
   }
@@ -450,42 +449,48 @@ mat-error {
     line-height: 28px;
     display: flex;
     align-items: center;
-    gap: 5px;
+    gap: 0.6rem;
   }
 }
 
-.link-arrow {
-  display: block;
-  width: 16px;
-  height: 16px;
-  border-top: 1px solid $light-lightest-color;
-  border-left: 1px solid $light-lightest-color;
-  transform: rotate(135deg);
-  margin-inline: 3px 7px;
-  transition: all 200ms ease-in-out;
-}
-
-.link-arrow::after {
-  content: "";
-  display: block;
-  width: 1px;
-  height: 20px;
-  background-color: $light-lightest-color;
-  transform: rotate(-45deg) translate(7px, 3px);
-  left: 0;
-  top: 0;
-  transition: all 200ms ease-in-out;
-}
-
-.selected {
+.arrow-wrapper {
   .link-arrow {
-    width: 18px;
-    height: 18px;
-    border: 3px solid $light-lightest-color;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    width: 1.5rem;
+    height: 1px;
+    background-color: $light-lightest-color;
     transition: all 200ms ease-in-out;
-    &:after {
-      width: 0;
+    &::after {
+      content: "";
+      width: 0.7rem;
+      height: 0.7rem;
+      margin-right: 2px;
+      border-top: 1px solid $light-lightest-color;
+      border-left: 1px solid $light-lightest-color;
+      transform: rotate(135deg);
       transition: all 200ms ease-in-out;
+    }
+  }
+  &.selected,
+  &:hover {
+    color: $light-lightest-color;
+    .link-arrow {
+      width: 2.3rem;
+      transition: all 200ms ease-in-out;
+      &:after {
+        width: 0;
+        height: 0;
+        transition: all 200ms ease-in-out;
+      }
+    }
+  }
+  &.selected {
+    font-weight: bolder !important;
+    transition: font-weight 300ms ease-in-out;
+    .link-arrow {
+      height: 2px;
     }
   }
 }
