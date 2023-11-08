@@ -20,7 +20,7 @@ export class TimelineComponent implements AfterViewInit {
     const observer = new IntersectionObserver(this.onIntersection.bind(this), {
       root: null,
       rootMargin: `-${window.innerHeight * 0.25}px 0px 0px 0px`,
-      threshold: 0.5,
+      threshold: [0.5, 1],
     });
     this.timeLineData?.map((section) => {
       observer.observe(document.getElementById(section.hastag) as HTMLElement);
