@@ -117,10 +117,7 @@ svg {
 }
 
 .fw-light {
-  font-weight: 200 !important;
-  @media (max-width: 768px) {
-    font-weight: 300 !important;
-  }
+  font-weight: 300 !important;
 }
 
 .fw-normal {
@@ -136,9 +133,6 @@ svg {
 }
 
 .light {
-  .fw-light {
-    font-weight: 300 !important;
-  }
   .loader-container {
     background-color: $light-main-color !important;
   }
