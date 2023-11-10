@@ -28,6 +28,11 @@ $dark-theme: mat.define-dark-theme(
   @include mat.all-component-colors($light-theme);
 }
 
+@font-face {
+  font-family: "Heydex";
+  src: local("Heydex"), url(./assets/fonts/heydex.otf) format("otf");
+}
+
 html {
   position: relative;
 }
