@@ -4,9 +4,10 @@ import { SkillsRoutingModule } from './skills-routing.module';
 import { SkillsComponent } from './skills.component';
 import { MatIconModule } from '@angular/material/icon';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { ScrollAnimationDirective } from './directives';
 
 @NgModule({
-  declarations: [SkillsComponent],
+  declarations: [SkillsComponent, ScrollAnimationDirective],
   imports: [
     CommonModule,
     SkillsRoutingModule,

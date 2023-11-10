@@ -89,3 +89,17 @@ small {
 .underlined {
   color: currentColor;
 }
+
+.icons-wrapper {
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  mat-icon {
+    width: 3.5rem;
+    height: 3.5rem;
+  }
+}
