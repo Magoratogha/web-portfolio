@@ -99,7 +99,11 @@ small {
   gap: 1rem;
   flex-wrap: wrap;
   mat-icon {
-    width: 3.5rem;
-    height: 3.5rem;
+    width: 2.5rem;
+    height: 2.5rem;
+    @media (min-width: 768px) {
+      width: 3.5rem;
+      height: 3.5rem;
+    }
   }
 }
