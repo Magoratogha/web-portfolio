@@ -30,7 +30,7 @@ $dark-theme: mat.define-dark-theme(
 
 @font-face {
   font-family: "Heydex";
-  src: local("Heydex"), url(./assets/fonts/heydex.otf) format("otf");
+  src: url(assets/fonts/heydex.otf) format("opentype");
 }
 
 html {
