@@ -7,6 +7,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CoreModule } from './modules/core/core.module';
 import madeInColombiaIcon from '!!raw-loader!../assets/images/made-in-colombia.svg';
+import clickHereIcon from '!!raw-loader!../assets/images/click-here.svg';
 
 @NgModule({
   declarations: [AppComponent],
@@ -26,6 +27,10 @@ export class AppModule {
     iconRegistry.addSvgIconLiteral(
       'made-in-colombia',
       sanitizer.bypassSecurityTrustHtml(madeInColombiaIcon)
+    );
+    iconRegistry.addSvgIconLiteral(
+      'click-here',
+      sanitizer.bypassSecurityTrustHtml(clickHereIcon)
     );
   }
 }

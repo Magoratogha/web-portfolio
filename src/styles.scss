@@ -307,6 +307,11 @@ svg {
       background-color: $dark-main-color;
     }
   }
+  app-skills {
+    .cards-wrapper {
+      background-color: $light-timeline-color-3;
+    }
+  }
 }
 
 mat-form-field {
@@ -387,6 +392,7 @@ mat-error {
 
 .underlined {
   color: $light-darkest-color;
+  white-space: nowrap;
   text-decoration: none;
   position: relative;
   &:before {

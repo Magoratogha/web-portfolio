@@ -38,13 +38,19 @@ import {
 } from '../../../constants';
 import fragment from '../../../shaders/fragment.glsl';
 import vertex from '../../../shaders/vertex.glsl';
+//@ts-ignore
+import { EffectComposer } from 'three/addons/postprocessing/EffectComposer.js';
+//@ts-ignore
+import { RenderPass } from 'three/addons/postprocessing/RenderPass.js';
+//@ts-ignore
+import { GlitchPass } from 'three/addons/postprocessing/GlitchPass.js';
 
 @Injectable({
   providedIn: 'root',
 })
 export class BackgroundService implements OnDestroy {
   private canvas: HTMLElement | undefined;
-  private renderer: WebGLRenderer | undefined;
+  private composer: EffectComposer | undefined;
   private scene: Scene | undefined;
   private camera: PerspectiveCamera | undefined;
   private isDarkMode: boolean = true;
@@ -56,6 +62,8 @@ export class BackgroundService implements OnDestroy {
 
   private materials: ShaderMaterial[] = [];
   private stats: Stats | undefined;
+
+  private glitchPass: any;
 
   constructor(private rendererFactory2: RendererFactory2) {
     this.ngRenderer = this.rendererFactory2.createRenderer(null, null);
@@ -70,17 +78,18 @@ export class BackgroundService implements OnDestroy {
     this.canvas = canvas;
     this.scene = new Scene();
     this.scene.background = new Color(DARK_BG_COLOR);
-    this.renderer = new WebGLRenderer({
+    const renderer = new WebGLRenderer({
       antialias: false,
       stencil: false,
       depth: false,
       canvas: this.canvas,
     });
-    this.renderer?.setPixelRatio(
+    renderer?.setPixelRatio(
       Math.min(window.devicePixelRatio, BG_RENDER_PX_RATIO)
     );
-    this.renderer.setSize(window.outerWidth, window.outerHeight);
-    this.renderer.outputColorSpace = SRGBColorSpace;
+    renderer.setSize(window.outerWidth, window.outerHeight);
+    renderer.outputColorSpace = SRGBColorSpace;
+    this.composer = new EffectComposer(renderer);
     this.camera = new PerspectiveCamera(
       70,
       window.outerWidth / window.outerHeight,
@@ -95,6 +104,7 @@ export class BackgroundService implements OnDestroy {
     PARTICLES_CONFIG.map((config) => this.addParticles(config));
     this.setEventListeners();
     this.scene.rotateX(0.8);
+    this.composer.addPass(new RenderPass(this.scene, this.camera));
     this.animate();
   }
 
@@ -107,10 +117,7 @@ export class BackgroundService implements OnDestroy {
         ? material.uniforms['uDarkColor'].value
         : material.uniforms['uLightColor'].value;
     });
-    this.renderer?.render(
-      this.scene as Scene,
-      this.camera as PerspectiveCamera
-    );
+    this.composer?.render();
     isDevMode() && this.stats?.end();
     requestAnimationFrame(this.animate.bind(this));
   }
@@ -136,10 +143,7 @@ export class BackgroundService implements OnDestroy {
   }
 
   private onResize(): void {
-    this.renderer?.setPixelRatio(
-      Math.min(window.devicePixelRatio, BG_RENDER_PX_RATIO)
-    );
-    this.renderer?.setSize(window.outerWidth, window.outerHeight);
+    this.composer?.setSize(window.outerWidth, window.outerHeight);
     (this.camera as PerspectiveCamera).aspect =
       window.outerWidth / window.outerHeight;
     (this.camera as PerspectiveCamera).updateProjectionMatrix();
@@ -294,5 +298,14 @@ export class BackgroundService implements OnDestroy {
       g: color.g,
       b: color.b,
     });
+  }
+
+  public activateGlitchEffect() {
+    this.glitchPass = new GlitchPass();
+    this.composer.addPass(this.glitchPass);
+  }
+
+  public deactivateGlitchEffect() {
+    this.composer.removePass(this.glitchPass);
   }
 }
