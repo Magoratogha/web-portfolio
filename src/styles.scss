@@ -311,6 +311,21 @@ svg {
       background-color: $light-timeline-color-3;
     }
   }
+  .svg-colored {
+    svg > path {
+      stroke: $dark-main-color;
+      stroke-width: 12px;
+    }
+    svg > g {
+      stroke: $dark-main-color;
+      stroke-width: 6px;
+    }
+    &-rxjs {
+      svg > path:first-of-type {
+        color: $dark-main-color;
+      }
+    }
+  }
 }
 
 mat-form-field {
@@ -517,5 +532,25 @@ a.btn-outline {
   &:hover {
     color: $dark-main-color;
     background-color: $light-main-color;
+  }
+}
+
+.svg-colored {
+  svg > path {
+    stroke: $light-main-color;
+    stroke-width: 10px;
+    stroke-linejoin: round;
+  }
+  svg > g {
+    stroke: $light-main-color;
+    stroke-width: 5px;
+    stroke-linejoin: round;
+  }
+  &-rxjs {
+    svg > path:first-of-type {
+      color: $light-main-color;
+      fill: #e60b8b !important;
+      transition: fill 300ms linear;
+    }
   }
 }

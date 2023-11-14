@@ -8,12 +8,13 @@ import {
 } from '@angular/core';
 import { AnimationService } from '../../core/services';
 import { AnimationData } from 'src/app/models';
+import { BG_ANIMATION_TIME } from 'src/app/constants';
 
 @Directive({
   selector: '[scrollAnimation]',
 })
 export class ScrollAnimationDirective implements AfterViewInit, OnDestroy {
-  @Input() public scrollDelay: number = window.innerHeight * 0.1;
+  @Input() public scrollDelay: number = window.innerHeight * 0.15;
   @Input() public inAnimationData: AnimationData | undefined;
   @Input() public outAnimationData: AnimationData | undefined;
   private inAnimationTimeout: number = 0;
@@ -31,20 +32,23 @@ export class ScrollAnimationDirective implements AfterViewInit, OnDestroy {
   ) {}
 
   ngAfterViewInit(): void {
-    this.elementPosition = this.element.nativeElement.offsetTop;
-    this.scrollUnlistenerFn = this.renderer.listen(
-      window,
-      'scroll',
-      this.onScroll.bind(this)
-    );
-    this.resizeUnlistenerFn = this.renderer.listen(
-      window,
-      'resize',
-      this.onResize.bind(this)
-    );
+    window.setTimeout(() => {
+      this.elementPosition = this.element.nativeElement.offsetTop;
+      this.scrollUnlistenerFn = this.renderer.listen(
+        window,
+        'scroll',
+        this.onScroll.bind(this)
+      );
+      this.resizeUnlistenerFn = this.renderer.listen(
+        window,
+        'resize',
+        this.onResize.bind(this)
+      );
+    }, BG_ANIMATION_TIME * 1000);
   }
 
   private onScroll(): void {
+    console.log(window.scrollY, this.elementPosition, window.innerHeight);
     if (!this.isAnimating) {
       if (
         window.scrollY >

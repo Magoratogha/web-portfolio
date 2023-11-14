@@ -5,14 +5,26 @@ import {
   keyframes,
   style,
 } from '@angular/animations';
-import { ElementRef, Injectable } from '@angular/core';
+import {
+  ElementRef,
+  Injectable,
+  Renderer2,
+  RendererFactory2,
+} from '@angular/core';
 import { AnimationData } from 'src/app/models';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AnimationService {
-  constructor(private builder: AnimationBuilder) {}
+  private renderer: Renderer2;
+
+  constructor(
+    private builder: AnimationBuilder,
+    private rendererFactory2: RendererFactory2
+  ) {
+    this.renderer = this.rendererFactory2.createRenderer(null, null);
+  }
 
   public buildAnimation(
     element: ElementRef,
@@ -20,11 +32,16 @@ export class AnimationService {
   ): AnimationPlayer | null {
     let animation;
     switch (animationData.name) {
-      case 'colored':
+      case 'svg-colored':
         animation = animate(
-          '0.2s',
-          keyframes([style({ color: animationData.params[0] })])
+          '300ms',
+          keyframes([
+            style({
+              color: animationData.params[0],
+            }),
+          ])
         );
+        this.renderer.addClass(element.nativeElement, animationData.params[1]);
         break;
 
       default:

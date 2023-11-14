@@ -106,17 +106,41 @@
 </div>
 <div class="container fade-in icons-wrapper">
   <a href="https://angular.io" class="hoverable" target="_blank">
-    <mat-icon svgIcon="angular"></mat-icon>
+    <mat-icon
+      scrollAnimation
+      [inAnimationData]="{
+        name: 'svg-colored',
+        delay: 0,
+        params: ['#dd0031', 'svg-colored']
+      }"
+      svgIcon="angular"
+    ></mat-icon>
   </a>
   <a href="https://www.typescriptlang.org" class="hoverable" target="_blank">
-    <mat-icon svgIcon="ts"></mat-icon>
+    <mat-icon
+      scrollAnimation
+      [inAnimationData]="{
+        name: 'svg-colored',
+        delay: 0,
+        params: ['#3178c6', 'svg-colored']
+      }"
+      svgIcon="ts"
+    ></mat-icon>
   </a>
   <a
     href="https://developer.mozilla.org/en-US/docs/Web/JavaScript"
     class="hoverable"
     target="_blank"
   >
-    <mat-icon svgIcon="js"></mat-icon>
+    <mat-icon
+      scrollAnimation
+      [inAnimationData]="{
+        name: 'svg-colored',
+        delay: 0,
+        params: ['#ebd41c', 'svg-colored']
+      }"
+      svgIcon="js"
+    ></mat-icon>
   </a>
   <a href="https://threejs.org/" class="hoverable" target="_blank">
     <mat-icon svgIcon="three-js"></mat-icon>
@@ -126,22 +150,274 @@
     class="hoverable"
     target="_blank"
   >
-    <mat-icon svgIcon="html"></mat-icon>
+    <mat-icon
+      scrollAnimation
+      [inAnimationData]="{
+        name: 'svg-colored',
+        delay: 0,
+        params: ['#eb6328', 'svg-colored']
+      }"
+      svgIcon="html"
+    ></mat-icon>
   </a>
   <a
     href="https://developer.mozilla.org/en-US/docs/Web/CSS"
     class="hoverable"
     target="_blank"
   >
-    <mat-icon svgIcon="css"></mat-icon>
+    <mat-icon
+      scrollAnimation
+      [inAnimationData]="{
+        name: 'svg-colored',
+        delay: 0,
+        params: ['#2D6CBF', 'svg-colored']
+      }"
+      svgIcon="css"
+    ></mat-icon>
   </a>
   <a href="https://rxjs.dev" class="hoverable" target="_blank">
-    <mat-icon svgIcon="rxjs"></mat-icon>
+    <mat-icon
+      scrollAnimation
+      [inAnimationData]="{
+        name: 'svg-colored',
+        delay: 0,
+        params: ['currentColor', 'svg-colored-rxjs']
+      }"
+      svgIcon="rxjs"
+    ></mat-icon>
   </a>
   <a href="https://getbootstrap.com" class="hoverable" target="_blank">
-    <mat-icon svgIcon="bootstrap"></mat-icon>
+    <mat-icon
+      scrollAnimation
+      [inAnimationData]="{
+        name: 'svg-colored',
+        delay: 0,
+        params: ['#7852b2', 'svg-colored']
+      }"
+      svgIcon="bootstrap"
+    ></mat-icon>
   </a>
   <a href="https://jasmine.github.io" class="hoverable" target="_blank">
-    <mat-icon svgIcon="jasmine"></mat-icon>
+    <mat-icon
+      scrollAnimation
+      [inAnimationData]="{
+        name: 'svg-colored',
+        delay: 0,
+        params: ['#9C4993', 'svg-colored']
+      }"
+      svgIcon="jasmine"
+    ></mat-icon>
   </a>
+</div>
+<div class="fade-in blurred mt-4 pt-2 pt-md-0 mt-md-5">
+  <div class="container">
+    <section class="px-3 pb-md-2 pb-0">
+      <h1 class="pb-2">Front-end Development</h1>
+      <h5 class="fw-light pt-4">
+        I am a experienced front-end developer with a
+        <b class="hoverable">deep understanding</b> of how the web works.
+        <a
+          href="https://angular.io"
+          class="hoverable underlined"
+          target="_blank"
+          ><b>Angular</b></a
+        >
+        is my primary web development framework, and I use it daily to build
+        <b class="hoverable">complex and scalable applications.</b>
+      </h5>
+      <h5 class="fw-light pt-3">
+        This web portfolio was made in <b class="hoverable">Angular v16</b> and
+        I made use of a few JavaScript libraries to achieve some interesting
+        stuff
+      </h5>
+    </section>
+    <div class="cards-wrapper mt-4 mx-2 mx-sm-3">
+      <div class="info-card col-12 col-md">
+        <h6 class="fw-light">
+          I used
+          <a href="https://getbootstrap.com/" target="_blank"
+            ><b class="hoverable underlined">Bootstrap's</b></a
+          >
+          grid system, along with its padding, marging and icons utilities.
+        </h6>
+      </div>
+      <div class="info-card col-12 col-md">
+        <h6 class="fw-light">
+          The contact form was build with the
+          <a href="https://angular.io/guide/reactive-forms" target="_blank"
+            ><b class="hoverable underlined">Reactive Forms</b></a
+          >
+          API along the
+          <a href="https://material.angular.io/" target="_blank"
+            ><b class="hoverable underlined">Material</b></a
+          >
+          input components.
+        </h6>
+      </div>
+      <div class="info-card col-12 col-md">
+        <h6 class="fw-light">
+          That cool background transition animations were developed with the
+          <a href="https://gsap.com/" target="_blank"
+            ><b class="hoverable underlined">GSAP</b></a
+          >
+          animation library.
+        </h6>
+      </div>
+      <div class="info-card col-12 col-md-4">
+        <h6 class="fw-light">
+          <a href="https://threejs.org/" target="_blank"
+            ><b class="hoverable underlined">Three.Js</b></a
+          >
+          was used to build the 3D live motion galaxy background through WebGL
+          rendering among other cool things like this:
+        </h6>
+        <div class="check-wrapper">
+          <mat-icon svgIcon="click-here"> </mat-icon>
+          <mat-checkbox
+            class="hoverable"
+            (change)="onCheckboxChange($event)"
+          ></mat-checkbox>
+        </div>
+      </div>
+    </div>
+    <section class="px-3 pt-4 d-flex align-items-center">
+      <a
+        class="hoverable btn btn-outline me-3 d-none d-md-block"
+        href="https://github.com/Magoratogha/web-portfolio"
+        target="_blank"
+        ><i class="bi bi-github me-1"></i>Source</a
+      >
+      <div>
+        <h6 class="fw-light">
+          Here you can find the sources for this portfolio. Feel free to fork
+          the repo but
+          <b class="hoverable"
+            >remember giving me the correspoding attribution.</b
+          >
+        </h6>
+        <a
+          class="hoverable btn btn-outline my-3 d-block d-md-none"
+          href="https://github.com/Magoratogha/web-portfolio"
+          target="_blank"
+          ><i class="bi bi-github me-1"></i>Source</a
+        >
+        <small class="fw-light">
+          Please note that
+          <b class="hoverable"
+            >I did not build this site for being a starter template,</b
+          >
+          so if you have questions about implementation please
+          <b class="hoverable"
+            >review the corresponding library documentation.</b
+          >
+        </small>
+      </div>
+    </section>
+  </div>
+</div>
+<div class="fade-in blurred mt-4 pt-2 pt-md-0 mt-md-5">
+  <div class="container">
+    <section class="px-3 pb-md-2 pb-0">
+      <h1 class="pb-2">Front-end Development</h1>
+      <h5 class="fw-light pt-4">
+        I am a experienced front-end developer with a
+        <b class="hoverable">deep understanding</b> of how the web works.
+        <a
+          href="https://angular.io"
+          class="hoverable underlined"
+          target="_blank"
+          ><b>Angular</b></a
+        >
+        is my primary web development framework, and I use it daily to build
+        <b class="hoverable">complex and scalable applications.</b>
+      </h5>
+      <h5 class="fw-light pt-3">
+        This web portfolio was made in <b class="hoverable">Angular v16</b> and
+        I made use of a few JavaScript libraries to achieve some interesting
+        stuff
+      </h5>
+    </section>
+    <div class="cards-wrapper mt-4 mx-2 mx-sm-3">
+      <div class="info-card col-12 col-md">
+        <h6 class="fw-light">
+          I used
+          <a href="https://getbootstrap.com/" target="_blank"
+            ><b class="hoverable underlined">Bootstrap's</b></a
+          >
+          grid system, along with its padding, marging and icons utilities.
+        </h6>
+      </div>
+      <div class="info-card col-12 col-md">
+        <h6 class="fw-light">
+          The contact form was build with the
+          <a href="https://angular.io/guide/reactive-forms" target="_blank"
+            ><b class="hoverable underlined">Reactive Forms</b></a
+          >
+          API along the
+          <a href="https://material.angular.io/" target="_blank"
+            ><b class="hoverable underlined">Material</b></a
+          >
+          input components.
+        </h6>
+      </div>
+      <div class="info-card col-12 col-md">
+        <h6 class="fw-light">
+          That cool background transition animations were developed with the
+          <a href="https://gsap.com/" target="_blank"
+            ><b class="hoverable underlined">GSAP</b></a
+          >
+          animation library.
+        </h6>
+      </div>
+      <div class="info-card col-12 col-md-4">
+        <h6 class="fw-light">
+          <a href="https://threejs.org/" target="_blank"
+            ><b class="hoverable underlined">Three.Js</b></a
+          >
+          was used to build the 3D live motion galaxy background through WebGL
+          rendering among other cool things like this:
+        </h6>
+        <div class="check-wrapper">
+          <mat-icon svgIcon="click-here"> </mat-icon>
+          <mat-checkbox
+            class="hoverable"
+            (change)="onCheckboxChange($event)"
+          ></mat-checkbox>
+        </div>
+      </div>
+    </div>
+    <section class="px-3 pt-4 d-flex align-items-center">
+      <a
+        class="hoverable btn btn-outline me-3 d-none d-md-block"
+        href="https://github.com/Magoratogha/web-portfolio"
+        target="_blank"
+        ><i class="bi bi-github me-1"></i>Source</a
+      >
+      <div>
+        <h6 class="fw-light">
+          Here you can find the sources for this portfolio. Feel free to fork
+          the repo but
+          <b class="hoverable"
+            >remember giving me the correspoding attribution.</b
+          >
+        </h6>
+        <a
+          class="hoverable btn btn-outline my-3 d-block d-md-none"
+          href="https://github.com/Magoratogha/web-portfolio"
+          target="_blank"
+          ><i class="bi bi-github me-1"></i>Source</a
+        >
+        <small class="fw-light">
+          Please note that
+          <b class="hoverable"
+            >I did not build this site for being a starter template,</b
+          >
+          so if you have questions about implementation please
+          <b class="hoverable"
+            >review the corresponding library documentation.</b
+          >
+        </small>
+      </div>
+    </section>
+  </div>
 </div>
