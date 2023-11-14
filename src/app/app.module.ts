@@ -17,6 +17,10 @@ import bootatrapIcon from '!!raw-loader!../assets/images/bootstrap.svg';
 import threeJsIcon from '!!raw-loader!../assets/images/three-js.svg';
 import rxjsIcon from '!!raw-loader!../assets/images/rxjs.svg';
 import jasmineIcon from '!!raw-loader!../assets/images/jasmine.svg';
+import nodeJsIcon from '!!raw-loader!../assets/images/nodejs.svg';
+import firebaseIcon from '!!raw-loader!../assets/images/firebase.svg';
+import cplusplusIcon from '!!raw-loader!../assets/images/c++.svg';
+import gitIcon from '!!raw-loader!../assets/images/git.svg';
 
 @NgModule({
   declarations: [AppComponent],
@@ -76,6 +80,22 @@ export class AppModule {
     iconRegistry.addSvgIconLiteral(
       'jasmine',
       sanitizer.bypassSecurityTrustHtml(jasmineIcon)
+    );
+    iconRegistry.addSvgIconLiteral(
+      'node-js',
+      sanitizer.bypassSecurityTrustHtml(nodeJsIcon)
+    );
+    iconRegistry.addSvgIconLiteral(
+      'firebase',
+      sanitizer.bypassSecurityTrustHtml(firebaseIcon)
+    );
+    iconRegistry.addSvgIconLiteral(
+      'c++',
+      sanitizer.bypassSecurityTrustHtml(cplusplusIcon)
+    );
+    iconRegistry.addSvgIconLiteral(
+      'git',
+      sanitizer.bypassSecurityTrustHtml(gitIcon)
     );
   }
 }
