@@ -40,7 +40,6 @@ export const WORK_DETAILS: AboutMeItemDetails = {
             'HTML',
             'CSS',
             'LESS',
-            'C#',
           ],
         },
         {
@@ -76,6 +75,7 @@ export const WORK_DETAILS: AboutMeItemDetails = {
           description:
             '<p>Frontend development team leader responsible for establishing guidelines and good practices for the technical team.</p><p>DevOps analyst for infrastructures built on OpenShift and AWS. Support of applications in a productive environment under the Standby model.</p>',
           skills: [
+            'Leadership',
             'AWS',
             'OpenShift',
             'SonarQube',
