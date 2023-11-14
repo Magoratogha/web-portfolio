@@ -41,7 +41,16 @@ export class AnimationService {
             }),
           ])
         );
-        this.renderer.addClass(element.nativeElement, animationData.params[1]);
+        animationData.params[1] &&
+          this.renderer.addClass(
+            element.nativeElement,
+            animationData.params[1]
+          );
+        animationData.params[2] &&
+          this.renderer.removeClass(
+            element.nativeElement,
+            animationData.params[2]
+          );
         break;
 
       default:

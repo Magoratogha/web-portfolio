@@ -552,5 +552,11 @@ a.btn-outline {
       fill: #e60b8b !important;
       transition: fill 300ms linear;
     }
+    &-initial {
+      svg > path:first-of-type {
+        fill: transparent !important;
+        transition: fill 300ms linear;
+      }
+    }
   }
 }
