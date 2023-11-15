@@ -7,9 +7,16 @@ import {
   IS_SMALL_MOBILE_DEVICE,
   LINKEDIN_URL,
 } from 'src/app/constants';
-import { EmailSendingStatus } from 'src/app/enums';
+import {
+  AnalyticEvents,
+  EmailSendingStatus,
+  PageSections,
+} from 'src/app/enums';
 import { ContactRequest } from 'src/app/models';
-import { BackgroundService } from '../../modules/core/services';
+import {
+  AnalyticsService,
+  BackgroundService,
+} from '../../modules/core/services';
 import { ContactFormService } from './services';
 
 @Component({
@@ -33,10 +40,16 @@ export class ContactComponent implements OnInit {
 
   constructor(
     private bgService: BackgroundService,
-    private emailService: ContactFormService
+    private emailService: ContactFormService,
+    private analyticsService: AnalyticsService
   ) {}
 
   ngOnInit(): void {
+    this.analyticsService.logEvent(
+      PageSections.Contact,
+      'page',
+      AnalyticEvents.Loaded
+    );
     this.bgService.setMiddleView2();
   }
 
@@ -49,13 +62,42 @@ export class ContactComponent implements OnInit {
         );
         this.contactForm.reset();
         this.sendingStatus = EmailSendingStatus.Ok;
+        this.analyticsService.logEvent(
+          PageSections.Contact,
+          'contactForm',
+          AnalyticEvents.Submited,
+          {
+            formValue: this.contactForm.value,
+          }
+        );
         window.setTimeout(
           () => (this.sendingStatus = EmailSendingStatus.NotSent),
           3000
         );
       } catch (error) {
         this.sendingStatus = EmailSendingStatus.Error;
+        this.analyticsService.logEvent(
+          PageSections.Contact,
+          'contactForm',
+          AnalyticEvents.Error,
+          {
+            formValue: this.contactForm.value,
+            error,
+          }
+        );
+        window.setTimeout(
+          () => (this.sendingStatus = EmailSendingStatus.NotSent),
+          3000
+        );
       }
     }
+  }
+
+  public logEvent(element: string): void {
+    this.analyticsService.logEvent(
+      PageSections.Contact,
+      element,
+      AnalyticEvents.Clicked
+    );
   }
 }

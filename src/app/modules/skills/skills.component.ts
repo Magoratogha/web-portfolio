@@ -1,6 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { BackgroundService } from '../core/services';
+import { AnalyticsService, BackgroundService } from '../core/services';
 import { MatCheckboxChange } from '@angular/material/checkbox';
+import { AnalyticEvents, PageSections } from 'src/app/enums';
 
 @Component({
   selector: 'app-skills',
@@ -8,9 +9,17 @@ import { MatCheckboxChange } from '@angular/material/checkbox';
   styleUrls: ['./skills.component.scss'],
 })
 export class SkillsComponent implements OnInit, OnDestroy {
-  constructor(private bgService: BackgroundService) {}
+  constructor(
+    private bgService: BackgroundService,
+    private analyticsService: AnalyticsService
+  ) {}
 
   ngOnInit(): void {
+    this.analyticsService.logEvent(
+      PageSections.Skills,
+      'page',
+      AnalyticEvents.Loaded
+    );
     this.bgService.setPanoramicView();
   }
 
@@ -20,6 +29,18 @@ export class SkillsComponent implements OnInit, OnDestroy {
     } else {
       this.bgService.deactivateGlitchEffect();
     }
+    this.logEvent('glitchButton', {
+      action: event.checked ? 'activate' : 'deactivate',
+    });
+  }
+
+  public logEvent(element: string, params?: any): void {
+    this.analyticsService.logEvent(
+      PageSections.Skills,
+      element,
+      AnalyticEvents.Clicked,
+      params
+    );
   }
 
   ngOnDestroy(): void {

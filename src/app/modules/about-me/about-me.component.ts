@@ -7,8 +7,12 @@ import {
   ABOUT_ROUTE,
   ABOUT_WORK_ROUTE,
 } from 'src/app/constants';
-import { BackgroundService } from '../../modules/core/services';
+import {
+  AnalyticsService,
+  BackgroundService,
+} from '../../modules/core/services';
 import { ItemDetailsComponent } from './components';
+import { AnalyticEvents, PageSections } from 'src/app/enums';
 
 @Component({
   selector: 'app-about-me',
@@ -23,7 +27,11 @@ export class AboutMeComponent implements OnInit {
   timelineSubs: Subscription | undefined;
   activeTimelineSection: string | undefined;
 
-  constructor(private router: Router, private bgService: BackgroundService) {
+  constructor(
+    private router: Router,
+    private bgService: BackgroundService,
+    private analyticsService: AnalyticsService
+  ) {
     this.router.events
       .pipe(filter((e) => e instanceof NavigationEnd))
       .subscribe((event) => {
@@ -37,6 +45,11 @@ export class AboutMeComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.analyticsService.logEvent(
+      PageSections.About,
+      'page',
+      AnalyticEvents.Loaded
+    );
     this.bgService.setMiddleView();
   }
 
@@ -71,5 +84,13 @@ export class AboutMeComponent implements OnInit {
     if (component instanceof ItemDetailsComponent) {
       this.timelineSubs && this.timelineSubs.unsubscribe();
     }
+  }
+
+  public logEvent(element: string): void {
+    this.analyticsService.logEvent(
+      PageSections.About,
+      element,
+      AnalyticEvents.Clicked
+    );
   }
 }

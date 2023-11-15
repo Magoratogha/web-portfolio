@@ -9,8 +9,9 @@ import {
 } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { IconChange, Leave, RouterAnimation } from './animations';
-import { BackgroundService } from './modules/core/services';
+import { AnalyticsService, BackgroundService } from './modules/core/services';
 import { IS_TOUCH_DEVICE, MAIN_LOADER_TIME } from './constants';
+import { AnalyticEvents, PageSections } from './enums';
 
 @Component({
   selector: 'app-root',
@@ -29,7 +30,8 @@ export class AppComponent implements OnInit, AfterViewInit, OnDestroy {
 
   constructor(
     private bgService: BackgroundService,
-    private renderer: Renderer2
+    private renderer: Renderer2,
+    private analyticsService: AnalyticsService
   ) {
     this.isDarkMode = localStorage.getItem('darkMode')
       ? localStorage.getItem('darkMode') === 'true'
@@ -73,6 +75,14 @@ export class AppComponent implements OnInit, AfterViewInit, OnDestroy {
   setTheme(isDarkMode: boolean) {
     this.isDarkMode = isDarkMode;
     localStorage.setItem('darkMode', String(isDarkMode));
+    this.analyticsService.logEvent(
+      PageSections.Global,
+      'themeButtonToggler',
+      AnalyticEvents.Clicked,
+      {
+        settedTheme: isDarkMode ? 'dark' : 'light',
+      }
+    );
     if (isDarkMode) {
       this.renderer.removeClass(document.body, 'light');
       this.bgService.setDarkMode();

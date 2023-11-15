@@ -15,7 +15,8 @@ import {
   LINKEDIN_URL,
   SKILLS_ROUTE,
 } from '../../../../constants';
-import { Pages } from '../../../../enums';
+import { AnalyticEvents, PageSections, Pages } from '../../../../enums';
+import { AnalyticsService } from '../../services';
 
 @Component({
   selector: 'app-header',
@@ -37,7 +38,11 @@ export class HeaderComponent {
   FACEBOOK_URL = FACEBOOK_URL;
   IS_SMALL_MOBILE_DEVICE = IS_SMALL_MOBILE_DEVICE;
 
-  constructor(private router: Router, private renderer: Renderer2) {
+  constructor(
+    private router: Router,
+    private renderer: Renderer2,
+    private analyticsService: AnalyticsService
+  ) {
     this.router.events
       .pipe(filter((e) => e instanceof NavigationEnd))
       .subscribe((event) => {
@@ -80,5 +85,13 @@ export class HeaderComponent {
 
   setMouseLeave(): void {
     this.renderer.removeClass(this.cursor, 'hover');
+  }
+
+  public logEvent(element: string): void {
+    this.analyticsService.logEvent(
+      PageSections.Global,
+      element,
+      AnalyticEvents.Clicked
+    );
   }
 }

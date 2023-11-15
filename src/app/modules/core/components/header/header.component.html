@@ -38,6 +38,7 @@
         target="_blank"
         rel="noreferrer"
         [href]="GITHUB_URL"
+        (click)="logEvent('githubButton')"
         ><i class="bi bi-github"></i
       ></a>
       <a
@@ -46,6 +47,7 @@
         target="_blank"
         rel="noreferrer"
         [href]="LINKEDIN_URL"
+        (click)="logEvent('linkedinButton')"
         ><i class="bi bi-linkedin"></i
       ></a>
       <a
@@ -54,6 +56,7 @@
         target="_blank"
         rel="noreferrer"
         [href]="INSTAGRAM_URL"
+        (click)="logEvent('igButton')"
         ><i class="bi bi-instagram"></i
       ></a>
       <a
@@ -62,6 +65,7 @@
         target="_blank"
         rel="noreferrer"
         [href]="FACEBOOK_URL"
+        (click)="logEvent('fbButton')"
         ><i class="bi bi-facebook"></i
       ></a>
       <div @leave class="spacer fade-in"></div>
