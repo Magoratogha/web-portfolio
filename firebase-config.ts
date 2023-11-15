@@ -1,5 +1,5 @@
 export const FIREBASE_CONFIG = {
-  apiKey: 'AIzaSyA-HYuLSaVERkyXMXad1deHMlDj9Ru7ETQ',
+  apiKey: '#{FIREBASE_API_KEY}#',
   authDomain: 'magoratogha.firebaseapp.com',
   projectId: 'magoratogha',
   storageBucket: 'magoratogha.appspot.com',
