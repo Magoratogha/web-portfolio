@@ -22,7 +22,7 @@ import { getAnalytics, provideAnalytics } from '@angular/fire/analytics';
 import { MatIconModule, MatIconRegistry } from '@angular/material/icon';
 import { BrowserModule, DomSanitizer } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { FIREBASE_CONFIG } from 'firebase-config';
+import { FIREBASE_CONFIG } from 'firebase-options';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CoreModule } from './modules/core/core.module';
