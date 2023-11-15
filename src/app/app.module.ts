@@ -21,6 +21,8 @@ import nodeJsIcon from '!!raw-loader!../assets/images/nodejs.svg';
 import firebaseIcon from '!!raw-loader!../assets/images/firebase.svg';
 import cplusplusIcon from '!!raw-loader!../assets/images/c++.svg';
 import gitIcon from '!!raw-loader!../assets/images/git.svg';
+import awsIcon from '!!raw-loader!../assets/images/aws.svg';
+import dockerIcon from '!!raw-loader!../assets/images/docker.svg';
 
 @NgModule({
   declarations: [AppComponent],
@@ -96,6 +98,14 @@ export class AppModule {
     iconRegistry.addSvgIconLiteral(
       'git',
       sanitizer.bypassSecurityTrustHtml(gitIcon)
+    );
+    iconRegistry.addSvgIconLiteral(
+      'aws',
+      sanitizer.bypassSecurityTrustHtml(awsIcon)
+    );
+    iconRegistry.addSvgIconLiteral(
+      'docker',
+      sanitizer.bypassSecurityTrustHtml(dockerIcon)
     );
   }
 }

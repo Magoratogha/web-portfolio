@@ -12,6 +12,7 @@ export const IS_SMALL_MOBILE_DEVICE = () =>
   matchMedia(`(max-width: ${SMALL_MOBILE_SCREEN_MAX_WIDTH}px)`).matches;
 export const IS_TOUCH_DEVICE = () =>
   !!(window.navigator.maxTouchPoints || 'ontouchstart' in document);
+export const MAIN_LOADER_TIME = 2000;
 export const BG_ANIMATION_TIME = 1.5;
 export const BG_ANIMATION_EASE = 'power3.inOut';
 export const BG_DARK_OPACITY = 0.55;

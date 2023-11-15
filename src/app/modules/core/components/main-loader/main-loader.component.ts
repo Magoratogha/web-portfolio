@@ -9,4 +9,9 @@ import { AutoHide } from '../../../../animations';
 })
 export class MainLoaderComponent {
   @Input() show: boolean = true;
+  public currentYear: number;
+
+  constructor() {
+    this.currentYear = new Date().getFullYear();
+  }
 }

@@ -10,7 +10,7 @@ import {
 import { RouterOutlet } from '@angular/router';
 import { IconChange, Leave, RouterAnimation } from './animations';
 import { BackgroundService } from './modules/core/services';
-import { IS_TOUCH_DEVICE } from './constants';
+import { IS_TOUCH_DEVICE, MAIN_LOADER_TIME } from './constants';
 
 @Component({
   selector: 'app-root',
@@ -40,7 +40,7 @@ export class AppComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    window.setTimeout(() => (this.isLoading = false), 2000);
+    window.setTimeout(() => (this.isLoading = false), MAIN_LOADER_TIME);
   }
 
   ngAfterViewInit(): void {
