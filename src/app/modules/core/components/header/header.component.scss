@@ -61,6 +61,7 @@ header {
 
 .header-shadow {
   box-shadow: $dark-main-color 0px 160px 65px -70px inset;
+  pointer-events: none;
   position: fixed;
   top: 0;
   left: 0;
