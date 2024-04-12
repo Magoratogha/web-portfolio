@@ -178,9 +178,6 @@ export class BackgroundService implements OnDestroy {
     }
     geo.setAttribute('pos', new InstancedBufferAttribute(pos, 3, false));
     const material = new ShaderMaterial({
-      extensions: {
-        derivatives: true,
-      },
       side: DoubleSide,
       uniforms: {
         uTexture: { value: new TextureLoader().load(particleTexture) },
