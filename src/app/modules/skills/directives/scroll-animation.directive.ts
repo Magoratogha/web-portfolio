@@ -49,7 +49,6 @@ export class ScrollAnimationDirective implements AfterViewInit, OnDestroy {
   }
 
   private onScroll(): void {
-    console.log(window.scrollY, this.elementPosition, window.innerHeight);
     if (!this.isAnimating) {
       if (
         window.scrollY >

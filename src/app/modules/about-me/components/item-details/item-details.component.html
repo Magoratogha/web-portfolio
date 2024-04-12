@@ -1,19 +1,22 @@
 <div class="fade-in-fast">
-  <h4
-    *ngIf="detailsData?.description"
-    class="fw-light mx-0 mx-md-5"
-    [innerHTML]="detailsData?.description"
-  ></h4>
-  <div *ngIf="detailsData?.iconName" class="w-100 text-center pt-5 pt-md-4">
-    <mat-icon
-      class="hoverable"
-      [svgIcon]="$any(detailsData).iconName"
-    ></mat-icon>
-  </div>
-  <ng-container *ngIf="detailsData?.timeline">
+  @if (detailsData?.description) {
+    <h4
+      class="fw-light mx-0 mx-md-5"
+      [innerHTML]="detailsData?.description"
+    ></h4>
+  }
+  @if (detailsData?.iconName) {
+    <div class="w-100 text-center pt-5 pt-md-4">
+      <mat-icon
+        class="hoverable"
+        [svgIcon]="$any(detailsData).iconName"
+      ></mat-icon>
+    </div>
+  }
+  @if (detailsData?.timeline) {
     <app-timeline
       (sectionChanged)="sectionChanged.emit($event)"
       [timeLineData]="detailsData?.timelineItems"
     ></app-timeline>
-  </ng-container>
+  }
 </div>

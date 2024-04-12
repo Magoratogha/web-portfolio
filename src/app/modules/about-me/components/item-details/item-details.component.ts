@@ -1,4 +1,4 @@
-import { NgIf } from '@angular/common';
+
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { MatIcon } from '@angular/material/icon';
 import { ActivatedRoute } from '@angular/router';
@@ -10,7 +10,7 @@ import { TimelineComponent } from '../timeline/timeline.component';
   templateUrl: './item-details.component.html',
   styleUrls: ['./item-details.component.scss'],
   standalone: true,
-  imports: [NgIf, MatIcon, TimelineComponent],
+  imports: [MatIcon, TimelineComponent],
 })
 export class ItemDetailsComponent implements OnInit {
   public detailsData: AboutMeItemDetails | undefined;

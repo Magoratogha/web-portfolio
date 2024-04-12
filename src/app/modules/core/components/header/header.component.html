@@ -7,76 +7,74 @@
         routerLinkActive="active"
         (click)="currentPage = Pages.Home"
         >Home</a
-      >
-    </li>
-    <li>
-      <a
-        class="hoverable underlined"
-        [routerLink]="['/' + ABOUT_ROUTE]"
-        routerLinkActive="active"
-        (click)="currentPage = Pages.About"
-        >About me</a
-      >
-    </li>
-    <li>
-      <a
-        class="hoverable underlined"
-        [routerLink]="['/' + SKILLS_ROUTE]"
-        routerLinkActive="active"
-        (click)="currentPage = Pages.Skills"
-        >My Skills</a
-      >
-    </li>
-  </ul>
-  <div class="contact-wrapper">
-    <ng-container
-      *ngIf="currentPage != Pages.Contact && !IS_SMALL_MOBILE_DEVICE()"
-    >
-      <a
-        @leave
-        class="hoverable fade-in"
-        target="_blank"
-        rel="noreferrer"
-        [href]="GITHUB_URL"
-        (click)="logEvent('githubButton')"
-        ><i class="bi bi-github"></i
-      ></a>
-      <a
-        @leave
-        class="hoverable fade-in"
-        target="_blank"
-        rel="noreferrer"
-        [href]="LINKEDIN_URL"
-        (click)="logEvent('linkedinButton')"
-        ><i class="bi bi-linkedin"></i
-      ></a>
-      <a
-        @leave
-        class="hoverable fade-in"
-        target="_blank"
-        rel="noreferrer"
-        [href]="INSTAGRAM_URL"
-        (click)="logEvent('igButton')"
-        ><i class="bi bi-instagram"></i
-      ></a>
-      <a
-        @leave
-        class="hoverable fade-in"
-        target="_blank"
-        rel="noreferrer"
-        [href]="FACEBOOK_URL"
-        (click)="logEvent('fbButton')"
-        ><i class="bi bi-facebook"></i
-      ></a>
-      <div @leave class="spacer fade-in"></div>
-    </ng-container>
-    <a
-      class="hoverable underlined"
-      [routerLink]="['/' + CONTACT_ROUTE]"
-      routerLinkActive="active"
-      (click)="currentPage = Pages.Contact"
-      >Contact</a
-    >
-  </div>
-</header>
-<div class="header-shadow"></div>
+        >
+      </li>
+      <li>
+        <a
+          class="hoverable underlined"
+          [routerLink]="['/' + ABOUT_ROUTE]"
+          routerLinkActive="active"
+          (click)="currentPage = Pages.About"
+          >About me</a
+          >
+        </li>
+        <li>
+          <a
+            class="hoverable underlined"
+            [routerLink]="['/' + SKILLS_ROUTE]"
+            routerLinkActive="active"
+            (click)="currentPage = Pages.Skills"
+            >My Skills</a
+            >
+          </li>
+        </ul>
+        <div class="contact-wrapper">
+          @if (currentPage != Pages.Contact && !IS_SMALL_MOBILE_DEVICE()) {
+            <a
+              @leave
+              class="hoverable fade-in"
+              target="_blank"
+              rel="noreferrer"
+              [href]="GITHUB_URL"
+              (click)="logEvent('githubButton')"
+              ><i class="bi bi-github"></i
+            ></a>
+            <a
+              @leave
+              class="hoverable fade-in"
+              target="_blank"
+              rel="noreferrer"
+              [href]="LINKEDIN_URL"
+              (click)="logEvent('linkedinButton')"
+              ><i class="bi bi-linkedin"></i
+            ></a>
+            <a
+              @leave
+              class="hoverable fade-in"
+              target="_blank"
+              rel="noreferrer"
+              [href]="INSTAGRAM_URL"
+              (click)="logEvent('igButton')"
+              ><i class="bi bi-instagram"></i
+            ></a>
+            <a
+              @leave
+              class="hoverable fade-in"
+              target="_blank"
+              rel="noreferrer"
+              [href]="FACEBOOK_URL"
+              (click)="logEvent('fbButton')"
+              ><i class="bi bi-facebook"></i
+            ></a>
+            <div @leave class="spacer fade-in"></div>
+          }
+          <a
+            class="hoverable underlined"
+            [routerLink]="['/' + CONTACT_ROUTE]"
+            routerLinkActive="active"
+            (click)="currentPage = Pages.Contact"
+            >Contact</a
+            >
+          </div>
+        </header>
+        <div class="header-shadow"></div>

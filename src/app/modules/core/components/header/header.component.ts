@@ -1,4 +1,3 @@
-import { NgIf } from '@angular/common';
 import { Component, Renderer2 } from '@angular/core';
 import {
   NavigationEnd,
@@ -30,7 +29,7 @@ import { AnalyticsService } from '../../services';
   styleUrls: ['./header.component.scss'],
   animations: [Leave()],
   standalone: true,
-  imports: [RouterLinkActive, RouterLink, NgIf],
+  imports: [RouterLinkActive, RouterLink],
 })
 export class HeaderComponent {
   public currentPage: Pages = Pages.Home;

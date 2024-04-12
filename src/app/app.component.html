@@ -1,11 +1,13 @@
 <canvas #bg></canvas>
-<app-main-loader @leave *ngIf="isLoading" [show]="isLoading"></app-main-loader>
+@if (isLoading) {
+  <app-main-loader @leave [show]="isLoading"></app-main-loader>
+}
 <app-header></app-header>
 <div
   #container
   [ngClass]="{ 'light-theme': !isDarkMode }"
   [@routerAnimation]="prepareRoute(outlet)"
->
+  >
   <router-outlet #outlet="outlet"></router-outlet>
 </div>
 <button class="dark-mode-toggle hoverable" (click)="setTheme(!isDarkMode)">
@@ -13,4 +15,6 @@
     isDarkMode ? "dark_mode" : "light_mode"
   }}</mat-icon>
 </button>
-<div *ngIf="!IS_TOUCH_DEVICE()" class="cursor"></div>
+@if (!IS_TOUCH_DEVICE()) {
+  <div class="cursor"></div>
+}

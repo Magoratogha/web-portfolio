@@ -1,4 +1,4 @@
-import { NgClass, NgIf } from '@angular/common';
+import { NgClass } from '@angular/common';
 import {
   AfterViewInit,
   Component,
@@ -46,13 +46,12 @@ import { AnalyticsService, BackgroundService } from './modules/core/services';
   animations: [Leave(), RouterAnimation, IconChange],
   standalone: true,
   imports: [
-    NgIf,
     NgClass,
     RouterOutlet,
     MatIcon,
     MainLoaderComponent,
-    HeaderComponent,
-  ],
+    HeaderComponent
+],
 })
 export class AppComponent implements OnInit, AfterViewInit, OnDestroy {
   @ViewChild('bg', { read: ElementRef })

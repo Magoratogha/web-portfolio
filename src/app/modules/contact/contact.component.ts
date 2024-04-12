@@ -1,4 +1,4 @@
-import { NgClass, NgSwitch, NgSwitchCase } from '@angular/common';
+import { NgClass } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import {
   FormControl,
@@ -35,15 +35,13 @@ import { ContactFormService } from './services';
   standalone: true,
   imports: [
     NgClass,
-    NgSwitch,
-    NgSwitchCase,
     ReactiveFormsModule,
     MatFormField,
     MatLabel,
     MatInput,
     MatError,
-    MatIcon,
-  ],
+    MatIcon
+],
 })
 export class ContactComponent implements OnInit {
   public sendingStatus: EmailSendingStatus = EmailSendingStatus.NotSent;
