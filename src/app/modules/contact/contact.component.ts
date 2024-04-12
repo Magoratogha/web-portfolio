@@ -1,5 +1,14 @@
+import { NgClass, NgSwitch, NgSwitchCase } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import {
+  FormControl,
+  FormGroup,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
+import { MatError, MatFormField, MatLabel } from '@angular/material/form-field';
+import { MatIcon } from '@angular/material/icon';
+import { MatInput } from '@angular/material/input';
 import {
   FACEBOOK_URL,
   GITHUB_URL,
@@ -23,6 +32,18 @@ import { ContactFormService } from './services';
   selector: 'app-contact',
   templateUrl: './contact.component.html',
   styleUrls: ['./contact.component.scss'],
+  standalone: true,
+  imports: [
+    NgClass,
+    NgSwitch,
+    NgSwitchCase,
+    ReactiveFormsModule,
+    MatFormField,
+    MatLabel,
+    MatInput,
+    MatError,
+    MatIcon,
+  ],
 })
 export class ContactComponent implements OnInit {
   public sendingStatus: EmailSendingStatus = EmailSendingStatus.NotSent;

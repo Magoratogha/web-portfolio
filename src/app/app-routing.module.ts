@@ -11,22 +11,30 @@ const routes: Routes = [
   {
     path: HOME_ROUTE,
     loadChildren: () =>
-      import('./modules/home/home.module').then((m) => m.HomeModule),
+      import('./modules/home/home-routing.module').then(
+        (m) => m.HomeRoutingModule
+      ),
   },
   {
     path: ABOUT_ROUTE,
     loadChildren: () =>
-      import('./modules/about-me/about-me.module').then((m) => m.AboutMeModule),
+      import('./modules/about-me/about-me-routing.module').then(
+        (m) => m.AboutMeRoutingModule
+      ),
   },
   {
     path: SKILLS_ROUTE,
     loadChildren: () =>
-      import('./modules/skills/skills.module').then((m) => m.SkillsModule),
+      import('./modules/skills/skills-routing.module').then(
+        (m) => m.SkillsRoutingModule
+      ),
   },
   {
     path: CONTACT_ROUTE,
     loadChildren: () =>
-      import('./modules/contact/contact.module').then((m) => m.ContactModule),
+      import('./modules/contact/contact-routing.module').then(
+        (m) => m.ContactRoutingModule
+      ),
   },
   { path: '', redirectTo: '/' + HOME_ROUTE, pathMatch: 'full' },
   { path: '**', redirectTo: '/' + HOME_ROUTE, pathMatch: 'full' },

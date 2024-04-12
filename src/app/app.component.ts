@@ -1,3 +1,21 @@
+import angularIcon from '!!raw-loader!../assets/images/angular.svg';
+import awsIcon from '!!raw-loader!../assets/images/aws.svg';
+import bootatrapIcon from '!!raw-loader!../assets/images/bootstrap.svg';
+import cplusplusIcon from '!!raw-loader!../assets/images/c++.svg';
+import clickHereIcon from '!!raw-loader!../assets/images/click-here.svg';
+import cssIcon from '!!raw-loader!../assets/images/css.svg';
+import dockerIcon from '!!raw-loader!../assets/images/docker.svg';
+import firebaseIcon from '!!raw-loader!../assets/images/firebase.svg';
+import gitIcon from '!!raw-loader!../assets/images/git.svg';
+import htmlIcon from '!!raw-loader!../assets/images/html.svg';
+import jasmineIcon from '!!raw-loader!../assets/images/jasmine.svg';
+import jsIcon from '!!raw-loader!../assets/images/js.svg';
+import madeInColombiaIcon from '!!raw-loader!../assets/images/made-in-colombia.svg';
+import nodeJsIcon from '!!raw-loader!../assets/images/nodejs.svg';
+import rxjsIcon from '!!raw-loader!../assets/images/rxjs.svg';
+import threeJsIcon from '!!raw-loader!../assets/images/three-js.svg';
+import tsIcon from '!!raw-loader!../assets/images/ts.svg';
+import { NgClass, NgIf } from '@angular/common';
 import {
   AfterViewInit,
   Component,
@@ -7,17 +25,32 @@ import {
   Renderer2,
   ViewChild,
 } from '@angular/core';
+import { MatIcon, MatIconRegistry } from '@angular/material/icon';
+import { DomSanitizer } from '@angular/platform-browser';
 import { RouterOutlet } from '@angular/router';
 import { IconChange, Leave, RouterAnimation } from './animations';
-import { AnalyticsService, BackgroundService } from './modules/core/services';
 import { IS_TOUCH_DEVICE, MAIN_LOADER_TIME } from './constants';
 import { AnalyticEvents, PageSections } from './enums';
+import {
+  HeaderComponent,
+  MainLoaderComponent,
+} from './modules/core/components';
+import { AnalyticsService, BackgroundService } from './modules/core/services';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
   animations: [Leave(), RouterAnimation, IconChange],
+  standalone: true,
+  imports: [
+    NgIf,
+    NgClass,
+    RouterOutlet,
+    MatIcon,
+    MainLoaderComponent,
+    HeaderComponent,
+  ],
 })
 export class AppComponent implements OnInit, AfterViewInit, OnDestroy {
   @ViewChild('bg', { read: ElementRef })
@@ -31,7 +64,9 @@ export class AppComponent implements OnInit, AfterViewInit, OnDestroy {
   constructor(
     private bgService: BackgroundService,
     private renderer: Renderer2,
-    private analyticsService: AnalyticsService
+    private analyticsService: AnalyticsService,
+    private iconRegistry: MatIconRegistry,
+    private sanitizer: DomSanitizer
   ) {
     this.isDarkMode = localStorage.getItem('darkMode')
       ? localStorage.getItem('darkMode') === 'true'
@@ -39,6 +74,74 @@ export class AppComponent implements OnInit, AfterViewInit, OnDestroy {
     if (!this.isDarkMode) {
       this.renderer.addClass(document.body, 'light');
     }
+    this.iconRegistry.addSvgIconLiteral(
+      'made-in-colombia',
+      this.sanitizer.bypassSecurityTrustHtml(madeInColombiaIcon)
+    );
+    this.iconRegistry.addSvgIconLiteral(
+      'click-here',
+      this.sanitizer.bypassSecurityTrustHtml(clickHereIcon)
+    );
+    this.iconRegistry.addSvgIconLiteral(
+      'angular',
+      this.sanitizer.bypassSecurityTrustHtml(angularIcon)
+    );
+    this.iconRegistry.addSvgIconLiteral(
+      'js',
+      this.sanitizer.bypassSecurityTrustHtml(jsIcon)
+    );
+    this.iconRegistry.addSvgIconLiteral(
+      'ts',
+      this.sanitizer.bypassSecurityTrustHtml(tsIcon)
+    );
+    this.iconRegistry.addSvgIconLiteral(
+      'html',
+      this.sanitizer.bypassSecurityTrustHtml(htmlIcon)
+    );
+    this.iconRegistry.addSvgIconLiteral(
+      'css',
+      this.sanitizer.bypassSecurityTrustHtml(cssIcon)
+    );
+    this.iconRegistry.addSvgIconLiteral(
+      'bootstrap',
+      this.sanitizer.bypassSecurityTrustHtml(bootatrapIcon)
+    );
+    this.iconRegistry.addSvgIconLiteral(
+      'three-js',
+      this.sanitizer.bypassSecurityTrustHtml(threeJsIcon)
+    );
+    this.iconRegistry.addSvgIconLiteral(
+      'rxjs',
+      this.sanitizer.bypassSecurityTrustHtml(rxjsIcon)
+    );
+    this.iconRegistry.addSvgIconLiteral(
+      'jasmine',
+      this.sanitizer.bypassSecurityTrustHtml(jasmineIcon)
+    );
+    this.iconRegistry.addSvgIconLiteral(
+      'node-js',
+      this.sanitizer.bypassSecurityTrustHtml(nodeJsIcon)
+    );
+    this.iconRegistry.addSvgIconLiteral(
+      'firebase',
+      this.sanitizer.bypassSecurityTrustHtml(firebaseIcon)
+    );
+    this.iconRegistry.addSvgIconLiteral(
+      'c++',
+      this.sanitizer.bypassSecurityTrustHtml(cplusplusIcon)
+    );
+    this.iconRegistry.addSvgIconLiteral(
+      'git',
+      this.sanitizer.bypassSecurityTrustHtml(gitIcon)
+    );
+    this.iconRegistry.addSvgIconLiteral(
+      'aws',
+      this.sanitizer.bypassSecurityTrustHtml(awsIcon)
+    );
+    this.iconRegistry.addSvgIconLiteral(
+      'docker',
+      this.sanitizer.bypassSecurityTrustHtml(dockerIcon)
+    );
   }
 
   ngOnInit(): void {

@@ -6,12 +6,13 @@ import {
   OnDestroy,
   Renderer2,
 } from '@angular/core';
-import { AnimationService } from '../../core/services';
-import { AnimationData } from 'src/app/models';
 import { BG_ANIMATION_TIME } from 'src/app/constants';
+import { AnimationData } from 'src/app/models';
+import { AnimationService } from '../../core/services';
 
 @Directive({
   selector: '[scrollAnimation]',
+  standalone: true,
 })
 export class ScrollAnimationDirective implements AfterViewInit, OnDestroy {
   @Input() public scrollDelay: number = window.innerHeight * 0.15;

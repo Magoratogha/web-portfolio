@@ -6,6 +6,7 @@ import { AutoHide } from '../../../../animations';
   templateUrl: './main-loader.component.html',
   styleUrls: ['./main-loader.component.scss'],
   animations: [AutoHide(1550), AutoHide(1625), AutoHide(1700)],
+  standalone: true,
 })
 export class MainLoaderComponent {
   @Input() show: boolean = true;

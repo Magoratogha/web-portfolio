@@ -1,5 +1,11 @@
+import { NgIf } from '@angular/common';
 import { Component, Renderer2 } from '@angular/core';
-import { NavigationEnd, Router } from '@angular/router';
+import {
+  NavigationEnd,
+  Router,
+  RouterLink,
+  RouterLinkActive,
+} from '@angular/router';
 import { filter } from 'rxjs';
 import { Leave } from '../../../../animations';
 import {
@@ -23,6 +29,8 @@ import { AnalyticsService } from '../../services';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
   animations: [Leave()],
+  standalone: true,
+  imports: [RouterLinkActive, RouterLink, NgIf],
 })
 export class HeaderComponent {
   public currentPage: Pages = Pages.Home;

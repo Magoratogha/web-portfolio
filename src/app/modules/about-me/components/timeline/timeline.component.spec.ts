@@ -8,7 +8,7 @@ describe('TimelineComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [TimelineComponent]
+      imports: [TimelineComponent],
     });
     fixture = TestBed.createComponent(TimelineComponent);
     component = fixture.componentInstance;

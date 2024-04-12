@@ -1,5 +1,12 @@
+import { NgClass } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { NavigationEnd, Router, RouterOutlet } from '@angular/router';
+import {
+  NavigationEnd,
+  Router,
+  RouterLink,
+  RouterLinkActive,
+  RouterOutlet,
+} from '@angular/router';
 import { Subscription, filter } from 'rxjs';
 import { FastRouterAnimation } from 'src/app/animations';
 import {
@@ -7,18 +14,20 @@ import {
   ABOUT_ROUTE,
   ABOUT_WORK_ROUTE,
 } from 'src/app/constants';
+import { AnalyticEvents, PageSections } from 'src/app/enums';
 import {
   AnalyticsService,
   BackgroundService,
 } from '../../modules/core/services';
 import { ItemDetailsComponent } from './components';
-import { AnalyticEvents, PageSections } from 'src/app/enums';
 
 @Component({
   selector: 'app-about-me',
   templateUrl: './about-me.component.html',
   styleUrls: ['./about-me.component.scss'],
   animations: [FastRouterAnimation],
+  standalone: true,
+  imports: [RouterLinkActive, RouterLink, NgClass, RouterOutlet],
 })
 export class AboutMeComponent implements OnInit {
   public showWork: boolean = false;

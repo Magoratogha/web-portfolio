@@ -1,3 +1,4 @@
+import { NgFor } from '@angular/common';
 import {
   AfterViewInit,
   Component,
@@ -11,6 +12,8 @@ import { TimelineItem } from 'src/app/models';
   selector: 'app-timeline',
   templateUrl: './timeline.component.html',
   styleUrls: ['./timeline.component.scss'],
+  standalone: true,
+  imports: [NgFor],
 })
 export class TimelineComponent implements AfterViewInit {
   @Input() timeLineData: TimelineItem[] | undefined;

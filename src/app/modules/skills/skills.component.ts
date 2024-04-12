@@ -1,12 +1,16 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { AnalyticsService, BackgroundService } from '../core/services';
-import { MatCheckboxChange } from '@angular/material/checkbox';
+import { MatCheckbox, MatCheckboxChange } from '@angular/material/checkbox';
+import { MatIcon } from '@angular/material/icon';
 import { AnalyticEvents, PageSections } from 'src/app/enums';
+import { AnalyticsService, BackgroundService } from '../core/services';
+import { ScrollAnimationDirective } from './directives/scroll-animation.directive';
 
 @Component({
   selector: 'app-skills',
   templateUrl: './skills.component.html',
   styleUrls: ['./skills.component.scss'],
+  standalone: true,
+  imports: [MatIcon, MatCheckbox, ScrollAnimationDirective],
 })
 export class SkillsComponent implements OnInit, OnDestroy {
   constructor(
