@@ -1,20 +1,3 @@
-import angularIcon from '!!raw-loader!../assets/images/angular.svg';
-import awsIcon from '!!raw-loader!../assets/images/aws.svg';
-import bootatrapIcon from '!!raw-loader!../assets/images/bootstrap.svg';
-import cplusplusIcon from '!!raw-loader!../assets/images/c++.svg';
-import clickHereIcon from '!!raw-loader!../assets/images/click-here.svg';
-import cssIcon from '!!raw-loader!../assets/images/css.svg';
-import dockerIcon from '!!raw-loader!../assets/images/docker.svg';
-import firebaseIcon from '!!raw-loader!../assets/images/firebase.svg';
-import gitIcon from '!!raw-loader!../assets/images/git.svg';
-import htmlIcon from '!!raw-loader!../assets/images/html.svg';
-import jasmineIcon from '!!raw-loader!../assets/images/jasmine.svg';
-import jsIcon from '!!raw-loader!../assets/images/js.svg';
-import madeInColombiaIcon from '!!raw-loader!../assets/images/made-in-colombia.svg';
-import nodeJsIcon from '!!raw-loader!../assets/images/nodejs.svg';
-import rxjsIcon from '!!raw-loader!../assets/images/rxjs.svg';
-import threeJsIcon from '!!raw-loader!../assets/images/three-js.svg';
-import tsIcon from '!!raw-loader!../assets/images/ts.svg';
 import { NgClass, NgIf } from '@angular/common';
 import {
   AfterViewInit,
@@ -28,6 +11,25 @@ import {
 import { MatIcon, MatIconRegistry } from '@angular/material/icon';
 import { DomSanitizer } from '@angular/platform-browser';
 import { RouterOutlet } from '@angular/router';
+import {
+  angularIcon,
+  awsIcon,
+  bootatrapIcon,
+  clickHereIcon,
+  cplusplusIcon,
+  cssIcon,
+  dockerIcon,
+  firebaseIcon,
+  gitIcon,
+  htmlIcon,
+  jasmineIcon,
+  jsIcon,
+  madeInColombiaIcon,
+  nodeJsIcon,
+  rxjsIcon,
+  threeJsIcon,
+  tsIcon,
+} from 'src/assets/images/svgs';
 import { IconChange, Leave, RouterAnimation } from './animations';
 import { IS_TOUCH_DEVICE, MAIN_LOADER_TIME } from './constants';
 import { AnalyticEvents, PageSections } from './enums';
