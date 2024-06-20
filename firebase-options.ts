@@ -1,4 +1,6 @@
-export const FIREBASE_CONFIG = {
+import { FirebaseOptions } from "firebase/app";
+
+export const FIREBASE_CONFIG: FirebaseOptions = {
   apiKey: '#{FIREBASE_API_KEY}#',
   authDomain: 'magoratogha.firebaseapp.com',
   projectId: 'magoratogha',
