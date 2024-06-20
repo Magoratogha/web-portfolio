@@ -1,0 +1,74 @@
+@import "./shared/styles/colors.scss";
+
+.cursor {
+  width: 24px;
+  height: 24px;
+  border: 2px solid $white;
+  border-radius: 50%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  pointer-events: none;
+  transition: transform 100ms linear;
+  background-color: transparent;
+  mix-blend-mode: difference;
+  &.hover {
+    transform-origin: center;
+    transform: scale3d(2, 2, 1);
+    mix-blend-mode: difference;
+    background: $white;
+  }
+}
+
+.bg {
+  position: fixed;
+  top: -50%;
+  left: -50%;
+  right: -50%;
+  bottom: -50%;
+  width: 200%;
+  height: 200vh;
+  background: transparent url("../assets/images/noise-transparent.png") repeat 0
+    0;
+  background-repeat: repeat;
+  animation: bg-animation 0.2s infinite;
+  visibility: visible;
+  pointer-events: none;
+}
+
+@keyframes bg-animation {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  10% {
+    transform: translate3d(-5%, -5%, 0);
+  }
+  20% {
+    transform: translate3d(-10%, 5%, 0);
+  }
+  30% {
+    transform: translate3d(5%, -10%, 0);
+  }
+  40% {
+    transform: translate3d(-5%, 15%, 0);
+  }
+  50% {
+    transform: translate3d(-10%, 5%, 0);
+  }
+  60% {
+    transform: translate3d(15%, 0, 0);
+  }
+  70% {
+    transform: translate3d(0, 10%, 0);
+  }
+  80% {
+    transform: translate3d(-15%, 0, 0);
+  }
+  90% {
+    transform: translate3d(10%, 5%, 0);
+  }
+  100% {
+    transform: translate3d(5%, 0, 0);
+  }
+}

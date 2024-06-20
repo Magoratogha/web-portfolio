@@ -1,0 +1,20 @@
+<div class="flex flex-col justify-between p-4 h-dvh bs-border" [id]="pageTags.HOME">
+  <app-banner class="w-full"></app-banner>
+  <div class="home-message">
+    <div class="p-3">
+        <small>
+          Welcome to my <b class="hoverable">digital canvas.</b><br /><br />
+          I'm a <b class="hoverable">front-end developer</b> and I build
+          <b class="hoverable">amazing things for the web.</b> I love bringing
+          websites and applications to life, crafting user experiences that are as
+          smooth as a fresh coat of paint.<br /><br />
+          Take a look around and see how I can help you
+          <b class="hoverable">build something beautiful.</b>
+        </small>
+    </div>
+    <div class="flex justify-around p-3">
+        <small class="hoverable underlined" (click)="navigate(pageTags.ABOUT)">More about me</small>
+        <small class="hoverable underlined" (click)="navigate(pageTags.SKILLS)">Checkout what I can do</small>
+    </div>
+  </div>
+</div>

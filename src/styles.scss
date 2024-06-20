@@ -1,1 +1,31 @@
-/* You can add global styles to this file, and also import other style files */
+@import "./app/shared/styles/reset.scss";
+@import "./app/shared/styles/utilities.scss";
+@import "./app/shared/styles/colors.scss";
+@import "./app/shared/styles/variables.scss";
+@import "./app/shared/styles/fonts.scss";
+@import "locomotive-scroll/dist/locomotive-scroll.css";
+
+@font-face {
+  font-family: "Neue Regrade";
+  src: url("./assets/fonts/neue-regrade-variable.ttf") format("truetype");
+  font-weight: 300 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+body {
+  font-family: "Neue Regrade", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  background-color: $black;
+  color: $white;
+  cursor: none;
+}
+
+*:hover,
+*:active,
+*:focus,
+*:focus-visible,
+*:focus-within,
+*:link {
+  cursor: none !important;
+}

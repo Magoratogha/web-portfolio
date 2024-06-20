@@ -1,0 +1,49 @@
+<div
+  #menuToggler
+  class="pos-fixed z-i-10 menu-toggler hoverable me-5 mb-5 col-white"
+  (click)="toggleMenu()"
+>
+  MENU
+</div>
+<svg
+  class="menu-wrapper pos-fixed w-full h-dvh z-i-2"
+  viewBox="0 0 100 100"
+  preserveAspectRatio="none"
+>
+  <path
+    #menubg
+    class="path"
+    fill="#f1f1f1"
+    d="M 0 100 V 100 Q 50 100 100 100 V 100 z"
+  ></path>
+</svg>
+<div
+  #menuContainer
+  class="pos-fixed w-full h-dvh menu-content flex flex-col justify-center ps-5 z-i-3 col-black selectable-items"
+  [ngStyle]="{ display: isMenuOpen() ? 'flex' : 'none' }"
+>
+  <h3
+    class="home uppercase fw-medium hoverable pb-2 flex item"
+    (click)="navigate(PageTags.HOME)"
+  >
+    Home
+  </h3>
+  <h3
+    class="about uppercase fw-medium hoverable pb-2 flex item"
+    (click)="navigate(PageTags.ABOUT)"
+  >
+    About me
+  </h3>
+  <h3
+    class="skills uppercase fw-medium hoverable pb-2 flex item"
+    (click)="navigate(PageTags.SKILLS)"
+  >
+    My skills
+  </h3>
+  <h3
+    class="contact uppercase fw-medium hoverable flex item"
+    (click)="navigate(PageTags.CONTACT)"
+  >
+    Contact
+  </h3>
+</div>

@@ -1,0 +1,10 @@
+@import '../shared/styles/colors.scss';
+
+.home-message {
+    width: 20%;
+    border: 1px solid $white;
+    margin: 2rem;
+    div {
+        border-top: 1px solid $white;
+    }
+}

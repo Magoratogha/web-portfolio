@@ -1,0 +1,17 @@
+.menu-wrapper,
+.menu-content {
+  bottom: 0;
+  left: 0;
+}
+.menu-toggler {
+  bottom: 0;
+  right: 0;
+}
+
+.menu-wrapper {
+  pointer-events: none;
+}
+
+.menu-toggler {
+  mix-blend-mode: difference;
+}
