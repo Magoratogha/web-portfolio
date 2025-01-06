@@ -16,13 +16,47 @@ export const WORK_DETAILS: AboutMeItemDetails = {
   timeline: true,
   timelineItems: [
     {
-      hastag: 'globant',
+      hashtag: 'unosquare',
+      key: 'Unosquare',
+      activityTime: 'December 2023 - <b>Present</b>',
       title:
-        '<b class="hoverable underlined contrast"><a href="https://www.globant.com/" target="_blank">Globant LLC</a></b>',
+        '<b class="hoverable underlined contrast"><a href="https://www.unosquare.com/" target="_blank">Unosquare</a></b> outsourcing <b class="hoverable underlined contrast"><a href="https://gtreasury.com/" target="_blank">GTreasury</a></b>',
+      subItems: [
+        {
+          title: '<b>Senior Angular Developer</b>',
+          timePeriod: 'December 2023 - <b>Present</b>',
+          description:
+            '<p>Frontend developer in charge of migrate the legacy design styles of different tech base projects (ASP.NET, Angular, Aurelia, etc) to a new modern design system using Sass as a CSS pre-processor.</p><p>Implementing an Angular library for reuse custom business components into diferent Angular apps. It was also packed as Web Elements to be used in non-Angular projects.</p>',
+          skills: [
+            'Azure DevOps',
+            'CI/CD',
+            'Angular 2+',
+            'TypeScript',
+            'JavaScript',
+            'Storybook',
+            'Kendo UI',
+            'RxJS',
+            'KarmaJS',
+            'Figma',
+            'GulpJS',
+            'Jasmine',
+            'HTML',
+            'SCSS',
+            'Aurelia',
+          ],
+        },
+      ],
+    },
+    {
+      hashtag: 'globant',
+      key: 'Globant',
+      activityTime: 'July 2021 - December 2023',
+      title:
+        '<b class="hoverable underlined contrast"><a href="https://www.globant.com/" target="_blank">Globant LLC</a></b> outsourcing <b class="hoverable underlined contrast"><a href="https://www2.deloitte.com/" target="_blank">Deloitte</a></b>',
       subItems: [
         {
           title: '<b>Technical Leader</b>',
-          timePeriod: 'October 2022 - <b>Present</b>',
+          timePeriod: 'October 2022 - December 2023',
           description:
             'Technical team leader responsible for establishing guidelines and good practices for the development process and the definition of the applications architecture.',
           skills: [
@@ -43,8 +77,8 @@ export const WORK_DETAILS: AboutMeItemDetails = {
           ],
         },
         {
-          title: '<b>SR Web UI Developer</b>',
-          timePeriod: 'July 2021 - <b>Present</b>',
+          title: '<b>Senior Web UI Developer</b>',
+          timePeriod: 'July 2021 - December 2023',
           description:
             '<p>Web UI Developer in charge of the implementation of incremental features in existent and new applications using agile methodologies.</p><p>Support and migration of legacy web applications to newer technologies.</p>',
           skills: [
@@ -65,7 +99,9 @@ export const WORK_DETAILS: AboutMeItemDetails = {
       ],
     },
     {
-      hastag: 'vcsoft',
+      hashtag: 'vcsoft',
+      key: 'VC@Soft',
+      activityTime: 'February 2019 - July 2021',
       title:
         '<b class="hoverable underlined contrast"><a href="https://www.vc-soft.com/" target="_blank">VC-SOFT</a></b> outsourcing <b class="hoverable underlined contrast"><a href="https://www.bancolombia.com/personas" target="_blank">Grupo Bancolombia</a></b>',
       subItems: [
@@ -114,8 +150,10 @@ export const WORK_DETAILS: AboutMeItemDetails = {
       ],
     },
     {
-      hastag: 'freelance',
+      hashtag: 'freelance',
+      key: 'As freelancer',
       title: '<b>As Frelancer</b>',
+      activityTime: 'February 2018 - February 2019',
       subItems: [
         {
           title: '<b>Freelance Developer</b>',

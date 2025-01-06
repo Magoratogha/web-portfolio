@@ -24,7 +24,7 @@ export class TimelineComponent implements AfterViewInit {
       threshold: [0.5, 1],
     });
     this.timeLineData?.map((section) => {
-      observer.observe(document.getElementById(section.hastag) as HTMLElement);
+      observer.observe(document.getElementById(section.hashtag) as HTMLElement);
     });
   }
 

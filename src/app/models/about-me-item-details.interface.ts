@@ -6,8 +6,10 @@ export interface AboutMeItemDetails {
 }
 
 export interface TimelineItem {
-  hastag: string;
+  hashtag: string;
+  key: string;
   title: string;
+  activityTime: string;
   subItems: Array<TimelineSubItem>;
 }
 

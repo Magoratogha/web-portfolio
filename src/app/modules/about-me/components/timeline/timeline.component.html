@@ -1,12 +1,13 @@
 <div class="wrapper">
   @for (section of timeLineData; track section) {
     <div
-      [id]="section.hastag"
+      [id]="section.hashtag"
       class="section"
       >
       <div class="title">
-        <h5 class="fw-light" [innerHTML]="section.title"></h5>
+        <h4 class="fw-light" [innerHTML]="section.title"></h4>
       </div>
+      <p class="activity-time" [innerHTML]="section.activityTime"></p>
       @for (item of section.subItems; track item) {
         <section class="item">
           <div class="mx-3 py-1">
