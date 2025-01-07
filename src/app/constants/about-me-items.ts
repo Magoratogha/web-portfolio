@@ -26,7 +26,7 @@ export const WORK_DETAILS: AboutMeItemDetails = {
           title: '<b>Senior Angular Developer</b>',
           timePeriod: 'December 2023 - <b>Present</b>',
           description:
-            '<p>Frontend developer in charge of migrate the legacy design styles of different tech base projects (ASP.NET, Angular, Aurelia, etc) to a new modern design system using Sass as a CSS pre-processor.</p><p>Implementing an Angular library for reuse custom business components into diferent Angular apps. It was also packed as Web Elements to be used in non-Angular projects.</p>',
+            '<p>Frontend developer in charge of migrate the legacy design styles of different tech base projects (ASP.NET, Angular, Aurelia, etc) to a new modern design system using Sass as a CSS pre-processor.</p><p>Implementing an Angular library for reuse custom business components into different Angular apps. It was also packed as Web Elements to be used in non-Angular projects.</p>',
           skills: [
             'Azure DevOps',
             'CI/CD',
