@@ -21,7 +21,7 @@
       background-color: $dark-timeline-color-1;
     }
     .title {
-      padding-bottom: 1rem;
+      padding-bottom: 0.2rem;
       display: flex;
       align-items: center;
       gap: 0.5rem;
@@ -40,8 +40,14 @@
       @media screen and (max-width: 768px) {
         text-align: start;
       }
-      h5 {
+      h4 {
         margin-bottom: 0;
+      }
+    }
+    .activity-time {
+      margin-left: 2rem;
+      @media screen and (max-width: 768px) {
+        text-align: start;
       }
     }
     .item {

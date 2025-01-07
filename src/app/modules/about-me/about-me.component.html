@@ -19,24 +19,16 @@
     class="links-wrapper mt-5 mb-3 fade-in-fast"
     [ngClass]="{ 'd-none': !showWork }"
   >
-    <a
-      class="hoverable arrow-wrapper"
-      (click)="scrollToSection('globant', 8)"
-      [ngClass]="{ selected: activeTimelineSection == 'globant' }"
-      ><span class="link-arrow"></span>Globant</a
-    >
-    <a
-      class="hoverable arrow-wrapper"
-      (click)="scrollToSection('vcsoft', 8)"
-      [ngClass]="{ selected: activeTimelineSection == 'vcsoft' }"
-      ><span class="link-arrow"></span>VC&#64;Soft</a
-    >
-    <a
-      class="hoverable arrow-wrapper"
-      (click)="scrollToSection('freelance', 8)"
-      [ngClass]="{ selected: activeTimelineSection == 'freelance' }"
-      ><span class="link-arrow"></span>As freelancer</a
-    >
+    @for (job of WORK_DETAILS.timelineItems; track job.key) {
+      <a
+        class="hoverable arrow-wrapper"
+        (click)="scrollToSection(job.hashtag, 8)"
+        [ngClass]="{ selected: activeTimelineSection == job.hashtag }"
+      >
+        <span class="link-arrow"></span>
+        {{ job.key }}
+      </a>
+    }
   </div>
   <div
     class="d-flex mt-5 align-items-center justify-content-center fade-in-fast"
@@ -75,26 +67,14 @@
     </p>
   </div>
   <div class="fade-in-fast" [ngClass]="{ 'd-none': !showWork }">
-    <p
-      class="mb-0"
-      (click)="scrollToSection('globant', 9.5)"
-      [ngClass]="{ selected: activeTimelineSection == 'globant' }"
-    >
-      Globant
-    </p>
-    <p
-      class="mb-0"
-      (click)="scrollToSection('vcsoft', 9.5)"
-      [ngClass]="{ selected: activeTimelineSection == 'vcsoft' }"
-    >
-      VC&#64;Soft
-    </p>
-    <p
-      class="mb-0"
-      (click)="scrollToSection('freelance', 9.5)"
-      [ngClass]="{ selected: activeTimelineSection == 'freelance' }"
-    >
-      As freelancer
-    </p>
+    @for (job of WORK_DETAILS.timelineItems; track job.key) {
+      <p
+        class="mb-0"
+        (click)="scrollToSection(job.hashtag, 9.5)"
+        [ngClass]="{ selected: activeTimelineSection == job.hashtag }"
+      >
+        {{ job.key }}
+      </p>
+    }
   </div>
 </div>

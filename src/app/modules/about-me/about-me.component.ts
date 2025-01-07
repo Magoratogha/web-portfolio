@@ -13,6 +13,7 @@ import {
   ABOUT_ME_ROUTE,
   ABOUT_ROUTE,
   ABOUT_WORK_ROUTE,
+  WORK_DETAILS,
 } from 'src/app/constants';
 import { AnalyticEvents, PageSections } from 'src/app/enums';
 import {
@@ -33,6 +34,7 @@ export class AboutMeComponent implements OnInit {
   public showWork: boolean = false;
   ABOUT_ME_ROUTE = ABOUT_ME_ROUTE;
   ABOUT_WORK_ROUTE = ABOUT_WORK_ROUTE;
+  WORK_DETAILS = WORK_DETAILS;
   timelineSubs: Subscription | undefined;
   activeTimelineSection: string | undefined;
 
